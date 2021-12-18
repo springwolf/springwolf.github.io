@@ -8,13 +8,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Springwolf',
   tagline: 'Automated documentation (and more) for async APIs built with Spring Boot',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://springwolf.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   // favicon: 'img/favicon.ico',
-  organizationName: 'Springwolf', 
-  projectName: 'Springwolf',
+  organizationName: 'springwolf', 
+  projectName: 'springwolf.github.io',
+  deploymentBranch: 'gh-pages',
 
   presets: [
     [
