@@ -4,23 +4,7 @@ sidebar_position: 2
 
 # Quickstart
 
-** You can see and run a full working example for [kafka][kafka] and [rabbitmq][amqp]. **
-
-Assuming you have a `@KafkaListener` like the following:
-
-```java
-@Service
-public class ExampleConsumer {
-
-    @KafkaListener(topics = "example-topic", containerFactory = "exampleKafkaListenerContainerFactory")
-    public void receiveExamplePayload(ExamplePayloadDto payload) {
-        // Do something with payload
-    }
-
-}
-```
-
-Follow the instructions below, and Springwolf will automatically pick up its metadata and generate documentation for it.
+*The following instructions are for Kafka services - but amqp services configuration is almost identical. Check out the example project for complete examples.*
 
 ## Dependencies
 
@@ -28,10 +12,10 @@ Add the following dependencies:
 ```groovy
 dependencies {
     // Provides the documentation API    
-    implementation 'io.github.springwolf:springwolf-core:0.4.0'
+    implementation 'io.github.springwolf:springwolf-kafka:0.3.0'
     
     // Provides the UI - optional (recommended)
-    runtimeOnly 'io.github.springwolf:springwolf-ui:0.3.0'
+    runtimeOnly 'io.github.springwolf:springwolf-ui:0.3.1'
 }
 ```
 
