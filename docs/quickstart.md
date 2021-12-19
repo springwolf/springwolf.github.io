@@ -9,6 +9,8 @@ sidebar_position: 2
 ## Dependencies
 
 Add the following dependencies:
+
+### [Groovy](#tab/groovy-dependencies)
 ```groovy
 dependencies {
     // Provides the documentation API    
@@ -17,6 +19,23 @@ dependencies {
     // Provides the UI - optional (recommended)
     runtimeOnly 'io.github.springwolf:springwolf-ui:0.3.1'
 }
+```
+### [Maven](#tab/maven-dependencies)
+```xml
+<dependencies>
+    <!-- Provides the documentation API -->
+    <dependency>
+        <groupId>io.github.springwolf</groupId>
+        <artifactId>springwolf-kafka</artifactId>
+        <version>${springwolf.kafka.version}</version>
+    </dependency>
+    <!-- Provides the UI - optional (recommended) -->
+    <dependency>
+        <groupId>io.github.springwolf</groupId>
+        <artifactId>springwolf-ui</artifactId>
+        <version>${springwolf.kafka.version}</version>
+    </dependency>
+</dependencies>
 ```
 
 ## Configuration Class
