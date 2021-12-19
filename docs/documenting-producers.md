@@ -33,9 +33,7 @@ public AsyncApiDocket asyncApiDocket() {
 
 ### Channel Name
 
-The channel name (or topic name in case of Kafka). 
-
-This is the name that will be used to publish messages to by the UI (if an [example producer is provided](providing-an-example-producer)).
+The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
 
 
 ### Binding
