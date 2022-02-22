@@ -5,7 +5,7 @@ import Link from '@docusaurus/Link';
 
 const FeatureList = [
   {
-    title: 'Efortless API documentation',
+    title: 'Effortless API documentation',
     description: (
       <>
         Springwolf uses metadata already provided in the code 
