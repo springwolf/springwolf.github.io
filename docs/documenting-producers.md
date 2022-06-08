@@ -18,7 +18,7 @@ public AsyncApiDocket asyncApiDocket() {
 
     ProducerData exampleProducerData = ProducerData.builder()
             .channelName("example-producer-topic")
-            .binding(ImmutableMap.of("kafka", new KafkaOperationBinding()))
+            .operationBinding(ImmutableMap.of("kafka", new KafkaOperationBinding()))
             .payloadType(ExamplePayloadDto.class)
             .build();
   
