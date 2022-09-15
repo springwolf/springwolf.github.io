@@ -8,7 +8,11 @@ Unlike consumers which are defined declaratively with an annotation, producers a
 
 Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document, by declaring them in the `AsyncApiDocket` using the `ProducerData` object.
 
-## ProducerData
+## `ProducerData`
+
+:::tip
+Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
+:::
 
 Below is an example of describing a Kafka producer:
 
@@ -48,8 +52,69 @@ This property is used to discriminate the producer's protocol and provide protoc
 
 ### Payload Type
 
-The class object of the payload published to this channel.
+The class object of the payload that will be published to this channel.
 
-## Example
+## `AmqpProducerData`
+
+The above Kafka `ProducerData` equivalent in `AmqpProducerData`:
+```java
+    AmqpProducerData exampleProducer = AmqpProducerData.amqpProducerDataBuilder()
+        .queueName("example-producer-channel")
+        .description("example-producer-channel-description")
+        .exchangeName("example-topic-exchange")
+        .routingKey("example-topic-routing-key")
+        .payloadType(AnotherPayloadDto.class)
+        .build();
+```
+
+### Queue Name (Channel Name)
+
+The queue name that will be used to publish messages to by the UI.
+
+### Description
+
+Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
+
+### Exchange Name
+
+The exchange name that will be used to bind queues to.
+
+### Routing Key
+
+The routing key used when publishing a message.
+
+### Payload Type
+
+The class object of the payload that will be published to this channel.
+
+### Example
+
+See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
+
+
+## `KafkaProducerData`
+
+The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
+```java
+    KafkaProducerData exampleProducerData = KafkaProducerData.kafkaProducerDataBuilder()
+        .topicName("example-producer-topic")
+        .description("Optional. Customer uploaded an example payload")
+        .payloadType(ExamplePayloadDto.class)
+        .build();
+```
+
+### Topic Name (Channel Name)
+
+The topic name that will be used to publish messages to by the UI.
+
+### Description
+
+Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
+
+### Payload Type
+
+The class object of the payload that will be published to this channel.
+
+### Example
 
 See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
