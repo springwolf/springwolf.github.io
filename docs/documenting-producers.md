@@ -18,6 +18,7 @@ public AsyncApiDocket asyncApiDocket() {
 
     ProducerData exampleProducerData = ProducerData.builder()
             .channelName("example-producer-topic")
+            .description("Optional. Customer uploaded an example payload")
             .operationBinding(ImmutableMap.of("kafka", new KafkaOperationBinding()))
             .payloadType(ExamplePayloadDto.class)
             .build();
@@ -31,14 +32,19 @@ public AsyncApiDocket asyncApiDocket() {
 }
 ```
 
+Multiple producers can be configured by calling the `producer()` method multiple times.
+
 ### Channel Name
 
 The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
 
+### Description
+
+Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
 
 ### Binding
 
-This property is used to discriminate the producer's protocl and provide protocol-specific properties (see [Operation Binding Object](https://www.asyncapi.com/docs/specifications/v2.0.0#operationBindingsObject)).
+This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [Operation Binding Object](https://www.asyncapi.com/docs/specifications/v2.0.0#operationBindingsObject)).
 
 ### Payload Type
 
