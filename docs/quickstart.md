@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quickstart
 
-*The following instructions are for Kafka services - but amqp services configuration is almost identical. Check out the example project for complete examples.*
+*The following instructions are for Kafka services - but amqp services configuration is almost identical. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
 
 ## Dependencies
 
@@ -13,8 +13,8 @@ Add the following dependencies:
 ### [Groovy](#tab/groovy-dependencies)
 ```groovy
 dependencies {
-    // Provides the documentation API    
-    implementation 'io.github.springwolf:springwolf-kafka:0.5.0'
+    // Provides the documentation API
+    implementation 'io.github.springwolf:springwolf-kafka:0.6.1'
     
     // Provides the UI - optional (recommended)
     runtimeOnly 'io.github.springwolf:springwolf-ui:0.4.0'
@@ -27,13 +27,13 @@ dependencies {
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-kafka</artifactId>
-        <version>${springwolf.kafka.version}</version>
+        <version>0.6.1</version>
     </dependency>
     <!-- Provides the UI - optional (recommended) -->
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-ui</artifactId>
-        <version>${springwolf.kafka.version}</version>
+        <version>0.4.0</version>
     </dependency>
 </dependencies>
 ```
