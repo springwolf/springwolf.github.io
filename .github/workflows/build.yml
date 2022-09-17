@@ -1,4 +1,4 @@
-name: springwolf.github.io
+name: Build
 
 on:
   - push
