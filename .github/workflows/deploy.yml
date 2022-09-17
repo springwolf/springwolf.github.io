@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: springwolf.github.io
 
 on:
   - push
