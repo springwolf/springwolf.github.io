@@ -1,19 +1,21 @@
-name: Deploy to GitHub Pages
+name: Build
 
 on:
-  push:
-    branches:
-      - master
+  - push
+  - workflow_dispatch
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Install dependencies
         run: npm install
@@ -22,6 +24,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
