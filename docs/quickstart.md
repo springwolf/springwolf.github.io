@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import CodeSpringwolfGroovy from '!!raw-loader!./snippets/_springwolf_groovy.md';
+import CodeSpringwolfMaven from '!!raw-loader!./snippets/_springwolf_maven.md';
 
 # Quickstart
 
@@ -10,33 +15,14 @@ sidebar_position: 2
 
 Add the following dependencies:
 
-### [Groovy](#tab/groovy-dependencies)
-```groovy
-dependencies {
-    // Provides the documentation API
-    implementation 'io.github.springwolf:springwolf-kafka:0.8.0'
-    
-    // Provides the UI - optional (recommended)
-    runtimeOnly 'io.github.springwolf:springwolf-ui:0.5.0'
-}
-```
-### [Maven](#tab/maven-dependencies)
-```xml
-<dependencies>
-    <!-- Provides the documentation API -->
-    <dependency>
-        <groupId>io.github.springwolf</groupId>
-        <artifactId>springwolf-kafka</artifactId>
-        <version>0.8.0</version>
-    </dependency>
-    <!-- Provides the UI - optional (recommended) -->
-    <dependency>
-        <groupId>io.github.springwolf</groupId>
-        <artifactId>springwolf-ui</artifactId>
-        <version>0.5.0</version>
-    </dependency>
-</dependencies>
-```
+<Tabs>
+  <TabItem value="Groovy" label="Groovy" default>
+    <CodeBlock language="groovy">{CodeSpringwolfGroovy}</CodeBlock>
+  </TabItem>
+  <TabItem value="Maven" label="Maven">
+    <CodeBlock language="xml">{CodeSpringwolfMaven}</CodeBlock>
+  </TabItem>
+</Tabs>
 
 ## Configuration Class
 
