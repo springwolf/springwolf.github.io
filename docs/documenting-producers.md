@@ -25,6 +25,7 @@ public AsyncApiDocket asyncApiDocket() {
             .description("Optional. Customer uploaded an example payload")
             .operationBinding(ImmutableMap.of("kafka", new KafkaOperationBinding()))
             .payloadType(ExamplePayloadDto.class)
+            .headers(AsyncHeaders.NOT_USED)
             .build();
   
     return AsyncApiDocket.builder()
@@ -53,6 +54,13 @@ This property is used to discriminate the producer's protocol and provide protoc
 ### Payload Type
 
 The class object of the payload that will be published to this channel.
+
+### Header
+
+Optional. The headers describing the metadata of the payload.
+By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit header documentation exists.
+Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
+
 
 ## `AmqpProducerData`
 
@@ -100,6 +108,7 @@ The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
         .topicName("example-producer-topic")
         .description("Optional. Customer uploaded an example payload")
         .payloadType(ExamplePayloadDto.class)
+        .headers(AsyncHeaders.NOT_USED)
         .build();
 ```
 
@@ -114,6 +123,12 @@ Optional. The description allows for human-friendly text to verbosely explain th
 ### Payload Type
 
 The class object of the payload that will be published to this channel.
+
+### Headers
+
+The Kafka headers describing the metadata of the payload, more details in the generic ProducerData.
+
+The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
 
 ### Example
 
