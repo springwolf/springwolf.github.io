@@ -6,8 +6,8 @@ sidebar_position: 6
 
 | Protocol        | Annotation                        | Example Project                   | Latest Plugin Version |
 | --------------- | --------------------------------- | --------------------------------- | --------------------- |
-| Kafka           | `@KafkaListener`, `@KafkaHandler` | [springwolf-kafka-example][kafka] | 0.8.0 |
-| AMQP (RabbitMQ) | `@RabbitListener`                 | [springwolf-amqp-example][amqp]   | 0.4.0 |
+| Kafka           | `@KafkaListener`, `@KafkaHandler` | [springwolf-kafka-example][kafka] | 0.9.0 |
+| AMQP (RabbitMQ) | `@RabbitListener`                 | [springwolf-amqp-example][amqp]   | 0.5.0 |
 
 Please [open an issue](https://github.com/springwolf/springwolf-core/issues/new) if you want a protocol to be supported.
 
