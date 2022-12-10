@@ -2,9 +2,9 @@
 sidebar_position: 5
 ---
 
-# Manually Documenting Consumers
+# Documenting Consumers
 
-Sometimes projects are configured in a way that makes Springwolf unable to automatically locate consumers, producers are defined imperatively (They don't have the `@KafkaListener` or `@RabbitListener` annotations on the consuming methods).
+Sometimes projects are configured in a way that makes Springwolf unable to automatically locate consumers (They don't have the `@KafkaListener`, `@RabbitListener`, `@AsyncSubscriber` annotations on the consuming methods).
 
 Because there is still immense value in documenting the consumers, Springwolf provides a way to explicitly add them to the generated document, by declaring them in the `AsyncApiDocket` using the `ConsumerData` object.
 

@@ -6,9 +6,79 @@ sidebar_position: 5
 
 Unlike consumers which are defined declaratively with an annotation, producers are defined imperatively, and there is no implementation uniform enough so that metadata can be picked up automatically.
 
-Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document, by declaring them in the `AsyncApiDocket` using the `ProducerData` object.
+Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document.
 
-## `ProducerData`
+To document them, either:
+- add the `@AsyncPublisher` annotation or
+- declare the `ProducerData` object as part of the `AsyncApiDocket`
+
+## Option 1: `@AsyncPublisher`
+
+The `@AsyncPublisher` annotation is added to the method of the publisher and extracts the payload from its arguments.
+Additional fields can be documented.
+
+The protocol binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
+
+Below is an example to demonstrate the annotation:
+```java
+@AsyncPublisher(operation = @AsyncOperation(
+        channelName = "example-producer-topic",
+        description = "Optional. Customer uploaded an example payload",
+        headers = @AsyncOperation.Headers(
+                schemaName = "SpringKafkaDefaultHeaders",
+                values = {
+                        @AsyncOperation.Headers.Header(
+                                name = DEFAULT_CLASSID_FIELD_NAME,
+                                description = "Spring Type Id Header",
+                                value = "io.github.stavshamir.springwolf.example.dtos.ExamplePayloadDto"
+                        ),
+                }
+        )
+))
+@KafkaAsyncOperationBinding
+public void sendMessage(ExamplePayloadDto msg) {
+    // send
+}
+```
+
+### Channel Name
+
+The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
+
+### Description
+
+Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
+
+### Payload Type
+
+The class object of the payload that will be published to this channel.
+If not specified, it is extracted from the method arguments.
+
+### Header
+
+Optional. The headers describing the metadata of the payload.
+
+### `@AmqpAsyncOperationBinding`
+
+Associate this operation with amqp, see [operation-binding] for details.
+
+```java
+@AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
+```
+
+### `@KafkaAsyncOperationBinding`
+
+Associate this operation with kafka, see [operation-binding] for details.
+
+```java
+@KafkaAsyncOperationBinding(
+        bindingVersion = "1",
+        clientId = "foo-clientId",
+        groupId = "#{'foo-groupId'}"
+)
+```
+
+## Option 2: `ProducerData`
 
 :::tip
 Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
@@ -49,7 +119,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Binding
 
-This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [Operation Binding Object](https://www.asyncapi.com/docs/specifications/v2.0.0#operationBindingsObject)).
+This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [operation-binding])).
 
 ### Payload Type
 
@@ -62,7 +132,7 @@ By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit h
 Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
 
 
-## `AmqpProducerData`
+### `AmqpProducerData`
 
 The above Kafka `ProducerData` equivalent in `AmqpProducerData`:
 ```java
@@ -75,6 +145,21 @@ The above Kafka `ProducerData` equivalent in `AmqpProducerData`:
         .build();
 ```
 
+
+
+### `KafkaProducerData`
+
+The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
+```java
+    KafkaProducerData exampleProducerData = KafkaProducerData.kafkaProducerDataBuilder()
+        .topicName("example-producer-topic")
+        .description("Optional. Customer uploaded an example payload")
+        .payloadType(ExamplePayloadDto.class)
+        .headers(AsyncHeaders.NOT_USED)
+        .build();
+```
+
+## AMQP Parameters
 ### Queue Name (Channel Name)
 
 The queue name that will be used to publish messages to by the UI.
@@ -95,22 +180,7 @@ The routing key used when publishing a message.
 
 The class object of the payload that will be published to this channel.
 
-### Example
-
-See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
-
-
-## `KafkaProducerData`
-
-The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
-```java
-    KafkaProducerData exampleProducerData = KafkaProducerData.kafkaProducerDataBuilder()
-        .topicName("example-producer-topic")
-        .description("Optional. Customer uploaded an example payload")
-        .payloadType(ExamplePayloadDto.class)
-        .headers(AsyncHeaders.NOT_USED)
-        .build();
-```
+## Kafka Parameters
 
 ### Topic Name (Channel Name)
 
@@ -132,4 +202,7 @@ The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuil
 
 ### Example
 
-See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
+- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+
+[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject
