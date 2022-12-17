@@ -1,10 +1,15 @@
 ---
 sidebar_position: 3
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import CodeConfigurationProperties from '!!raw-loader!./snippets/_configuration_properties.md';
+import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configuration_asyncApiDocket.md';
 
 # Configuration
 
-## Configuration Class
+## Activating
 
 - You need to provide a configuration class annotated with:
   1. `@Configuration`
@@ -14,31 +19,32 @@ sidebar_position: 3
 ```java
 @Configuration
 @EnableAsyncApi
-public class AsyncApiConfiguration {
-  ...
-}
+public class AsyncApiConfiguration { }
 ```
 
-## AsyncApiDocket
+## Springwolf configuration
 
-You need to provide an `AsyncApiDocket` bean, which provides Springwolf with metadata that is either not specified in code or can't be picked up automatically.
+There are 2 ways to configure springwolf:
 
-```java
-@Bean
-public AsyncApiDocket asyncApiDocket() {
-    return AsyncApiDocket.builder()
-            .basePackage(...)
-            .info(...)
-            .server(...)
-            .build();
-}
-```
+1. `application.properties`, which is simple and should suit most use-cases
+2. `AsyncApiDocket`, which allows adding producers and consumers via code (and avoiding annotations)
+
+<Tabs>
+  <TabItem value="application.properties" label="application.properties" default>
+    Add the following to the spring application.properties file.
+    <CodeBlock language="properties">{CodeConfigurationProperties}</CodeBlock>
+  </TabItem>
+  <TabItem value="AsyncApiDocket" label="AsyncApiDocket">
+    Add a AsyncApiDocket bean to the spring context, for example as part of the AsyncApiConfiguration.
+    <CodeBlock language="java">{CodeConfigurationAsyncApiDocket}</CodeBlock>
+  </TabItem>
+</Tabs>
 
 ### basePackage (required)
 
-It is recommended to structue the project such that all consumers (classes containing listener methods) are in the same package - it is not mandatory, and if the consumer are scattered across multiple packages, just provide the highest in hierarchy package that containes all of them.
+It is recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it is not mandatory, and if they are scattered across multiple packages, just provide the highest in hierarchy package that contains all of them.
 
-The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, etc.
+The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncSubscriber`, `@AsyncPublisher`, etc.
 
 ### Info (required)
 
@@ -52,33 +58,18 @@ The `Server` object provides metadata the can help the reader understand the pro
 
 An AsyncAPI document can contain more than one server, but it is not common.
 
-The server is provided to the document with an arbitrary name as the key, and a `Server` object as the value:
-
-```java
-@Bean
-public AsyncApiDocket asyncApiDocket() {
-    Server kafkaServer = Server.builder()
-        .protocol("kafka")
-        .url(BOOTSTRAP_SERVERS)
-        .build();
-
-    return AsyncApiDocket.builder()
-            .basePackage(...)
-            .info(...)
-            .server("whatever name you want", kafkaServer)
-            .build();
-}
-```
-
 As with the `Info` object, all provided fields will be present in the generated document, but not all will be displayed in the UI.
 
-## application.properties
+## Additional `application.properties`
 
-The following table contains the complete list of additional properties that can be specified in the `application.properties` file:
+The following table contains additional properties that can be specified in the `application.properties` file:
 
-| Property Name | Default Value | Description |
-| ------------- | ------------- | ----------- |
-| `springwolf.paths.docs` | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
+| Property Name                                | Default Value | Description                                                                                                               |
+|----------------------------------------------| ------------- |---------------------------------------------------------------------------------------------------------------------------|
+| `springwolf.enabled`                         | `true` | Allows to disable springwolf at one central place.                                                                        |
+| `springwolf.paths.docs`                      | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
+| `springwolf.plugin.amqp.publishing.enabled`  | `false` | Allow (anyone) to produce amqp messages from the UI. *Note that this has security implications*                           |
+| `springwolf.plugin.kafka.publishing.enabled` | `false` | Allow (anyone) to produce kafka messages from the UI. *Note that this has security implications*                          |
 
-[info]: https://www.asyncapi.com/docs/specifications/v2.0.0#infoObject).
-[server]: https://www.asyncapi.com/docs/specifications/v2.0.0#serverObject
+[info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.
+[server]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#serversObject
