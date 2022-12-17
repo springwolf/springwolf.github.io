@@ -41,6 +41,10 @@ public void sendMessage(ExamplePayloadDto msg) {
 }
 ```
 
+:::note
+Springwolf only finds methods that are within the `base-package`.
+:::
+
 ### Channel Name
 
 The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
