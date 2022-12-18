@@ -66,7 +66,7 @@ The following table contains additional properties that can be specified in the 
 
 | Property Name                                | Default Value | Description                                                                                                               |
 |----------------------------------------------| ------------- |---------------------------------------------------------------------------------------------------------------------------|
-| `springwolf.enabled`                         | `true` | Allows to disable springwolf at one central place.                                                                        |
+| `springwolf.enabled`                         | `true` | Allows to enable/disable springwolf at one central place.                                                                 |
 | `springwolf.paths.docs`                      | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
 | `springwolf.plugin.amqp.publishing.enabled`  | `false` | Allow (anyone) to produce amqp messages from the UI. *Note that this has security implications*                           |
 | `springwolf.plugin.kafka.publishing.enabled` | `false` | Allow (anyone) to produce kafka messages from the UI. *Note that this has security implications*                          |

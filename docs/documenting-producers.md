@@ -8,16 +8,18 @@ Unlike consumers which are defined declaratively with an annotation, producers a
 
 Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document.
 
-To document them, either:
+To document producers, either:
 - add the `@AsyncPublisher` annotation or
 - declare the `ProducerData` object as part of the `AsyncApiDocket`
+
+You are free to use all options together. Per channel and operation, first `ProducerData` is used, then `@AsyncPublisher`.
 
 ## Option 1: `@AsyncPublisher`
 
 The `@AsyncPublisher` annotation is added to the method of the publisher and extracts the payload from its arguments.
 Additional fields can be documented.
 
-The protocol binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
+The protocol operation binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
 
 Below is an example to demonstrate the annotation:
 ```java
@@ -76,11 +78,10 @@ Associate this operation with kafka, see [operation-binding] for details.
 
 ```java
 @KafkaAsyncOperationBinding(
-        bindingVersion = "1",
-        clientId = "foo-clientId",
-        groupId = "#{'foo-groupId'}"
+        bindingVersion = "1"
 )
 ```
+
 
 ## Option 2: `ProducerData`
 
@@ -149,8 +150,6 @@ The above Kafka `ProducerData` equivalent in `AmqpProducerData`:
         .build();
 ```
 
-
-
 ### `KafkaProducerData`
 
 The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
@@ -162,6 +161,7 @@ The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
         .headers(AsyncHeaders.NOT_USED)
         .build();
 ```
+
 
 ## AMQP Parameters
 ### Queue Name (Channel Name)
@@ -184,6 +184,7 @@ The routing key used when publishing a message.
 
 The class object of the payload that will be published to this channel.
 
+
 ## Kafka Parameters
 
 ### Topic Name (Channel Name)
@@ -204,9 +205,10 @@ The Kafka headers describing the metadata of the payload, more details in the ge
 
 The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
 
-### Example
+## Examples
 
 - [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
 - [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
 
 [operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject

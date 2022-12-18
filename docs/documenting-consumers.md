@@ -4,11 +4,91 @@ sidebar_position: 5
 
 # Documenting Consumers
 
-Sometimes projects are configured in a way that makes Springwolf unable to automatically locate consumers (They don't have the `@KafkaListener`, `@RabbitListener`, `@AsyncSubscriber` annotations on the consuming methods).
+Springwolf comes with build-in support to auto-detect listeners of supported protocols.
 
-Because there is still immense value in documenting the consumers, Springwolf provides a way to explicitly add them to the generated document, by declaring them in the `AsyncApiDocket` using the `ConsumerData` object.
+Sometimes projects are configured in a way that makes Springwolf unable to automatically locate consumers or the generated documentation is insufficient.
+For these use-cases, Springwolf provides additional ways to explicitly add them to the generated document.
 
-## `ConsumerData`
+To document consumers, either:
+- add the `@AsyncSubscriber` annotation or
+- declare the `ConsumerData` object as part of the `AsyncApiDocket` or
+- rely on the auto-detection of `@KafkaListener`, `@RabbitListener`
+
+You are free to use all options together. Per channel and operation, first `ConsumerData` is used, then `@AsyncSubscriber` and last the auto-detected annotations.
+
+## Option 1: `@AsyncSubscriber`
+
+The `@AsyncSubscriber` annotation is added to the method of the listeners and extracts the payload from its arguments.
+Additional fields can be documented.
+
+The protocol operation binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
+
+Below is an example to demonstrate the annotation:
+```java
+@KafkaListener
+@AsyncSubscriber(operation = @AsyncOperation(
+        channelName = "example-consumer-topic",
+        description = "Optional. Customer uploaded an example payload",
+        headers = @AsyncOperation.Headers(
+                schemaName = "SpringKafkaDefaultHeaders",
+                values = {
+                        @AsyncOperation.Headers.Header(
+                                name = DEFAULT_CLASSID_FIELD_NAME,
+                                description = "Spring Type Id Header",
+                                value = "io.github.stavshamir.springwolf.example.dtos.ExamplePayloadDto"
+                        ),
+                }
+        )
+))
+@KafkaAsyncOperationBinding
+public void receiveMessage(ExamplePayloadDto msg) {
+    // process
+}
+```
+
+:::note
+Springwolf only finds methods that are within the `base-package`.
+:::
+
+### Channel Name
+
+The channel name (or topic name in case of Kafka) - this is the name that will be used to subscribe to messages to by the UI.
+
+### Description
+
+Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
+
+### Payload Type
+
+The class object of the payload that will be consumed from this channel.
+If not specified, it is extracted from the method arguments.
+
+### Header
+
+Optional. The headers describing the metadata of the payload.
+
+### `@AmqpAsyncOperationBinding`
+
+Associate this operation with amqp, see [operation-binding] for details.
+
+```java
+@AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
+```
+
+### `@KafkaAsyncOperationBinding`
+
+Associate this operation with kafka, see [operation-binding] for details.
+
+```java
+@KafkaAsyncOperationBinding(
+        bindingVersion = "1",
+        clientId = "foo-clientId",
+        groupId = "#{'foo-groupId'}"
+)
+```
+
+
+## Option 2: `ConsumerData`
 
 :::tip
 Use specific ConsumerData types `AmqpConsumerData` & `KafkaConsumerData` for protocol specific attributes
@@ -49,7 +129,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Binding
 
-This property is used to discriminate the consumer's protocol and provide protocol-specific properties (see [Operation Binding Object](https://www.asyncapi.com/docs/specifications/v2.0.0#operationBindingsObject)).
+This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [operation-binding])).
 
 ### Payload Type
 
@@ -62,7 +142,7 @@ By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit h
 Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
 
 
-## `AmqpConsumerData`
+### `AmqpConsumerData`
 
 The above Kafka `ConsumerData` equivalent in `AmqpConsumerData`:
 ```java
@@ -75,9 +155,29 @@ The above Kafka `ConsumerData` equivalent in `AmqpConsumerData`:
         .build();
 ```
 
+### `KafkaConsumerData`
+
+The above Kafka `ConsumerData` simplifies to the following `KafkaConsumerData`:
+```java
+    KafkaConsumerData exampleConsumerData = KafkaConsumerData.kafkaConsumerDataBuilder()
+        .topicName("example-consumer-topic")
+        .description("Optional. Customer uploaded an example payload")
+        .payloadType(ExamplePayloadDto.class)
+        .headers(AsyncHeaders.NOT_USED)
+        .build();
+```
+
+
+## Option 3: `@KafkaListener`, `@RabbitListener`
+The `@KafkaListener` and `@RabbitListener` annotations are detected automatically.
+There is nothing more to do.
+Use the other options if the provided documentation is insufficient.
+
+
+## AMQP Parameters
 ### Queue Name (Channel Name)
 
-The queue name that will be used to publish messages to by the UI.
+The queue name that will be used to consume messages from.
 
 ### Description
 
@@ -95,26 +195,12 @@ The routing key used when publishing a message.
 
 The class object of the payload that will be consumed from this channel.
 
-### Example
 
-See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
-
-
-## `KafkaConsumerData`
-
-The above Kafka `ConsumerData` simplifies to the following `KafkaConsumerData`:
-```java
-    KafkaConsumerData exampleConsumerData = KafkaConsumerData.kafkaConsumerDataBuilder()
-        .topicName("example-consumer-topic")
-        .description("Optional. Customer uploaded an example payload")
-        .payloadType(ExamplePayloadDto.class)
-        .headers(AsyncHeaders.NOT_USED)
-        .build();
-```
+## Kafka Parameters
 
 ### Topic Name (Channel Name)
 
-The topic name that will be used to publish messages to by the UI.
+The topic name that will be used to consume messages from.
 
 ### Description
 
@@ -130,7 +216,10 @@ The Kafka headers describing the metadata of the payload, more details in the ge
 
 The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
 
+## Examples
 
-### Example
+- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
 
-See a full example [here](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java).
+[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject

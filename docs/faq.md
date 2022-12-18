@@ -21,7 +21,7 @@ If not, check
 2. if static assets are being served. See the code below:
 ```java
 @Configuration
-public class WebConfig  implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -33,6 +33,15 @@ public class WebConfig  implements WebMvcConfigurer {
 ```
 
 Taken from [Discord Chat](https://discord.com/channels/950375987475005471/950375988217409548/1051909821848363038)
+
+### Unable to publish message from the UI
+
+Publishing messages from the UI is disabled by default due to security concerns.
+Springwolf does not offer authentication nor authorization, anyone can publish messages to (production) channels.
+
+Check the [configuration](configuration.md) to enable this feature.
+
+Spring Security allows to limit access to authorized users.
 
 ## Usage Patterns
 
