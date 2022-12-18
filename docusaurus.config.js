@@ -46,6 +46,11 @@ const config = {
             label: 'Documentation',
           },
           {
+            href: 'https://springwolf.github.io/springwolf-ui/',
+            label: 'Demo',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/springwolf/springwolf-core',
             label: 'GitHub',
             position: 'right',
