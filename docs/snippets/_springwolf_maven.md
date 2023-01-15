@@ -3,7 +3,7 @@
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-kafka</artifactId>
-        <version>0.9.0</version>
+        <version>0.10.0</version>
     </dependency>
     <!-- Provides the UI - optional (recommended) -->
     <dependency>
