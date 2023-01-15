@@ -44,7 +44,7 @@ There are 2 ways to configure springwolf:
 
 It is recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it is not mandatory, and if they are scattered across multiple packages, just provide the highest in hierarchy package that contains all of them.
 
-The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncSubscriber`, `@AsyncPublisher`, etc.
+The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
 ### Info (required)
 
