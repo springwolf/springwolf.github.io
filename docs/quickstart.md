@@ -26,45 +26,36 @@ Add the following dependencies:
 
 ## Configuration Class
 
-Add the following configuration class.
-
-*Make sure to change the value of `CONSUMERS_BASE_PACKAGE` to the package containing your Kafka listeners.*  
+Add the following configuration class:
 
 ```java
 @Configuration
 @EnableAsyncApi
-public class AsyncApiConfiguration {
-
-    private final String BOOTSTRAP_SERVERS = "kafka:29092";
-    private final String CONSUMERS_BASE_PACKAGE = "io.github.stavshamir.springwolf.example.consumers";
-
-    @Bean
-    public AsyncApiDocket asyncApiDocket() {
-        Info info = Info.builder()
-                .version("1.0.0")
-                .title("Springwolf example project")
-                .build();
-
-        Server kafkaServer = Server.builder()
-            .protocol("kafka")
-            .url(BOOTSTRAP_SERVERS)
-            .build();
-
-        return AsyncApiDocket.builder()
-                .basePackage(CONSUMERS_BASE_PACKAGE)
-                .info(info)
-                .server("kafka", kafkaServer)
-                .build();
-    }
-
-}
+public class AsyncApiConfiguration { }
 ```
+
+## Configuration properties
+
+Add the following to your application.properties
+
+```properties
+springwolf.docket.base-package=io.github.stavshamir.springwolf.example.consumers
+
+springwolf.docket.info.title=${spring.application.name}
+springwolf.docket.info.version=1.0.0
+
+springwolf.docket.servers.kafka.protocol=kafka
+springwolf.docket.servers.kafka.url=${kafka.bootstrap.servers:localhost:29092}
+```
+
+*Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that springwolf will automatically pick them up.*
 
 ## View the docs
 After starting the application, visit `<host>:<port>/springwolf/asyncapi-ui.html` to view the UI or `<host>:<port>/springwolf/docs` to view the raw AsyncAPI document.
 
 If you configured a different context path in your application, make sure to prepend it to springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
 
-
-[kafka]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
-[amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
+## Examples
+- amqp: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
+- spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
+- kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
