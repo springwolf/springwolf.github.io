@@ -24,6 +24,12 @@ Add the following dependencies:
   </TabItem>
 </Tabs>
 
+Latest version:
+![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-ui?color=green&label=springwolf-ui&style=plastic)
+
 ## Configuration Class
 
 Add the following configuration class.
