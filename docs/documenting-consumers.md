@@ -2,29 +2,32 @@
 sidebar_position: 5
 ---
 
-# Documenting Producers
+# Documenting Consumers
 
-Unlike consumers which are defined declaratively with an annotation, producers are defined imperatively, and there is no implementation uniform enough so that metadata can be picked up automatically.
+Springwolf comes with build-in support to auto-detect listeners of supported protocols.
 
-Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document.
+Sometimes projects are configured in a way that makes Springwolf unable to automatically locate consumers or the generated documentation is insufficient.
+For these use-cases, Springwolf provides additional ways to explicitly add them to the generated document.
 
-To document producers, either:
-- add the `@AsyncPublisher` annotation or
-- declare the `ProducerData` object as part of the `AsyncApiDocket`
+To document consumers, either:
+- add the `@AsyncListener` annotation or
+- declare the `ConsumerData` object as part of the `AsyncApiDocket` or
+- rely on the auto-detection of `@KafkaListener`, `@RabbitListener`
 
-You are free to use all options together. Per channel and operation, first `ProducerData` is used, then `@AsyncPublisher`.
+You are free to use all options together. Per channel and operation, first `ConsumerData` is used, then `@AsyncListener` and last the auto-detected annotations.
 
-## Option 1: `@AsyncPublisher`
+## Option 1: `@AsyncListener`
 
-The `@AsyncPublisher` annotation is added to the method of the publisher and extracts the payload from its arguments.
+The `@AsyncListener` annotation is added to the method of the listeners and extracts the payload from its arguments.
 Additional fields can be documented.
 
 The protocol operation binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
 
 Below is an example to demonstrate the annotation:
 ```java
-@AsyncPublisher(operation = @AsyncOperation(
-        channelName = "example-producer-topic",
+@KafkaListener
+@AsyncListener(operation = @AsyncOperation(
+        channelName = "example-consumer-topic",
         description = "Optional. Customer uploaded an example payload",
         headers = @AsyncOperation.Headers(
                 schemaName = "SpringKafkaDefaultHeaders",
@@ -38,8 +41,8 @@ Below is an example to demonstrate the annotation:
         )
 ))
 @KafkaAsyncOperationBinding
-public void sendMessage(ExamplePayloadDto msg) {
-    // send
+public void receiveMessage(ExamplePayloadDto msg) {
+    // process
 }
 ```
 
@@ -49,7 +52,7 @@ Springwolf only finds methods that are within the `base-package`.
 
 ### Channel Name
 
-The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
+The channel name (or topic name in case of Kafka) - this is the name that will be used to subscribe to messages to by the UI.
 
 ### Description
 
@@ -57,7 +60,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Payload Type
 
-The class object of the payload that will be published to this channel.
+The class object of the payload that will be consumed from this channel.
 If not specified, it is extracted from the method arguments.
 
 ### Header
@@ -78,25 +81,27 @@ Associate this operation with kafka, see [operation-binding] for details.
 
 ```java
 @KafkaAsyncOperationBinding(
-        bindingVersion = "1"
+        bindingVersion = "1",
+        clientId = "foo-clientId",
+        groupId = "#{'foo-groupId'}"
 )
 ```
 
 
-## Option 2: `ProducerData`
+## Option 2: `ConsumerData`
 
 :::tip
-Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
+Use specific ConsumerData types `AmqpConsumerData` & `KafkaConsumerData` for protocol specific attributes
 :::
 
-Below is an example of describing a Kafka producer:
+Below is an example of describing a Kafka consumer:
 
 ```java
 @Bean
 public AsyncApiDocket asyncApiDocket() {
 
-    ProducerData exampleProducerData = ProducerData.builder()
-            .channelName("example-producer-topic")
+    ConsumerData exampleConsumerData = ConsumerData.builder()
+            .channelName("example-consumer-topic")
             .description("Optional. Customer uploaded an example payload")
             .operationBinding(ImmutableMap.of("kafka", new KafkaOperationBinding()))
             .payloadType(ExamplePayloadDto.class)
@@ -107,16 +112,16 @@ public AsyncApiDocket asyncApiDocket() {
             .basePackage(...)
             .info(...)
             .server(...)
-            .producer(exampleProducerData)
+            .consumer(exampleConsumerData)
             .build();
 }
 ```
 
-Multiple producers can be configured by calling the `producer()` method multiple times.
+Multiple consumers can be configured by calling the `consumer()` method multiple times.
 
 ### Channel Name
 
-The channel name (or topic name in case of Kafka) - this is the name that will be used to publish messages to by the UI.
+The channel name (or topic name in case of Kafka) - this is the name that will be used to subscribe to messages to by the UI.
 
 ### Description
 
@@ -128,7 +133,7 @@ This property is used to discriminate the producer's protocol and provide protoc
 
 ### Payload Type
 
-The class object of the payload that will be published to this channel.
+The class object of the payload that will be consumed from this channel.
 
 ### Header
 
@@ -137,25 +142,25 @@ By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit h
 Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
 
 
-### `AmqpProducerData`
+### `AmqpConsumerData`
 
-The above Kafka `ProducerData` equivalent in `AmqpProducerData`:
+The above Kafka `ConsumerData` equivalent in `AmqpConsumerData`:
 ```java
-    AmqpProducerData exampleProducer = AmqpProducerData.amqpProducerDataBuilder()
-        .queueName("example-producer-channel")
-        .description("example-producer-channel-description")
+    AmqpConsumerData exampleConsumer = AmqpConsumerData.amqpConsumerDataBuilder()
+        .queueName("example-consumer-channel")
+        .description("example-consumer-channel-description")
         .exchangeName("example-topic-exchange")
         .routingKey("example-topic-routing-key")
         .payloadType(AnotherPayloadDto.class)
         .build();
 ```
 
-### `KafkaProducerData`
+### `KafkaConsumerData`
 
-The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
+The above Kafka `ConsumerData` simplifies to the following `KafkaConsumerData`:
 ```java
-    KafkaProducerData exampleProducerData = KafkaProducerData.kafkaProducerDataBuilder()
-        .topicName("example-producer-topic")
+    KafkaConsumerData exampleConsumerData = KafkaConsumerData.kafkaConsumerDataBuilder()
+        .topicName("example-consumer-topic")
         .description("Optional. Customer uploaded an example payload")
         .payloadType(ExamplePayloadDto.class)
         .headers(AsyncHeaders.NOT_USED)
@@ -163,10 +168,16 @@ The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
 ```
 
 
+## Option 3: `@KafkaListener`, `@RabbitListener`
+The `@KafkaListener` and `@RabbitListener` annotations are detected automatically.
+There is nothing more to do.
+Use the other options if the provided documentation is insufficient.
+
+
 ## AMQP Parameters
 ### Queue Name (Channel Name)
 
-The queue name that will be used to publish messages to by the UI.
+The queue name that will be used to consume messages from.
 
 ### Description
 
@@ -182,14 +193,14 @@ The routing key used when publishing a message.
 
 ### Payload Type
 
-The class object of the payload that will be published to this channel.
+The class object of the payload that will be consumed from this channel.
 
 
 ## Kafka Parameters
 
 ### Topic Name (Channel Name)
 
-The topic name that will be used to publish messages to by the UI.
+The topic name that will be used to consume messages from.
 
 ### Description
 
@@ -197,11 +208,11 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Payload Type
 
-The class object of the payload that will be published to this channel.
+The class object of the payload that will be consumed from this channel.
 
 ### Headers
 
-The Kafka headers describing the metadata of the payload, more details in the generic ProducerData.
+The Kafka headers describing the metadata of the payload, more details in the generic ConsumerData.
 
 The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
 
