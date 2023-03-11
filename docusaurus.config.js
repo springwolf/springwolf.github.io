@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  // favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.ico',
   organizationName: 'springwolf', 
   projectName: 'springwolf.github.io',
   deploymentBranch: 'gh-pages',
@@ -38,6 +38,9 @@ const config = {
     ({
       navbar: {
         title: 'Springwolf',
+        logo: {
+          src: 'img/logo.png'
+        },
         items: [
           {
             type: 'doc',
