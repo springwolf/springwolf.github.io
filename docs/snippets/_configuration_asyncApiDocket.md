@@ -1,5 +1,4 @@
 @Configuration
-@EnableAsyncApi
 public class AsyncApiConfiguration {
 
     private final String BOOTSTRAP_SERVERS;

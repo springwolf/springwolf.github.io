@@ -24,15 +24,6 @@ Add the following dependencies:
   </TabItem>
 </Tabs>
 
-## Configuration Class
-
-Add the following configuration class:
-
-```java
-@Configuration
-@EnableAsyncApi
-public class AsyncApiConfiguration { }
-```
 
 ## Configuration properties
 
