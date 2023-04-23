@@ -11,16 +11,10 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 ## Activating
 
-- You need to provide a configuration class annotated with:
-  1. `@Configuration`
-  2. `@EnableAsyncApi`
-- The name of the class does no matter. You don't have to, but it is a good idea to name the class related to Springwolf or AsyncApi.
+Springwolf is actived automatically as soon as one of the available plugin dependencies (e.g. `springwolf-kafka`)
+is added to the application classpath. 
 
-```java
-@Configuration
-@EnableAsyncApi
-public class AsyncApiConfiguration { }
-```
+
 
 ## Springwolf configuration
 
@@ -35,7 +29,7 @@ There are 2 ways to configure springwolf:
     <CodeBlock language="properties">{CodeConfigurationProperties}</CodeBlock>
   </TabItem>
   <TabItem value="AsyncApiDocket" label="AsyncApiDocket">
-    Add a AsyncApiDocket bean to the spring context, for example as part of the AsyncApiConfiguration.
+    Add a AsyncApiDocket bean to the spring context.
     <CodeBlock language="java">{CodeConfigurationAsyncApiDocket}</CodeBlock>
   </TabItem>
 </Tabs>

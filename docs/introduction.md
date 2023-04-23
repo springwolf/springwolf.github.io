@@ -34,7 +34,7 @@ public class ExampleConsumer {
 }
 ```
 
-By simply adding Springwolf dependency and a short configuration class to your project you will automatically get:
+By simply adding Springwolf dependency to your project you will automatically get:
 - An endpoint returning an asyncapi document describing your async API.
 - A web UI for convenient use by your developers, QA or clients of your async API.
 - An easy way to publish messages to your async API with a click of a button

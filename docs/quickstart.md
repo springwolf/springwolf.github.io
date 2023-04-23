@@ -30,16 +30,6 @@ Latest version:
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-ui?color=green&label=springwolf-ui&style=plastic)
 
-## Configuration Class
-
-Add the following configuration class:
-
-```java
-@Configuration
-@EnableAsyncApi
-public class AsyncApiConfiguration { }
-```
-
 ## Configuration properties
 
 Add the following to your application.properties
