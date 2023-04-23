@@ -43,6 +43,18 @@ Check the [configuration](configuration.md) to enable this feature.
 
 Spring Security allows to limit access to authorized users.
 
+### Is Spring Boot 2.X supported?
+
+You can use an older version of springwolf, which is build to support Spring Boot 2.X.
+However, these versions do not get any updates.
+
+Last versions to support Spring Boot 2.X:
+- springwolf-amqp:0.6.0
+- springwolf-cloud-stream:0.1.0
+- springwolf-core:0.6.0
+- springwolf-kafka:0.10.0
+- springwolf-ui:0.6.0
+
 ## Usage Patterns
 
 ### How to access the generated documentation within java?
