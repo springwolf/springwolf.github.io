@@ -84,3 +84,13 @@ from the given `apiDocsUrl` and store it in the `outputDir` and with the given `
 
 If your application is unable to start up with the bootRun task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
 properties can help you.
+
+### My consumers are detected multiple times (with different payloads)
+
+When springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
+This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
+
+Springwolf uses on scanners to find all consumer and producers in your application.
+Most likely two scanners found your consumer/producer each.
+See [configuration](configuration/configuration.md) to disable scanners.
+
