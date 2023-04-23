@@ -8,7 +8,7 @@ import CodeBlock from '@theme/CodeBlock';
 import CodeSchemaGroovy from '!!raw-loader!./snippets/_schema_groovy.md';
 import CodeSchemaMaven from '!!raw-loader!./snippets/_schema_maven.md';
 
-# Documenting Schemas
+# Schemas
 
 Under the hood springwolf relies on swagger-core `ModelConverters`.
 

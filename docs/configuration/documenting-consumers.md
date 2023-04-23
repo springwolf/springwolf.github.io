@@ -2,7 +2,7 @@
 sidebar_position: 60
 ---
 
-# Documenting Consumers
+# Consumers
 
 Springwolf comes with build-in support to auto-detect listeners of supported protocols.
 

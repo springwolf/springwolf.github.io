@@ -39,7 +39,7 @@ If not, whether
 Publishing messages from the UI is disabled by default due to security concerns.
 Springwolf does not offer authentication nor authorization, anyone can publish messages to (production) channels.
 
-Check the [configuration](configuration.md) to enable this feature.
+Check the [configuration](configuration/configuration.md) to enable this feature.
 
 Spring Security allows to limit access to authorized users.
 
