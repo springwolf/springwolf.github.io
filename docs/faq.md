@@ -92,5 +92,5 @@ This is expected, as there are use-cases where different payloads are sent via t
 
 Springwolf uses on scanners to find all consumer and producers in your application.
 Most likely two scanners found your consumer/producer each.
-See [configuration](configuration.md) to disable scanners.
+See [configuration](configuration/configuration.md) to disable scanners.
 
