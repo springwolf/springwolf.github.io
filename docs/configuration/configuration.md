@@ -9,15 +9,6 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 # Configuration
 
-## Activating
-
-Springwolf is actived automatically as soon as one of the available plugin dependencies (e.g. `springwolf-kafka`)
-is added to the application classpath. 
-
-
-
-## Springwolf configuration
-
 There are 2 ways to configure springwolf:
 
 1. `application.properties`, which is simple and should suit most use-cases
@@ -33,6 +24,8 @@ There are 2 ways to configure springwolf:
     <CodeBlock language="java">{CodeConfigurationAsyncApiDocket}</CodeBlock>
   </TabItem>
 </Tabs>
+
+## Properties
 
 ### basePackage (required)
 

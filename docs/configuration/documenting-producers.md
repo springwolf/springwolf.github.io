@@ -2,7 +2,7 @@
 sidebar_position: 64
 ---
 
-# Documenting Producers
+# Producers
 
 Unlike consumers which are defined declaratively with an annotation, producers are defined imperatively, and there is no implementation uniform enough so that metadata can be picked up automatically.
 
