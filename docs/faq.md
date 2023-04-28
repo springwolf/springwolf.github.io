@@ -16,23 +16,23 @@ Yes, you can use springwolf for private and commercial purposes as long as you c
 
 When the `springwolf-ui` dependency is added, the ui should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
 
-If not, check
-1. the spring `context-path` setting 
-2. if static assets are being served. See the code below:
-```java
-@Configuration
-public class WebConfig implements WebMvcConfigurer {
+If not, whether
+1. you customized the spring `context-path` setting 
+2. static assets are being served at all. See the code below:
+    ```java
+    @Configuration
+    public class WebConfig implements WebMvcConfigurer {
+      @Override
+      public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+            .addResourceHandler("/**")
+            .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
+      }
+    }
+    ```
 
-  @Override
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry
-        .addResourceHandler("/**")
-        .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
-  }
-}
-```
-
-Taken from [Discord Chat](https://discord.com/channels/950375987475005471/950375988217409548/1051909821848363038)
+    Taken from [Discord Chat](https://discord.com/channels/950375987475005471/950375988217409548/1051909821848363038)
+3. spring-security (or similar) denies access the urls (HTTP 403). Check `CustomWebSecurityConfigurerAdapter` in springwolf-kafka-example.
 
 ### Unable to publish message from the UI
 
