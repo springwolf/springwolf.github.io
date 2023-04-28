@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 30
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -58,12 +58,21 @@ As with the `Info` object, all provided fields will be present in the generated 
 
 The following table contains additional properties that can be specified in the `application.properties` file:
 
-| Property Name                                | Default Value | Description                                                                                                               |
-|----------------------------------------------| ------------- |---------------------------------------------------------------------------------------------------------------------------|
-| `springwolf.enabled`                         | `true` | Allows to enable/disable springwolf at one central place.                                                                 |
-| `springwolf.paths.docs`                      | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
-| `springwolf.plugin.amqp.publishing.enabled`  | `false` | Allow (anyone) to produce amqp messages from the UI. *Note that this has security implications*                           |
-| `springwolf.plugin.kafka.publishing.enabled` | `false` | Allow (anyone) to produce kafka messages from the UI. *Note that this has security implications*                          |
+| Property Name                                            | Default Value      | Description                                                                                                               |
+|----------------------------------------------------------|--------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `springwolf.enabled`                                     | `true`             | Allows to enable/disable springwolf at one central place.                                                                 |
+| `springwolf.paths.docs`                                  | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
+| `springwolf.scanner.consumer-data.enabled`               | `true`             | Enable scanner to find consumers defined in `AsyncApiDocket`.                                                             |
+| `springwolf.scanner.producer-data.enabled`               | `true`             | Enable scanner to find producers defined in `AsyncApiDocket`.                                                             |
+| `springwolf.scanner.async-listener.enabled`              | `true`             | Enable scanner to find methods annotated with `@AsyncListener`.                                                           |
+| `springwolf.scanner.async-publisher.enabled`             | `true`             | Enable scanner to find methods annotated with `@AsyncPublisher`.                                                          |
+| **AMQP**                                                 |                    |                                                                                                                           |
+| `springwolf.plugin.amqp.publishing.enabled`              | `false`            | Allow (anyone) to produce amqp messages from the UI. *Note that this has security implications*                           |
+| `springwolf.plugin.amqp.scanner.rabbit-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@RabbitListener`.                                                          |
+| **Kafka**                                                |                    |                                                                                                                           |
+| `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce kafka messages from the UI. *Note that this has security implications*                          |
+| `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
+| `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
 
 [info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.
 [server]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#serversObject
