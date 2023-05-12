@@ -48,7 +48,8 @@ springwolf.docket.servers.kafka.url=${kafka.bootstrap.servers:localhost:29092}
 
 ## 3. View the docs
 Start the application and open the urls in your browser:
-- AsyncApi: [`<host>:<port>/springwolf/docs`](http://localhost:8080/springwolf/docs)
+- Json: [`<host>:<port>/springwolf/docs`](http://localhost:8080/springwolf/docs)
+- Yaml: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
 - UI: [`<host>:<port>/springwolf/asyncapi-ui.html`](http://localhost:8080/springwolf/asyncapi-ui.html)
 
 If you configured a different context path in your application, make sure to prepend it to springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
