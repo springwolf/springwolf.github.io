@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Springwolf',
   tagline: 'Automated documentation (and more) for async APIs built with Spring Boot',
-  url: 'https://springwolf.github.io/',
+  url: 'https://www.springwolf.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -49,7 +49,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://springwolf.github.io/springwolf-ui/',
+            href: 'https://demo.springwolf.dev',
             label: 'Demo',
             position: 'right',
           },

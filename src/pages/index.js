@@ -17,7 +17,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
               className="button button--secondary button--lg"
-              to="https://springwolf.github.io/springwolf-ui/"
+              to="https://demo.springwolf.dev/"
               target={"_blank"}>
               Live Demo
           </Link>
