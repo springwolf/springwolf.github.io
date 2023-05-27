@@ -14,7 +14,13 @@ Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings th
 
 ### Demo
 
-You are welcome to take a look at a [live demo](https://springwolf.github.io/springwolf-ui/) of springwolf.
+View the [live demo](https://demo.springwolf.dev) of springwolf in action.
+
+Also, the demos of the 
+[amqp](https://amqp.demo.springwolf.dev), 
+[cloud-stream](https://cloud-stream.demo.springwolf.dev),
+[kafka](https://kafka.demo.springwolf.dev)
+example projects are available.
 
 ![springwolf publishing demo](/img/demo.gif)
 
