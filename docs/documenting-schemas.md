@@ -17,7 +17,7 @@ The default Jackson `ModelResolver` supports schema definitions via `@Schema` to
 
 ## Using `@Schema`
 
-The `@Schema` annotation allows to set many properties like `description`, `example`, `required` to document payloads.
+The `@Schema` annotation allows to set many properties like `description`, `example`, `requiredMode` to document payloads.
 
 All properties are part of the produced AsyncApi file. However, not all of them are displayed in springwolf-ui. The ones listed above are included.
 
@@ -37,10 +37,11 @@ Add the following dependency:
 Then, add the `@Schema` annotation to the payload class:
 ```java
 import io.swagger.v3.oas.annotations.media.Schema;
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 @Schema(description = "Example payload model")
 public class ExamplePayloadDto {
-    @Schema(description = "Some string field", example = "some string value", required = true)
+    @Schema(description = "Some string field", example = "some string value", requiredMode = REQUIRED)
     private String someString;
 
     public String getSomeString() {
