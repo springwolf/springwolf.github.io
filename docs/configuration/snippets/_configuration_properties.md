@@ -1,4 +1,6 @@
 springwolf.docket.base-package=io.github.stavshamir.springwolf.example
+springwolf.docket.id=urn:io:github:stavshamir:springwolf:example
+springwolf.docket.default-content-type=application/json
 
 springwolf.docket.info.title=${spring.application.name}
 springwolf.docket.info.version=1.0.0

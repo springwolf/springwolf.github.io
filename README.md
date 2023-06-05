@@ -15,6 +15,12 @@ The [docs](docs) folder contains all pages in Markdown format.
 ### Local Development
 
 ```bash
+npm install
+```
+Make sure that you have installed all the dependencies in your local environment. You only need to run this command the first time
+or after dependencies are updated.
+
+```bash
 npm start
 ```
 

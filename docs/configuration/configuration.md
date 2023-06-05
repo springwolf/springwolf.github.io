@@ -33,6 +33,14 @@ It is recommended to structure the project such that all consumers and producers
 
 The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
+### id
+
+The `Identifier` value represents a unique universal identifier of the application. See [Identifier][identifier].
+
+### default-content-type
+
+A string representing the default content type to use when encoding/decoding a message's payload. See [Default Content Type][default-content-type]
+
 ### Info (required)
 
 The `Info` object provides metadata about the API (see [Info Object][info]).
@@ -67,5 +75,7 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
 
+[identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.
 [info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.
 [server]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#serversObject
+[default-content-type]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#defaultContentTypeString
