@@ -26,6 +26,8 @@ public class AsyncApiConfiguration {
         return AsyncApiDocket.builder()
                 .basePackage("io.github.stavshamir.springwolf.example.consumers")
                 .info(info)
+                .id("urn:io:github:stavshamir:springwolf:example")
+                .defaultContentType("application/json")
                 .server("kafka", Server.builder()
                         .protocol("kafka")
                         .url(BOOTSTRAP_SERVERS)
