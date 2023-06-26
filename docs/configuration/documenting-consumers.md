@@ -218,8 +218,8 @@ The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuil
 
 ## Examples
 
-- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/configuration/AsyncApiConfiguration.java)
-- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/cloudstream/configuration/AsyncApiConfiguration.java)
-- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/kafka/configuration/AsyncApiConfiguration.java)
+- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
+- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/configuration/AsyncApiConfiguration.java)
 
 [operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject

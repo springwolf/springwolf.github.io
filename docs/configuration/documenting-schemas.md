@@ -50,7 +50,7 @@ public class ExamplePayloadDto {
 }
 ```
 
-For a full example, take a look at [ExamplePayloadDto.java in springwolf-amqp-example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/dtos/ExamplePayloadDto.java)
+For a full example, take a look at [ExamplePayloadDto.java in springwolf-amqp-example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/dtos/ExamplePayloadDto.java)
 
 ## Custom ModelConverters
 
