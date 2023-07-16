@@ -88,10 +88,10 @@ Associate this operation with kafka, see [operation-binding] for details.
 ```
 
 
-## Option 2: `ConsumerData`
+## Option 2: `ConsumerData` (deprecated)
 
-:::tip
-Use specific ConsumerData types `AmqpConsumerData` & `KafkaConsumerData` for protocol specific attributes
+:::note
+Must use configuration via `AsyncApiDocket` and cannot use `application.properties`.
 :::
 
 Below is an example of describing a Kafka consumer:
@@ -118,6 +118,10 @@ public AsyncApiDocket asyncApiDocket() {
 ```
 
 Multiple consumers can be configured by calling the `consumer()` method multiple times.
+
+:::tip
+Use specific ConsumerData types `AmqpConsumerData` & `KafkaConsumerData` for protocol specific attributes
+:::
 
 ### Channel Name
 

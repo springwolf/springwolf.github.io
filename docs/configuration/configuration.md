@@ -9,10 +9,10 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 # Configuration
 
-There are 2 ways to configure springwolf:
+There are 2 ways to configure springwolf and cannot be combined:
 
-1. `application.properties`, which is simple and should suit most use-cases
-2. `AsyncApiDocket`, which allows adding producers and consumers via code (and avoiding annotations)
+1. `application.properties`, which is simple and moves all configuration to this file and annotations
+2. (deprecated) `AsyncApiDocket`, which allows adding producers and consumers via code (instead of annotations)
 
 <Tabs>
   <TabItem value="application.properties" label="application.properties" default>
