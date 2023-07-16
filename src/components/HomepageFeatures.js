@@ -17,8 +17,8 @@ const FeatureList = [
     title: 'Easy to set up',
     description: (
       <>
-        Just provide minimal metadata in one <code>@Configuration</code> class
-        and you're ready to go.
+        Just provide minimal configuration in <code>application.properties</code> and
+        you're ready to go.
       </>
     ),
   },
