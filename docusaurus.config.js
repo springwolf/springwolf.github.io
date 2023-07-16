@@ -51,6 +51,11 @@ const config = {
           {
             href: 'https://demo.springwolf.dev',
             label: 'Demo',
+            position: 'left',
+          },
+          {
+            href: 'https://discord.gg/HZYqd5RPTd',
+            label: 'Discord',
             position: 'right',
           },
           {
