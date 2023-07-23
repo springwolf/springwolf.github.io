@@ -23,6 +23,16 @@ All default implementations are Spring managed beans, which can be overridden.
 By implementing the `AsyncApiCustomizer`, the AsyncAPI document can be modified after Springwolf has done all the scanning and has built the document.
 It is the final interception point before the document is available to the user.
 
+For example, the title can be adjusted - although this should be done through the configuration:
+```java
+public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
+    @Override
+    public void customize(AsyncAPI asyncAPI) {
+         asyncAPI.getInfo().setTitle("Title set through customizer");
+    }
+}
+```
+
 ## `ChannelScanners` - Channel detection
 
 All `ChannelScanner` beans are called to scan for channels.
