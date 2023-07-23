@@ -6,13 +6,13 @@ sidebar_position: 80
 
 ## General
 
-### Is springwolf free? What is the license?
+### Is Springwolf free? What is the license?
 
-Yes, you can use springwolf for private and commercial purposes as long as you comply to the [Apache License 2.0](https://github.com/springwolf/springwolf-core/blob/master/LICENSE).
+Yes, you can use Springwolf for private and commercial purposes as long as you comply to the [Apache License 2.0](https://github.com/springwolf/springwolf-core/blob/master/LICENSE).
 
 ## Troubleshooting
 
-### The springwolf UI is not showing
+### The Springwolf UI is not showing
 
 When the `springwolf-ui` dependency is added, the ui should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
 
@@ -45,7 +45,7 @@ Spring Security allows to limit access to authorized users.
 
 ### Is Spring Boot 2.X supported?
 
-You can use an older version of springwolf, which is build to support Spring Boot 2.X.
+You can use an older version of Springwolf, which is build to support Spring Boot 2.X.
 However, these versions do not get any updates.
 
 Last versions to support Spring Boot 2.X:
@@ -66,7 +66,7 @@ Use the `AsyncApiService` to access the generated documentation.
 #### With Gradle
 
 You can use the [springdoc-openapi-gradle-plugin](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for springwolf by pointing it to the springwolf docs endpoint: 
+for Springwolf by pointing it to the Springwolf docs endpoint: 
 
 ```groovy
 openApi {
@@ -87,7 +87,7 @@ properties can help you.
 
 ### My consumers are detected multiple times (with different payloads)
 
-When springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
+When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
 This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
 
 Springwolf uses on scanners to find all consumer and producers in your application.
