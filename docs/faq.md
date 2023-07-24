@@ -14,7 +14,7 @@ Yes, you can use Springwolf for private and commercial purposes as long as you c
 
 ### The Springwolf UI is not showing
 
-When the `springwolf-ui` dependency is added, the ui should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
+When the `springwolf-ui` dependency is added, the UI should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
 
 If not, whether
 1. you customized the spring `context-path` setting 
@@ -32,7 +32,7 @@ If not, whether
     ```
 
     Taken from [Discord Chat](https://discord.com/channels/950375987475005471/950375988217409548/1051909821848363038)
-3. spring-security (or similar) denies access the urls (HTTP 403). Check `CustomWebSecurityConfigurerAdapter` in springwolf-kafka-example.
+3. spring-security (or similar) denies access the URLs (HTTP 403). Check `CustomWebSecurityConfigurerAdapter` in `springwolf-kafka-example`.
 
 ### Unable to publish message from the UI
 
@@ -49,11 +49,11 @@ You can use an older version of Springwolf, which is build to support Spring Boo
 However, these versions do not get any updates.
 
 Last versions to support Spring Boot 2.X:
-- springwolf-amqp:0.6.0
-- springwolf-cloud-stream:0.1.0
-- springwolf-core:0.6.0
-- springwolf-kafka:0.10.0
-- springwolf-ui:0.6.0
+- `springwolf-amqp:0.6.0`
+- `springwolf-cloud-stream:0.1.0`
+- `springwolf-core:0.6.0`
+- `springwolf-kafka:0.10.0`
+- `springwolf-ui:0.6.0`
 
 ## Usage Patterns
 
@@ -65,7 +65,7 @@ Use the `AsyncApiService` to access the generated documentation.
 
 #### With Gradle
 
-You can use the [springdoc-openapi-gradle-plugin](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
+You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
 for Springwolf by pointing it to the Springwolf docs endpoint: 
 
 ```groovy
@@ -76,13 +76,13 @@ openApi {
 }
 ```
 
-The [springwolf-kafka-example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
+The [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
 contains a working example.
 
 The plugin will startup the spring boot application by using the `bootRun` task and then try to download the documentation
 from the given `apiDocsUrl` and store it in the `outputDir` and with the given `outputFileName`.
 
-If your application is unable to start up with the bootRun task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
+If your application is unable to start up with the `bootRun` task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
 properties can help you.
 
 ### My consumers are detected multiple times (with different payloads)

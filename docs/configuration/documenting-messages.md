@@ -5,8 +5,8 @@ sidebar_position: 68
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import CodeSchemaGroovy from '!!raw-loader!./snippets/_schema_groovy.md';
-import CodeSchemaMaven from '!!raw-loader!./snippets/_schema_maven.md';
+import CodeSchemaGroovy from '!!raw-loader!./snippets/_schema_groovy.gradle';
+import CodeSchemaMaven from '!!raw-loader!./snippets/_schema_maven.xml';
 
 # Messages
 
@@ -79,7 +79,7 @@ public class ExamplePayloadDto {
 The `@AsyncMessage.description` field will always override the `@Schema` description if provided
 :::
 
-For a full example, take a look at [ExamplePayloadDto.java in springwolf-amqp-example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/dtos/ExamplePayloadDto.java)
+For a full example, take a look at [ExamplePayloadDto.java in `springwolf-amqp-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/dtos/ExamplePayloadDto.java)
 
 ## Custom ModelConverters
 
@@ -87,4 +87,4 @@ Additionally, custom `ModelConverters` are supported.
 These are needed when swagger is unable to extract a schema from a class.
 
 One example is `javax.money.MonetaryAmount`.
-Adding a model converter is demoed in [springwolf-add-ons/springwolf-common-model-converters](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters)
+Adding a model converter is demoed in [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters)

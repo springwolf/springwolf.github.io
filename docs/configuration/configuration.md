@@ -4,8 +4,8 @@ sidebar_position: 30
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import CodeConfigurationProperties from '!!raw-loader!./snippets/_configuration_properties.md';
-import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configuration_asyncApiDocket.md';
+import CodeConfigurationProperties from '!!raw-loader!./snippets/_configuration_properties.properties';
+import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configuration_asyncApiDocket.java';
 
 # Configuration
 
@@ -27,27 +27,27 @@ There are 2 ways to configure Springwolf which cannot be combined:
 
 ## Properties
 
-### basePackage (required)
+### `basePackage` (required)
 
 It is recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it is not mandatory, and if they are scattered across multiple packages, just provide the highest in hierarchy package that contains all of them.
 
 The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
-### id
+### `id`
 
 The `Identifier` value represents a unique universal identifier of the application. See [Identifier][identifier].
 
-### default-content-type
+### `default-content-type`
 
 A string representing the default content type to use when encoding/decoding a message's payload. See [Default Content Type][default-content-type]
 
-### Info (required)
+### `Info` (required)
 
 The `Info` object provides metadata about the API (see [Info Object][info]).
 
 All provided fields will be present in the generated document, but not all will be displayed in the UI.
 
-### Server
+### `Server`
 
 The `Server` object provides metadata the can help the reader understand the protocol, version, login details and more (see [Server Object][server]).
 
@@ -69,11 +69,11 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.scanner.async-listener.enabled`              | `true`             | Enable scanner to find methods annotated with `@AsyncListener`.                                                           |
 | `springwolf.scanner.async-publisher.enabled`             | `true`             | Enable scanner to find methods annotated with `@AsyncPublisher`.                                                          |
 | **AMQP**                                                 |                    |                                                                                                                           |
-| `springwolf.plugin.amqp.publishing.enabled`              | `false`            | Allow (anyone) to produce amqp messages from the UI. *Note that this has security implications*                           |
+| `springwolf.plugin.amqp.publishing.enabled`              | `false`            | Allow (anyone) to produce AMQP messages from the UI. *Note that this has security implications*                           |
 | `springwolf.plugin.amqp.scanner.rabbit-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@RabbitListener`.                                                          |
 | **Kafka**                                                |                    |                                                                                                                           |
-| `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce kafka messages from the UI. *Note that this has security implications*                          |
-| `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
+| `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce Kafka messages from the UI. *Note that this has security implications*                          |
+| `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the Kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
 
 [identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.

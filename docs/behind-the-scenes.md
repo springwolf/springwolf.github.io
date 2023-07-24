@@ -10,10 +10,10 @@ The following paragraphs describe how Springwolf works internally.
 When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
 Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncApi conform document](https://www.asyncapi.com/docs/reference/specification/v2.6.0).
 
-The AsyncAPI document is accessible an endpoint.
-When the Springwolf ui is opened, the browser fetches the document and renders it (see demo).
+The AsyncApi document is accessible an endpoint.
+When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).
 
-When publishing is enabled, the user can publish a message through the ui to another endpoint.
+When publishing is enabled, the user can publish a message through the UI to another endpoint.
 From there, Springwolf forwards the message to the protocol specific producer.
 
 ## Plugins
@@ -33,8 +33,8 @@ The `ChannelItem` contains the `Message` for the subscribe and/or publish operat
 When the scanners scan and build the result, they also extract the payload type.
 The payload is registered in the `SchemasService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
 
-Using `swagger-parser` any class can be converted into a OpenAPI schema.
-The schema is then used to serialized it into an example json for the AsyncAPI document.
+Using `swagger-inflector` any class can be converted into a OpenApi schema.
+This is used to instantiate an Example object with default values and serialized into an example JSON for the AsyncApi document.
 
 By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the objectmapper.
 
@@ -44,4 +44,4 @@ They follow the same plugin model.
 
 ## Putting it all together
 The `AsyncApiService` collects all the channels, schemas and general info and builds the AsyncApi document.
-The controller access this services to serve the document to the ui.
+The controller access this services to serve the document to the UI.

@@ -4,7 +4,7 @@
 
 Latest docs are deployed to
 - [https://www.springwolf.dev](https://www.springwolf.dev)
-- Backup: [https://springwolf.github.io](https://springwolf.github.io)
+- Fallback: [https://springwolf.github.io](https://springwolf.github.io)
 
 ## Updating the website & documentation
 
@@ -26,3 +26,11 @@ npm start
 
 This command starts a local development server and opens up a browser window.
 Most changes are reflected live without having to restart the server.
+
+## Language Style
+
+The [vale](https://vale.sh) tool is used to verify the language style.
+After installing, run to verify the documentation
+```bash
+vale docs/
+```

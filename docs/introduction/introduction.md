@@ -6,9 +6,9 @@ sidebar_position: 10
 
 ## What is Springwolf
 API Documentation is an important part of every project and product, but can be painful to maintain manually.
-Spring Boot projects have great solutions for auto-generated documentation for REST APIs to overcome this pain (such as springfox, or springdoc-openapi).
+Spring Boot projects have great solutions for auto-generated documentation for REST APIs to overcome this pain (such as Springfox, or springdoc-openapi).
 
-However, until now there were no solutions for async APIs (such as kafka, amqp etc.). Springwolf aims to solve this and provides auto-generated documentation for async APIs built in Spring Boot.
+However, until now there were no solutions for asynchronous APIs (such as Kafka, AMQP etc.). Springwolf aims to solve this and provides auto-generated documentation for asynchronous APIs built in Spring Boot.
 
 Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings the [swagger/OpenAPI](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) specification you know already from REST APIs into the world of event-driven architectures.
 
@@ -17,12 +17,12 @@ Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings th
 View the [live demo](https://demo.springwolf.dev) of Springwolf in action.
 
 Also, the demos of the 
-[amqp](https://amqp.demo.springwolf.dev), 
-[cloud-stream](https://cloud-stream.demo.springwolf.dev),
-[kafka](https://kafka.demo.springwolf.dev)
+[AMQP](https://amqp.demo.springwolf.dev), 
+[Spring Cloud Stream](https://cloud-stream.demo.springwolf.dev),
+[Kafka](https://kafka.demo.springwolf.dev)
 example projects are available.
 
-![springwolf publishing demo](/img/demo.gif)
+![Springwolf publishing demo](/img/demo.gif)
 
 ## What does it do
 
@@ -41,8 +41,8 @@ public class ExampleConsumer {
 ```
 
 By simply adding Springwolf dependency to your project you will automatically get:
-- An endpoint returning an asyncapi document describing your async API.
-- A web UI for convenient use by your developers, QA or clients of your async API.
-- An easy way to publish messages to your async API with a click of a button
+- An endpoint returning an AsyncAPI document describing your asynchronous API.
+- A web UI for convenient use by your developers, QA or clients of your asynchronous API.
+- An easy way to publish messages to your asynchronous API with a click of a button
 
 

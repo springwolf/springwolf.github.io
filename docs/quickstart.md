@@ -4,12 +4,12 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
-import CodeSpringwolfGroovy from '!!raw-loader!./snippets/_springwolf_groovy.md';
-import CodeSpringwolfMaven from '!!raw-loader!./snippets/_springwolf_maven.md';
+import CodeSpringwolfGroovy from '!!raw-loader!./snippets/_springwolf_groovy.gradle';
+import CodeSpringwolfMaven from '!!raw-loader!./snippets/_springwolf_maven.xml';
 
 # Quickstart
 
-*The following instructions are for Kafka services - but amqp services configuration is almost identical. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
+*The following instructions are for Kafka services - but AMQP services configuration is almost identical. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
 
 ## 1. Add dependencies
 
@@ -47,18 +47,18 @@ springwolf.docket.servers.kafka.url=${kafka.bootstrap.servers:localhost:29092}
 *Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that Springwolf will automatically pick them up.*
 
 ## 3. View the docs
-Start the application and open the urls in your browser:
-- Json: [`<host>:<port>/springwolf/docs`](http://localhost:8080/springwolf/docs)
-- Yaml: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
+Start the application and open the URLs in your browser:
+- JSON: [`<host>:<port>/springwolf/docs`](http://localhost:8080/springwolf/docs)
+- YAML: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
 - UI: [`<host>:<port>/springwolf/asyncapi-ui.html`](http://localhost:8080/springwolf/asyncapi-ui.html)
 
-If you configured a different context path in your application, make sure to prepend it to Springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
+If you configured a different context path in your application, make sure to prepend it to Springwolf URLs, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
 
 ## 4. Next steps
 
 - Read an elaborated tutorial on Baeldung at https://www.baeldung.com/java-spring-doc-asyncapi-springwolf
 - Check out the example projects:
-    - amqp: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
-    - spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
-    - kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+    - AMQP: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
+    - Spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
+    - Kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
 - Dive deeper on the next pages

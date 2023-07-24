@@ -69,7 +69,7 @@ Optional. The headers describing the metadata of the payload.
 
 ### `@AmqpAsyncOperationBinding`
 
-Associate this operation with amqp, see [operation-binding] for details.
+Associate this operation with AMQP, see [operation-binding] for details.
 
 ```java
 @AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
@@ -77,7 +77,7 @@ Associate this operation with amqp, see [operation-binding] for details.
 
 ### `@KafkaAsyncOperationBinding`
 
-Associate this operation with kafka, see [operation-binding] for details.
+Associate this operation with Kafka, see [operation-binding] for details.
 
 ```java
 @KafkaAsyncOperationBinding(
@@ -218,7 +218,7 @@ The class object of the payload that will be consumed from this channel.
 
 The Kafka headers describing the metadata of the payload, more details in the generic ConsumerData.
 
-The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
+The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the `spring-kafka` dependency.
 
 ## Examples
 

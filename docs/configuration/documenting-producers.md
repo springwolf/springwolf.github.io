@@ -6,7 +6,7 @@ sidebar_position: 64
 
 Unlike consumers which are defined declaratively with an annotation, producers are defined imperatively, and there is no implementation uniform enough so that metadata can be picked up automatically.
 
-Because producers are also an important part of Async APIs, Springwolf provides a way to explicitly add them to the generated document.
+Because producers are also an important part of AsyncAPI, Springwolf provides a way to explicitly add them to the generated document.
 
 To document producers, either:
 - add the `@AsyncPublisher` annotation or
@@ -66,7 +66,7 @@ Optional. The headers describing the metadata of the payload.
 
 ### `@AmqpAsyncOperationBinding`
 
-Associate this operation with amqp, see [operation-binding] for details.
+Associate this operation with AMQP, see [operation-binding] for details.
 
 ```java
 @AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
@@ -74,7 +74,7 @@ Associate this operation with amqp, see [operation-binding] for details.
 
 ### `@KafkaAsyncOperationBinding`
 
-Associate this operation with kafka, see [operation-binding] for details.
+Associate this operation with Kafka, see [operation-binding] for details.
 
 ```java
 @KafkaAsyncOperationBinding(
