@@ -9,7 +9,7 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 # Configuration
 
-There are 2 ways to configure springwolf and cannot be combined:
+There are 2 ways to configure springwolf which cannot be combined:
 
 1. `application.properties`, which is simple and moves all configuration to this file and annotations
 2. (deprecated) `AsyncApiDocket`, which allows adding producers and consumers via code (instead of annotations)
