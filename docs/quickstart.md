@@ -54,7 +54,11 @@ Start the application and open the urls in your browser:
 
 If you configured a different context path in your application, make sure to prepend it to springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
 
-## Examples
-- amqp: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
-- spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
-- kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+## 4. Next steps
+
+- Read an elaborated tutorial on Baeldung at https://www.baeldung.com/java-spring-doc-asyncapi-springwolf
+- Check out the example projects:
+    - amqp: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
+    - spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
+    - kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+- Dive deeper on the next pages
