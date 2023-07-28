@@ -83,10 +83,10 @@ Associate this operation with kafka, see [operation-binding] for details.
 ```
 
 
-## Option 2: `ProducerData`
+## Option 2: `ProducerData` (deprecated)
 
-:::tip
-Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
+:::note
+Must use configuration via `AsyncApiDocket` and cannot use `application.properties`.
 :::
 
 Below is an example of describing a Kafka producer:
@@ -113,6 +113,10 @@ public AsyncApiDocket asyncApiDocket() {
 ```
 
 Multiple producers can be configured by calling the `producer()` method multiple times.
+
+:::tip
+Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
+:::
 
 ### Channel Name
 
