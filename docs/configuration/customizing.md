@@ -25,6 +25,7 @@ It is the final interception point before the document is available to the user.
 
 For example, the title can be adjusted - although this should be done through the configuration:
 ```java
+@Component
 public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
     @Override
     public void customize(AsyncAPI asyncAPI) {
