@@ -35,7 +35,7 @@ public void sendMessage(ExamplePayloadDto msg) {
 
 ## Schema
 
-Under the hood springwolf relies on swagger-core `ModelConverters` to define the message schema.
+Under the hood Springwolf relies on swagger-core `ModelConverters` to define the message schema.
 
 By default, the type and example values for the properties are guessed.
 The default Jackson `ModelResolver` supports schema definitions via `@Schema` to overwrite the property definitions.
@@ -44,7 +44,7 @@ The default Jackson `ModelResolver` supports schema definitions via `@Schema` to
 
 The `@Schema` annotation allows to set many properties like `description`, `example`, `requiredMode` to document payloads.
 
-All properties are part of the produced AsyncApi file. However, not all of them are displayed in springwolf-ui. The ones listed above are included.
+All properties are part of the produced AsyncApi file. However, not all of them are displayed in Springwolf-ui. The ones listed above are included.
 
 ### Usage
 

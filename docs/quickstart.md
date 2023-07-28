@@ -44,7 +44,7 @@ springwolf.docket.servers.kafka.protocol=kafka
 springwolf.docket.servers.kafka.url=${kafka.bootstrap.servers:localhost:29092}
 ```
 
-*Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that springwolf will automatically pick them up.*
+*Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that Springwolf will automatically pick them up.*
 
 ## 3. View the docs
 Start the application and open the urls in your browser:
@@ -52,7 +52,7 @@ Start the application and open the urls in your browser:
 - Yaml: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
 - UI: [`<host>:<port>/springwolf/asyncapi-ui.html`](http://localhost:8080/springwolf/asyncapi-ui.html)
 
-If you configured a different context path in your application, make sure to prepend it to springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
+If you configured a different context path in your application, make sure to prepend it to Springwolf urls, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
 
 ## 4. Next steps
 

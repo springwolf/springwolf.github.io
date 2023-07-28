@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Introduction
 
-## What is springwolf
+## What is Springwolf
 API Documentation is an important part of every project and product, but can be painful to maintain manually.
 Spring Boot projects have great solutions for auto-generated documentation for REST APIs to overcome this pain (such as springfox, or springdoc-openapi).
 
@@ -14,7 +14,7 @@ Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings th
 
 ### Demo
 
-View the [live demo](https://demo.springwolf.dev) of springwolf in action.
+View the [live demo](https://demo.springwolf.dev) of Springwolf in action.
 
 Also, the demos of the 
 [amqp](https://amqp.demo.springwolf.dev), 
