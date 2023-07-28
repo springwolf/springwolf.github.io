@@ -1,4 +1,4 @@
-# <img src="static/img/logo.png" alt="Logo" width="100"/> Springwolf Website 
+# <img src="static/img/logo_s.png" alt="Logo" width="100"/> Springwolf Website 
 [![Build](https://github.com/springwolf/springwolf.github.io/actions/workflows/build.yml/badge.svg)](https://github.com/springwolf/springwolf.github.io/actions/workflows/build.yml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8dc370e2-1578-4a72-a729-747929a94400/deploy-status)](https://app.netlify.com/sites/springwolf/deploys)
 

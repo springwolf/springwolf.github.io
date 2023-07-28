@@ -9,10 +9,10 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 # Configuration
 
-There are 2 ways to configure springwolf:
+There are 2 ways to configure Springwolf which cannot be combined:
 
-1. `application.properties`, which is simple and should suit most use-cases
-2. `AsyncApiDocket`, which allows adding producers and consumers via code (and avoiding annotations)
+1. `application.properties`, which is simple and moves all configuration to this file and annotations
+2. (deprecated) `AsyncApiDocket`, which allows adding producers and consumers via code (instead of annotations)
 
 <Tabs>
   <TabItem value="application.properties" label="application.properties" default>
@@ -61,7 +61,7 @@ The following table contains additional properties that can be specified in the 
 
 | Property Name                                            | Default Value      | Description                                                                                                               |
 |----------------------------------------------------------|--------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `springwolf.enabled`                                     | `true`             | Allows to enable/disable springwolf at one central place.                                                                 |
+| `springwolf.enabled`                                     | `true`             | Allows to enable/disable Springwolf at one central place.                                                                 |
 | `springwolf.init-mode`                                   | `fail_fast`        | Springwolf initializes during start up with `fail_fast` or in the `background` after the application has started.         |
 | `springwolf.paths.docs`                                  | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
 | `springwolf.scanner.consumer-data.enabled`               | `true`             | Enable scanner to find consumers defined in `AsyncApiDocket`.                                                             |

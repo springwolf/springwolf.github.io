@@ -39,7 +39,9 @@ const config = {
       navbar: {
         title: 'Springwolf',
         logo: {
-          src: 'img/logo.png'
+          src: 'img/logo_s.png',
+          height: '32px',
+          width: '32px'
         },
         items: [
           {
@@ -51,6 +53,11 @@ const config = {
           {
             href: 'https://demo.springwolf.dev',
             label: 'Demo',
+            position: 'left',
+          },
+          {
+            href: 'https://discord.gg/HZYqd5RPTd',
+            label: 'Discord',
             position: 'right',
           },
           {
