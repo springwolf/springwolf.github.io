@@ -30,7 +30,10 @@ Most changes are reflected live without having to restart the server.
 ## Language Style
 
 The [vale](https://vale.sh) tool is used to verify the language style.
-After installing, run to verify the documentation
+After installing, verify the documentation with
 ```bash
+vale sync
 vale docs/
 ```
+
+Words not part of the dictionary yet are added in [accept.txt](.github/styles/Vocab/Springwolf/accept.txt).

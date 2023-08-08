@@ -9,7 +9,7 @@ import CodeConfigurationAsyncApiDocket from '!!raw-loader!./snippets/_configurat
 
 # Configuration
 
-There are 2 ways to configure Springwolf which cannot be combined:
+There are 2 ways to configure Springwolf which can't be combined:
 
 1. `application.properties`, which is simple and moves all configuration to this file and annotations
 2. (deprecated) `AsyncApiDocket`, which allows adding producers and consumers via code (instead of annotations)
@@ -29,7 +29,7 @@ There are 2 ways to configure Springwolf which cannot be combined:
 
 ### `basePackage` (required)
 
-It is recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it is not mandatory, and if they are scattered across multiple packages, just provide the highest in hierarchy package that contains all of them.
+It's recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it's not mandatory, and if they're scattered across multiple packages, just provide the highest in hierarchy package that contains all classes.
 
 The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
@@ -51,7 +51,7 @@ All provided fields will be present in the generated document, but not all will 
 
 The `Server` object provides metadata the can help the reader understand the protocol, version, login details and more (see [Server Object][server]).
 
-An AsyncAPI document can contain more than one server, but it is not common.
+An AsyncAPI document can contain more than one server, but it's not common.
 
 As with the `Info` object, all provided fields will be present in the generated document, but not all will be displayed in the UI.
 

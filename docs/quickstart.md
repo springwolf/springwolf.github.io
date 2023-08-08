@@ -9,7 +9,7 @@ import CodeSpringwolfMaven from '!!raw-loader!./snippets/_springwolf_maven.xml';
 
 # Quickstart
 
-*The following instructions are for Kafka services - but AMQP services configuration is almost identical. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
+*The following instructions are for Kafka services - but AMQP services configuration is almost same. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
 
 ## 1. Add dependencies
 
@@ -52,7 +52,7 @@ Start the application and open the URLs in your browser:
 - YAML: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
 - UI: [`<host>:<port>/springwolf/asyncapi-ui.html`](http://localhost:8080/springwolf/asyncapi-ui.html)
 
-If you configured a different context path in your application, make sure to prepend it to Springwolf URLs, i.e. `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
+If you configured a different context path in your application, make sure to prepend it to Springwolf URLs: `<host>:<port>/<context-path>/springwolf/asyncapi-ui.html`
 
 ## 4. Next steps
 

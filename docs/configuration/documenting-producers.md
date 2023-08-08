@@ -58,7 +58,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 ### Payload Type
 
 The class object of the payload that will be published to this channel.
-If not specified, it is extracted from the method arguments.
+If not specified, it's extracted from the method arguments.
 
 ### Header
 
@@ -86,7 +86,7 @@ Associate this operation with Kafka, see [operation-binding] for details.
 ## Option 2: `ProducerData` (deprecated)
 
 :::note
-Must use configuration via `AsyncApiDocket` and cannot use `application.properties`.
+Must use configuration via `AsyncApiDocket` and can't use `application.properties`.
 :::
 
 Below is an example of describing a Kafka producer:
@@ -138,7 +138,7 @@ The class object of the payload that will be published to this channel.
 
 Optional. The headers describing the metadata of the payload.
 By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit header documentation exists.
-Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
+Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you don't use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
 
 
 ### `AmqpProducerData`
@@ -207,7 +207,7 @@ The class object of the payload that will be published to this channel.
 
 The Kafka headers describing the metadata of the payload, more details in the generic ProducerData.
 
-The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
+The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the `spring-kafka` dependency.
 
 ## Examples
 

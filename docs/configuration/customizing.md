@@ -10,8 +10,10 @@ When you feel that Springwolf is missing a feature, you are able to add it yours
 To learn more about how Springwolf works, look [behind the scenes](../behind-the-scenes.md).
 
 :::note
+<!-- vale Microsoft.We = NO -->
 Please let us know on GitHub or Discord, so that other people can benefit from it as well.
 [Contributions are welcome, here are some basic tips](https://github.com/springwolf/springwolf-core/blob/master/CONTRIBUTING.md).
+<!-- vale Microsoft.We = YES -->
 :::
 
 Springwolf uses interfaces to allow to inject functionality at integration points.
@@ -21,7 +23,7 @@ All default implementations are Spring managed beans, which can be overridden.
 ## `AsyncApiCustomizer` - Full AsyncAPI document
 
 By implementing the `AsyncApiCustomizer`, the AsyncAPI document can be modified after Springwolf has done all the scanning and has built the document.
-It is the final interception point before the document is available to the user.
+It's the final interception point before the document is available to the user.
 
 For example, the title can be adjusted - although this should be done through the configuration:
 ```java

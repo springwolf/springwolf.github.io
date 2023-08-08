@@ -1,9 +1,17 @@
+# the words in this list are alphabetically sorted
+AMQP
 APIs
+auto-detect
+auto-detected
+auto-detection
+auto-generated
 Baeldung
 declaratively
 Docusaurus
 Gradle
+Kafka
 Netlify
 objectmapper
 Springfox
 Springwolf
+UI

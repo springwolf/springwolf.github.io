@@ -24,7 +24,7 @@ When building own scanner plugins, your plugin will need to implement the `Chann
 
 ## Scanners
 `springwolf-core` runs all scanners and merges the found results together into one AsyncAPI document.
-When the same channel/topic is found multiple times, it is merged as well.
+When the same channel/topic is found multiple times, it's merged as well.
 
 The result is a [`ChannelItem`](https://www.asyncapi.com/docs/reference/specification/v2.6.0#channelItemObject).
 The `ChannelItem` contains the `Message` for the subscribe and/or publish operation.
@@ -39,7 +39,7 @@ This is used to instantiate an Example object with default values and serialized
 By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the objectmapper.
 
 ### ModelConverters
-ModelConverters provide a way to improve documentation for classes, which cannot be modified, for example because they are part of an external library.
+ModelConverters provide a way to improve documentation for classes, which can't be modified, for example because they're part of an external library.
 They follow the same plugin model.
 
 ## Putting it all together
