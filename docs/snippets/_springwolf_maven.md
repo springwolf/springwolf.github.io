@@ -9,6 +9,6 @@
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-ui</artifactId>
-        <version>0.8.0</version>
+        <version>0.13.0</version>
     </dependency>
 </dependencies>
