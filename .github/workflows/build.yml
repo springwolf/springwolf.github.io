@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  checks: write
 
 jobs:
   deploy:
@@ -27,6 +28,12 @@ jobs:
 
       - name: Build website
         run: npm run build
+
+      - name: Running spell check with vale
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          files: docs
+          fail_on_error: true
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master'

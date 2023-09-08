@@ -61,7 +61,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 ### Payload Type
 
 The class object of the payload that will be consumed from this channel.
-If not specified, it is extracted from the method arguments.
+If not specified, it's extracted from the method arguments.
 
 ### Header
 
@@ -69,7 +69,7 @@ Optional. The headers describing the metadata of the payload.
 
 ### `@AmqpAsyncOperationBinding`
 
-Associate this operation with amqp, see [operation-binding] for details.
+Associate this operation with AMQP, see [operation-binding] for details.
 
 ```java
 @AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
@@ -77,7 +77,7 @@ Associate this operation with amqp, see [operation-binding] for details.
 
 ### `@KafkaAsyncOperationBinding`
 
-Associate this operation with kafka, see [operation-binding] for details.
+Associate this operation with Kafka, see [operation-binding] for details.
 
 ```java
 @KafkaAsyncOperationBinding(
@@ -91,7 +91,7 @@ Associate this operation with kafka, see [operation-binding] for details.
 ## Option 2: `ConsumerData` (deprecated)
 
 :::note
-Must use configuration via `AsyncApiDocket` and cannot use `application.properties`.
+Must use configuration via `AsyncApiDocket` and can't use `application.properties`.
 :::
 
 Below is an example of describing a Kafka consumer:
@@ -143,7 +143,7 @@ The class object of the payload that will be consumed from this channel.
 
 Optional. The headers describing the metadata of the payload.
 By default, `AsyncHeaders.NOT_DOCUMENTED` is used to indicate that no explicit header documentation exists.
-Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you do not use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
+Use `AsyncHeaders` to add your custom headers, use `AsyncHeaders.NOT_USED` if you don't use headers and `AsyncHeadersForCloudEventsBuilder` if your events follow the CloudEvent specification.
 
 
 ### `AmqpConsumerData`
@@ -218,7 +218,7 @@ The class object of the payload that will be consumed from this channel.
 
 The Kafka headers describing the metadata of the payload, more details in the generic ConsumerData.
 
-The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the spring-kafka dependency.
+The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the `spring-kafka` dependency.
 
 ## Examples
 

@@ -1,3 +1,4 @@
+.github/styles
 node_modules
 .docusaurus
 build/**
