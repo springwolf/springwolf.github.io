@@ -33,7 +33,7 @@ jobs:
       - name: Running spell check with vale
         uses: errata-ai/vale-action@reviewdog
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: docs
           fail_on_error: true
 
