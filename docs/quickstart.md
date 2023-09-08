@@ -9,7 +9,7 @@ import CodeSpringwolfMaven from '!!raw-loader!./snippets/_springwolf_maven.xml';
 
 # Quickstart
 
-*The following instructions are for Kafka services - but AMQP services configuration is almost same. Check out the [example project for complete examples](https://github.com/timonback/springwolf-core/tree/master/springwolf-examples).*
+*The following instructions are for Kafka services - but AMQP services configuration is almost same. Check out the [example project for complete examples](https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples).*
 
 ## 1. Add dependencies
 
@@ -24,12 +24,7 @@ Add the following dependencies:
   </TabItem>
 </Tabs>
 
-Latest version:
-- ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)
-- ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic)
-- ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)
-- ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-ui?color=green&label=springwolf-ui&style=plastic)
-
+Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-core?color=green&label=springwolf&style=plastic)
 ## 2. Configure properties
 
 Add the following to your application.properties:
@@ -57,8 +52,5 @@ If you configured a different context path in your application, make sure to pre
 ## 4. Next steps
 
 - Read an elaborated tutorial on Baeldung at https://www.baeldung.com/java-spring-doc-asyncapi-springwolf
-- Check out the example projects:
-    - AMQP: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
-    - Spring-cloud-stream: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
-    - Kafka: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+- Check out the [supported protocols and example projects](introduction/supported-protocols)
 - Dive deeper on the next pages
