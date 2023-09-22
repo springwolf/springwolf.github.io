@@ -64,6 +64,7 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.enabled`                                     | `true`             | Allows to enable/disable Springwolf at one central place.                                                                 |
 | `springwolf.init-mode`                                   | `fail_fast`        | Springwolf initializes during start up with `fail_fast` or in the `background` after the application has started.         |
 | `springwolf.paths.docs`                                  | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
+| `springwolf.use-management-port`                         | `false`            | Publish the AsyncAPI document as part of Spring Boot’s actuator feature.                                                  |
 | `springwolf.scanner.consumer-data.enabled`               | `true`             | Enable scanner to find consumers defined in `AsyncApiDocket`.                                                             |
 | `springwolf.scanner.producer-data.enabled`               | `true`             | Enable scanner to find producers defined in `AsyncApiDocket`.                                                             |
 | `springwolf.scanner.async-listener.enabled`              | `true`             | Enable scanner to find methods annotated with `@AsyncListener`.                                                           |
@@ -75,6 +76,21 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce Kafka messages from the UI. *Note that this has security implications*                          |
 | `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the Kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
+
+## Actuator support
+Springwolf supports exposing the AsyncAPI document as part of Spring Boot’s actuator endpoint.
+If the spring-boot-actuator module is provided as a dependency, then the actuator support can be enabled by setting 
+`springwolf.use-management-port=true`.
+
+To expose the Springwolf actuator endpoint, add `springwolf` to your `management.endpoints.web.exposure.include` configuration.
+
+The AsyncAPI document will then be exposed beneath actuators base path, that's `/actuator/springwolf/docs.json` or `/actuator/springwolf/docs.yaml` respectively.
+If the actuator management port is configured differently than the application port or the actuator base path is changed, then
+the exposed AsyncAPI document will follow accordingly.
+
+:::note
+Enabling actuator support for Springwolf will break the Springwolf UI.
+
 
 [identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.
 [info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.
