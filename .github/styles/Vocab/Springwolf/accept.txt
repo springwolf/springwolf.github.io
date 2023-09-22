@@ -5,6 +5,7 @@ auto-detect
 auto-detected
 auto-detection
 auto-generated
+Auto-generated
 Baeldung
 declaratively
 Docusaurus
