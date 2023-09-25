@@ -12,7 +12,7 @@ For these use-cases, Springwolf provides additional ways to explicitly add them 
 To document consumers, either:
 - add the `@AsyncListener` annotation or
 - declare the `ConsumerData` object as part of the `AsyncApiDocket` or
-- rely on the auto-detection of `@KafkaListener`, `@RabbitListener`
+- rely on the auto-detection of `@KafkaListener`, `@RabbitListener`, `@SqsListener`
 
 You are free to use all options together. Per channel and operation, first `ConsumerData` is used, then `@AsyncListener` and last the auto-detected annotations.
 
@@ -172,8 +172,8 @@ The above Kafka `ConsumerData` simplifies to the following `KafkaConsumerData`:
 ```
 
 
-## Option 3: `@KafkaListener`, `@RabbitListener`
-The `@KafkaListener` and `@RabbitListener` annotations are detected automatically.
+## Option 3: `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+The `@KafkaListener`, `@RabbitListener`, `@SqsListener` annotations are detected automatically.
 There is nothing more to do.
 Use the other options if the provided documentation is insufficient.
 

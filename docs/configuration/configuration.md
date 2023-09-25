@@ -31,7 +31,7 @@ There are 2 ways to configure Springwolf which can't be combined:
 
 It's recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it's not mandatory, and if they're scattered across multiple packages, just provide the highest in hierarchy package that contains all classes.
 
-The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
+The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@SqsListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
 ### `id`
 
@@ -75,6 +75,11 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce Kafka messages from the UI. *Note that this has security implications*                          |
 | `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the Kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
+| **SQS**                                                  |                    |                                                                                                                           |
+| `springwolf.plugin.sqs.publishing.enabled`               | `false`            | Allow (anyone) to produce SQS messages from the UI. *Note that this has security implications*                            |
+| `springwolf.plugin.sqs.scanner.sqs-listener.enabled`     | `true`             | Enable scanner to find methods annotated with `@SqsListener`.                                                             |
+
+
 
 [identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.
 [info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.

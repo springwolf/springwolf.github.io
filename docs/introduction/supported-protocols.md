@@ -4,15 +4,32 @@ sidebar_position: 15
 
 # Supported Protocols
 
-| Protocol        | Annotation                        | Example Project                           | Latest Plugin Version |
-| --------------- | --------------------------------- | ----------------------------------------- | --------------------- |
-| AMQP (RabbitMQ) | `@RabbitListener`                 | [`springwolf-amqp-example`][amqp]         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic) |
-| Cloud Functions |                                   | [`springwolf-cloud-stream`][cloud-stream] | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic) |
-| Kafka           | `@KafkaListener`, `@KafkaHandler` | [`springwolf-kafka-example`][kafka]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic) |
+Besides auto-detection of protocols (native support),
+any protocol can be defined using Springwolf custom annotations `@AsyncListener` and `@AsyncPublisher`.
+
+## Native Support
+
+The following protocols are supported natively:
+
+| Protocol        | Auto-detected annotations         | Example Project                           | Latest Plugin Version                                                                                                                                         |
+|-----------------|-----------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AMQP (RabbitMQ) | `@RabbitListener`                 | [`springwolf-amqp-example`][amqp]         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)                 |
+| Cloud Functions | `@Bean` (functional interface)    | [`springwolf-cloud-stream`][cloud-stream] | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic) |
+| Kafka           | `@KafkaListener`, `@KafkaHandler` | [`springwolf-kafka-example`][kafka]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)               |
+| SQS             | `@SqsListener`                    | [`springwolf-sqs-example`][sqs]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs?color=green&label=springwolf-sqs&style=plastic)                   |
+
+Check out the example projects, which include a full `docker-compose` setup.
+The examples are simple, easy to start with, good for testing and reproducing bugs.
 
 Please [open an issue](https://github.com/springwolf/springwolf-core/issues/new) if you want a protocol to be supported.
 
+## Any protocol
+
+Using [`@AsyncListener`](../configuration/documenting-consumers.md) and [`@AsyncPublisher`](../configuration/documenting-producers.md) any protocol can be documented, although the binding in the AsyncApi document will remain empty.
+
+The protocols with native support come along with a `@_ProtocolName_Binding` annotation to define protocol specific properties.
 
 [amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
-[kafka]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
 [cloud-stream]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
+[kafka]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+[sqs]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-sqs-example
