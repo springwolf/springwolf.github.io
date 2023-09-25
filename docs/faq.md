@@ -12,6 +12,15 @@ Yes, you can use Springwolf for private and commercial purposes as long as you c
 
 ## Troubleshooting
 
+### Show `debug` output in the logs
+
+Springwolf uses the default logging setup of Spring Boot.
+To enable `DEBUG` output, add the following line to the `application.properties`:
+
+```properties
+logging.level.io.github.stavshamir.springwolf=DEBUG
+```
+
 ### The Springwolf UI isn't showing
 
 When the `springwolf-ui` dependency is added, the UI should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
