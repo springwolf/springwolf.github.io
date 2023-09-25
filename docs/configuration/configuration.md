@@ -78,13 +78,20 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
 
 ## Actuator support
+
 Springwolf supports exposing the AsyncAPI document as part of Spring Boot’s actuator endpoint.
-If the spring-boot-actuator module is provided as a dependency, then the actuator support can be enabled by setting 
-`springwolf.use-management-port=true`.
+The AsyncAPI document will then be moved underneath actuators base path, that's `/actuator/springwolf/docs.json` or `/actuator/springwolf/docs.yaml` respectively.
 
-To expose the Springwolf actuator endpoint, add `springwolf` to your `management.endpoints.web.exposure.include` configuration.
+To enable it, add the `spring-boot-actuator` dependency first.
+Second, enable the actuator endpoint in the `application.properties` file:
+```properties
+# Move Springwolf endpoint to actuator
+springwolf.use-management-port=true
 
-The AsyncAPI document will then be exposed beneath actuators base path, that's `/actuator/springwolf/docs.json` or `/actuator/springwolf/docs.yaml` respectively.
+# Expose Springwolf endpoint in spring
+management.endpoints.web.exposure.include=springwolf
+```
+
 If the actuator management port is configured differently than the application port or the actuator base path is changed, then
 the exposed AsyncAPI document will follow accordingly.
 
