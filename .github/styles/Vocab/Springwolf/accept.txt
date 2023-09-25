@@ -2,10 +2,10 @@
 AMQP
 APIs
 auto-detect
+Auto-detected
 auto-detected
 auto-detection
 auto-generated
-Auto-generated
 Baeldung
 declaratively
 Docusaurus
