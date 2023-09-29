@@ -64,6 +64,7 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.enabled`                                     | `true`             | Allows to enable/disable Springwolf at one central place.                                                                 |
 | `springwolf.init-mode`                                   | `fail_fast`        | Springwolf initializes during start up with `fail_fast` or in the `background` after the application has started.         |
 | `springwolf.paths.docs`                                  | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.* |
+| `springwolf.endpoint.actuator.enabled`                   | `false`            | Publish the AsyncAPI document as part of Spring Boot’s actuator feature.                                                  |
 | `springwolf.scanner.consumer-data.enabled`               | `true`             | Enable scanner to find consumers defined in `AsyncApiDocket`.                                                             |
 | `springwolf.scanner.producer-data.enabled`               | `true`             | Enable scanner to find producers defined in `AsyncApiDocket`.                                                             |
 | `springwolf.scanner.async-listener.enabled`              | `true`             | Enable scanner to find methods annotated with `@AsyncListener`.                                                           |
@@ -79,6 +80,28 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.sqs.publishing.enabled`               | `false`            | Allow (anyone) to produce SQS messages from the UI. *Note that this has security implications*                            |
 | `springwolf.plugin.sqs.scanner.sqs-listener.enabled`     | `true`             | Enable scanner to find methods annotated with `@SqsListener`.                                                             |
 
+
+
+## Actuator support
+
+Springwolf supports exposing the AsyncAPI document as part of Spring Boot’s actuator endpoint.
+The AsyncAPI document will then be moved underneath actuators base path, that's `/actuator/springwolf/docs.json` or `/actuator/springwolf/docs.yaml` respectively.
+
+To enable it, add the `spring-boot-actuator` dependency first.
+Second, enable the actuator endpoint in the `application.properties` file:
+```properties
+# Move Springwolf endpoint to actuator
+springwolf.endpoint.actuator.enabled=true
+
+# Expose Springwolf endpoint in spring
+management.endpoints.web.exposure.include=springwolf
+```
+
+If the actuator management port is configured differently than the application port or the actuator base path is changed, then
+the exposed AsyncAPI document will follow accordingly.
+
+:::note
+Enabling actuator support for Springwolf will break the Springwolf UI.
 
 
 [identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.
