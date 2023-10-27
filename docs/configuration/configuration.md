@@ -77,6 +77,8 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce Kafka messages from the UI. *Note that this has security implications*                          |
 | `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the Kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`   |
 | `springwolf.plugin.kafka.scanner.kafka-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@KafkaListener`.                                                           |
+| **SNS**                                                  |                    |                                                                                                                           |
+| `springwolf.plugin.sns.publishing.enabled`               | `false`            | Allow (anyone) to produce SNS messages from the UI. *Note that this has security implications*                            |
 | **SQS**                                                  |                    |                                                                                                                           |
 | `springwolf.plugin.sqs.publishing.enabled`               | `false`            | Allow (anyone) to produce SQS messages from the UI. *Note that this has security implications*                            |
 | `springwolf.plugin.sqs.scanner.sqs-listener.enabled`     | `true`             | Enable scanner to find methods annotated with `@SqsListener`.                                                             |
