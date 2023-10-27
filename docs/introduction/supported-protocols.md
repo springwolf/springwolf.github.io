@@ -16,6 +16,7 @@ The following protocols are supported natively:
 | AMQP (RabbitMQ) | `@RabbitListener`                 | [`springwolf-amqp-example`][amqp]         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)                 |
 | Cloud Functions | `@Bean` (functional interface)    | [`springwolf-cloud-stream`][cloud-stream] | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic) |
 | Kafka           | `@KafkaListener`, `@KafkaHandler` | [`springwolf-kafka-example`][kafka]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)               |
+| SNS             |                                   | [`springwolf-sns-example`][sns]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns?color=green&label=springwolf-sns&style=plastic)                   |
 | SQS             | `@SqsListener`                    | [`springwolf-sqs-example`][sqs]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs?color=green&label=springwolf-sqs&style=plastic)                   |
 
 Check out the example projects, which include a full `docker-compose` setup.
@@ -32,4 +33,5 @@ The protocols with native support come along with a `@_ProtocolName_Binding` ann
 [amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
 [cloud-stream]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
 [kafka]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-kafka-example
+[sns]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-sns-example
 [sqs]: https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-sqs-example
