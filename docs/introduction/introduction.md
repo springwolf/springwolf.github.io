@@ -19,8 +19,8 @@ View the [live demo](https://demo.springwolf.dev) of Springwolf in action.
 Also, the demos of the 
 [AMQP](https://amqp.demo.springwolf.dev), 
 [Spring Cloud Stream](https://cloud-stream.demo.springwolf.dev),
-[Kafka](https://kafka.demo.springwolf.dev)
-[SNS](https://sns.demo.springwolf.dev)
+[Kafka](https://kafka.demo.springwolf.dev),
+[SNS](https://sns.demo.springwolf.dev),
 [SQS](https://sqs.demo.springwolf.dev)
 example projects are available.
 
