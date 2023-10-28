@@ -30,8 +30,8 @@ Using [`@AsyncListener`](../configuration/documenting-consumers.md) and [`@Async
 
 The protocols with native support come along with a `@_ProtocolName_Binding` annotation to define protocol specific properties.
 
-### `springwolf-generic-binding` addon
-The `springwolf-generic-binding` addon allows to document any binding.
+### `springwolf-generic-binding` add-on
+The `springwolf-generic-binding` add-on allows to document any binding.
 This includes bindings not supported by Springwolf, but also any custom fields not part of the AsyncApi specification.
 
 ```java
