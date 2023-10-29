@@ -55,6 +55,15 @@ An AsyncAPI document can contain more than one server, but it's not common.
 
 As with the `Info` object, all provided fields will be present in the generated document, but not all will be displayed in the UI.
 
+### Extension Fields
+
+The AsyncAPI specification allows the definition of additional data fields to extend the
+specification at certain points (see [Specification Extensions][extensions]).
+
+Extension Fields may be added to `Info`, `Contact`, `License` and `Server` objects both via `application.properties`
+or (deprecated) `AsyncApiDocket` . Every custom extension field must begin with `x-`, for example `x-internal-id`
+(see sample configurations above).
+
 ## Additional `application.properties`
 
 The following table contains additional properties that can be specified in the `application.properties` file:
@@ -107,7 +116,8 @@ the exposed AsyncAPI document will follow accordingly.
 Enabling actuator support for Springwolf will break the Springwolf UI.
 
 
-[identifier]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#A2SIdString.
-[info]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#infoObject.
-[server]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#serversObject
-[default-content-type]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#defaultContentTypeString
+[identifier]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#A2SIdString.
+[info]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#infoObject.
+[server]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#serversObject
+[default-content-type]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#defaultContentTypeString
+[extensions]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#specificationExtensions

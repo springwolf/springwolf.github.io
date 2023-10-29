@@ -23,6 +23,8 @@ public class AsyncApiConfiguration {
                         .build())
                 .build();
 
+        info.setExtensionFields(Map.of("x-internal-id", "xyz-123"));
+
         return AsyncApiDocket.builder()
                 .basePackage("io.github.stavshamir.springwolf.example.consumers")
                 .info(info)
