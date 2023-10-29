@@ -11,7 +11,7 @@ For these use-cases, Springwolf provides additional ways to explicitly add them 
 
 To document consumers, either:
 - add the `@AsyncListener` annotation or
-- declare the `ConsumerData` object as part of the `AsyncApiDocket` or
+- (deprecated) declare the `ConsumerData` object as part of the `AsyncApiDocket` or
 - rely on the auto-detection of `@KafkaListener`, `@RabbitListener`, `@SqsListener`
 
 You are free to use all options together. Per channel and operation, first `ConsumerData` is used, then `@AsyncListener` and last the auto-detected annotations.
@@ -21,7 +21,7 @@ You are free to use all options together. Per channel and operation, first `Cons
 The `@AsyncListener` annotation is added to the method of the listeners and extracts the payload from its arguments.
 Additional fields can be documented.
 
-The protocol operation binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
+The protocol operation binding is configured via `@AmqpAsyncOperationBinding`, `@KafkaAsyncOperationBinding` or `@AsyncGenericOperationBinding`, which has to be on the same method.
 
 Below is an example to demonstrate the annotation:
 ```java

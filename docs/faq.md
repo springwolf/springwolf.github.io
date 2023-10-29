@@ -49,8 +49,30 @@ Publishing messages from the UI is disabled by default due to security concerns.
 Springwolf doesn't offer authentication nor authorization, anyone can publish messages to (production) channels.
 
 Check the [configuration](configuration/configuration.md) to enable this feature.
+Be sure to enable fully qualified names ([`use-fqn`](configuration/configuration.md)) as well.
 
 Spring Security allows to limit access to authorized users.
+
+### Consumers are detected multiple times (with different payloads)
+
+When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
+This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
+
+Springwolf uses on scanners to find all consumer and producers in your application.
+Most likely two scanners found your consumer/producer each.
+See [configuration](configuration/configuration.md) to disable scanners.
+
+### Only one of multiple classes with the same name (different package) is detected
+
+Enable the fully qualified class name (FQN) option (`springwolf.use-fqn=true`) so that Springwolf uses the FQN internally.
+
+### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
+
+1. `consumers` and/or `producers` defined in the `AsyncApiDocket` have to be converted to the `@AsyncListener` and/or `@AsyncPublisher` annotation approach.
+   See the [Consumers](configuration/documenting-consumers.md) and [Producers](configuration/documenting-producers.md) page on how to map the properties.
+2. Map all entries of the docket to its Spring properties equivalent.
+   The Spring properties equivalent start with `springwolf.docket.`.
+   Example: The title within the info object is `springwolf.docket.info.title=my title`
 
 ### Is Spring Boot 2.X supported
 
@@ -93,13 +115,3 @@ from the given `apiDocsUrl` and store it in the `outputDir` and with the given `
 
 If your application is unable to start up with the `bootRun` task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
 properties can help you.
-
-### Consumers are detected multiple times (with different payloads)
-
-When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
-This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
-
-Springwolf uses on scanners to find all consumer and producers in your application.
-Most likely two scanners found your consumer/producer each.
-See [configuration](configuration/configuration.md) to disable scanners.
-

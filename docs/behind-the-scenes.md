@@ -33,8 +33,9 @@ The `ChannelItem` contains the `Message` for the subscribe and/or publish operat
 When the scanners scan and build the result, they also extract the payload type.
 The payload is registered in the `SchemasService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
 
-Using `swagger-inflector` any class can be converted into a OpenApi schema.
-This is used to instantiate an Example object with default values and serialized into an example JSON for the AsyncApi document.
+Using `swagger-core` any class can be converted into a OpenApi schema.
+The schema is used in the AsyncApi document.
+Additionally, Springwolf generates an example JSON based on the provided schema.
 
 By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the objectmapper.
 

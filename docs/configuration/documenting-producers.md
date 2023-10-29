@@ -10,7 +10,7 @@ Because producers are also an important part of AsyncAPI, Springwolf provides a 
 
 To document producers, either:
 - add the `@AsyncPublisher` annotation or
-- declare the `ProducerData` object as part of the `AsyncApiDocket`
+- (deprecated) declare the `ProducerData` object as part of the `AsyncApiDocket`
 
 You are free to use all options together. Per channel and operation, first `ProducerData` is used, then `@AsyncPublisher`.
 
@@ -19,7 +19,7 @@ You are free to use all options together. Per channel and operation, first `Prod
 The `@AsyncPublisher` annotation is added to the method of the publisher and extracts the payload from its arguments.
 Additional fields can be documented.
 
-The protocol operation binding is configured via `@AmqpAsyncOperationBinding` or `@KafkaAsyncOperationBinding`, which has to be on the same method.
+The protocol operation binding is configured via `@AmqpAsyncOperationBinding`, `@KafkaAsyncOperationBinding` or `@AsyncGenericOperationBinding`, which has to be on the same method.
 
 Below is an example to demonstrate the annotation:
 ```java
