@@ -68,11 +68,7 @@ Enable the fully qualified class name (FQN) option (`springwolf.use-fqn=true`) s
 
 ### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
 
-1. `consumers` and/or `producers` defined in the `AsyncApiDocket` have to be converted to the `@AsyncListener` and/or `@AsyncPublisher` annotation approach.
-   See the [Consumers](configuration/documenting-consumers.md) and [Producers](configuration/documenting-producers.md) page on how to map the properties.
-2. Map all entries of the docket to its Spring properties equivalent.
-   The Spring properties equivalent start with `springwolf.docket.`.
-   Example: The title within the info object is `springwolf.docket.info.title=my title`
+See https://github.com/springwolf/springwolf-core/issues/445.
 
 ### Is Spring Boot 2.X supported
 
