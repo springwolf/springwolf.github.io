@@ -66,6 +66,23 @@ See [configuration](configuration/configuration.md) to disable scanners.
 
 Enable the fully qualified class name (FQN) option (`springwolf.use-fqn=true`) so that Springwolf uses the FQN internally.
 
+### Generic types (List) don't contain item properties
+
+Due to java type erasure some generic type information is lost during runtime.
+
+Defining your own type can resolve this.
+
+Change
+```java
+public void sendMessage(List<String> msg) {}
+```
+to
+```java
+class ListWrapper extends ArrayList<String> {}
+
+public void sendMessage(ListWrapper<String> msg) {}
+```
+
 ### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
 
 See https://github.com/springwolf/springwolf-core/issues/445.

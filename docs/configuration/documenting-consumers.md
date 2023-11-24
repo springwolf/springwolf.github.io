@@ -12,7 +12,7 @@ For these use-cases, Springwolf provides additional ways to explicitly add them 
 To document consumers, either:
 - add the `@AsyncListener` annotation or
 - (deprecated) declare the `ConsumerData` object as part of the `AsyncApiDocket` or
-- rely on the auto-detection of `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+- rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
 
 You are free to use all options together. Per channel and operation, first `ConsumerData` is used, then `@AsyncListener` and last the auto-detected annotations.
 
@@ -29,6 +29,7 @@ Below is an example to demonstrate the annotation:
 @AsyncListener(operation = @AsyncOperation(
         channelName = "example-consumer-topic",
         description = "Optional. Customer uploaded an example payload",
+        servers = {"kafka"},
         headers = @AsyncOperation.Headers(
                 schemaName = "SpringKafkaDefaultHeaders",
                 values = {
@@ -37,6 +38,12 @@ Below is an example to demonstrate the annotation:
                                 description = "Spring Type Id Header",
                                 value = "io.github.stavshamir.springwolf.example.dtos.ExamplePayloadDto"
                         ),
+                        // (demonstrating https://cloudevents.io) 
+                        @AsyncOperation.Headers.Header(
+                                name = AsyncHeadersCloudEventConstants.TYPE,
+                                description = AsyncHeadersCloudEventConstants.TYPE_DESC,
+                                value = "NestedPayloadDto.v1")
+                        // ...
                 }
         )
 ))
@@ -58,34 +65,14 @@ The channel name (or topic name in case of Kafka) - this is the name that will b
 
 Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
 
-### Payload Type
-
-The class object of the payload that will be consumed from this channel.
-If not specified, it's extracted from the method arguments.
-
 ### Header
 
 Optional. The headers describing the metadata of the payload.
 
-### `@AmqpAsyncOperationBinding`
+### Servers
 
-Associate this operation with AMQP, see [operation-binding] for details.
-
-```java
-@AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
-```
-
-### `@KafkaAsyncOperationBinding`
-
-Associate this operation with Kafka, see [operation-binding] for details.
-
-```java
-@KafkaAsyncOperationBinding(
-        bindingVersion = "1",
-        clientId = "foo-clientId",
-        groupId = "#{'foo-groupId'}"
-)
-```
+Optional. Useful when an application is connect to multiple brokers and wants to indicate to which broker the channel belongs to.
+The server needs to exist in [configuration > Servers](configuration.md) as well.
 
 
 ## Option 2: `ConsumerData` (deprecated)
@@ -133,7 +120,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Binding
 
-This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [operation-binding])).
+This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [documenting bindings](documenting-bindings.md)).
 
 ### Payload Type
 
@@ -172,58 +159,7 @@ The above Kafka `ConsumerData` simplifies to the following `KafkaConsumerData`:
 ```
 
 
-## Option 3: `@KafkaListener`, `@RabbitListener`, `@SqsListener`
-The `@KafkaListener`, `@RabbitListener`, `@SqsListener` annotations are detected automatically.
+## Option 3: `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+The `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener` annotations are detected automatically.
 There is nothing more to do.
 Use the other options if the provided documentation is insufficient.
-
-
-## AMQP Parameters
-### Queue Name (Channel Name)
-
-The queue name that will be used to consume messages from.
-
-### Description
-
-Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
-
-### Exchange Name
-
-The exchange name that will be used to bind queues to.
-
-### Routing Key
-
-The routing key used when publishing a message.
-
-### Payload Type
-
-The class object of the payload that will be consumed from this channel.
-
-
-## Kafka Parameters
-
-### Topic Name (Channel Name)
-
-The topic name that will be used to consume messages from.
-
-### Description
-
-Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
-
-### Payload Type
-
-The class object of the payload that will be consumed from this channel.
-
-### Headers
-
-The Kafka headers describing the metadata of the payload, more details in the generic ConsumerData.
-
-The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the `spring-kafka` dependency.
-
-## Examples
-
-- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/configuration/AsyncApiConfiguration.java)
-- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/cloudstream/configuration/AsyncApiConfiguration.java)
-- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/kafka/configuration/AsyncApiConfiguration.java)
-
-[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject

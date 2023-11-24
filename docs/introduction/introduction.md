@@ -8,7 +8,7 @@ sidebar_position: 10
 API Documentation is an important part of every project and product, but can be painful to maintain manually.
 Spring Boot projects have great solutions for auto-generated documentation for REST APIs to overcome this pain (such as Springfox, or springdoc-openapi).
 
-However, until now there were no solutions for asynchronous APIs (such as AMQP, Kafka, SNS, SQS, etc.). Springwolf aims to solve this and provides auto-generated documentation for asynchronous APIs built in Spring Boot.
+However, until now there were no solutions for asynchronous APIs (such as AMQP, JMS, Kafka, SNS, SQS, etc.). Springwolf aims to solve this and provides auto-generated documentation for asynchronous APIs built in Spring Boot.
 
 Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings the [swagger/OpenAPI](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) specification you know already from REST APIs into the world of event-driven architectures.
 
@@ -19,6 +19,7 @@ View the [live demo](https://demo.springwolf.dev) of Springwolf in action.
 Also, the demos of the 
 [AMQP](https://amqp.demo.springwolf.dev), 
 [Spring Cloud Stream](https://cloud-stream.demo.springwolf.dev),
+[JMS](https://jms.demo.springwolf.dev),
 [Kafka](https://kafka.demo.springwolf.dev),
 [SNS](https://sns.demo.springwolf.dev),
 [SQS](https://sqs.demo.springwolf.dev)

@@ -26,6 +26,7 @@ Below is an example to demonstrate the annotation:
 @AsyncPublisher(operation = @AsyncOperation(
         channelName = "example-producer-topic",
         description = "Optional. Customer uploaded an example payload",
+        servers = {"kafka"},
         headers = @AsyncOperation.Headers(
                 schemaName = "SpringKafkaDefaultHeaders",
                 values = {
@@ -34,6 +35,12 @@ Below is an example to demonstrate the annotation:
                                 description = "Spring Type Id Header",
                                 value = "io.github.stavshamir.springwolf.example.dtos.ExamplePayloadDto"
                         ),
+                        // (demonstrating https://cloudevents.io) 
+                        @AsyncOperation.Headers.Header(
+                                name = AsyncHeadersCloudEventConstants.TYPE,
+                                description = AsyncHeadersCloudEventConstants.TYPE_DESC,
+                                value = "NestedPayloadDto.v1")
+                        // ...
                 }
         )
 ))
@@ -55,32 +62,14 @@ The channel name (or topic name in case of Kafka) - this is the name that will b
 
 Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
 
-### Payload Type
-
-The class object of the payload that will be published to this channel.
-If not specified, it's extracted from the method arguments.
-
 ### Header
 
 Optional. The headers describing the metadata of the payload.
 
-### `@AmqpAsyncOperationBinding`
+### Servers
 
-Associate this operation with AMQP, see [operation-binding] for details.
-
-```java
-@AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
-```
-
-### `@KafkaAsyncOperationBinding`
-
-Associate this operation with Kafka, see [operation-binding] for details.
-
-```java
-@KafkaAsyncOperationBinding(
-        bindingVersion = "1"
-)
-```
+Optional. Useful when an application is connect to multiple brokers and wants to indicate to which broker the channel belongs to.
+The server needs to exist in [configuration > Servers](configuration.md) as well.
 
 
 ## Option 2: `ProducerData` (deprecated)
@@ -115,7 +104,7 @@ public AsyncApiDocket asyncApiDocket() {
 Multiple producers can be configured by calling the `producer()` method multiple times.
 
 :::tip
-Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes
+Use specific ProducerData types `AmqpProducerData` & `KafkaProducerData` for protocol specific attributes.
 :::
 
 ### Channel Name
@@ -128,7 +117,7 @@ Optional. The description allows for human-friendly text to verbosely explain th
 
 ### Binding
 
-This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [operation-binding])).
+This property is used to discriminate the producer's protocol and provide protocol-specific properties (see [documenting bindings](documenting-bindings.md)).
 
 ### Payload Type
 
@@ -165,54 +154,3 @@ The above Kafka `ProducerData` simplifies to the following `KafkaProducerData`:
         .headers(AsyncHeaders.NOT_USED)
         .build();
 ```
-
-
-## AMQP Parameters
-### Queue Name (Channel Name)
-
-The queue name that will be used to publish messages to by the UI.
-
-### Description
-
-Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
-
-### Exchange Name
-
-The exchange name that will be used to bind queues to.
-
-### Routing Key
-
-The routing key used when publishing a message.
-
-### Payload Type
-
-The class object of the payload that will be published to this channel.
-
-
-## Kafka Parameters
-
-### Topic Name (Channel Name)
-
-The topic name that will be used to publish messages to by the UI.
-
-### Description
-
-Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
-
-### Payload Type
-
-The class object of the payload that will be published to this channel.
-
-### Headers
-
-The Kafka headers describing the metadata of the payload, more details in the generic ProducerData.
-
-The Springwolf Kafka plugin comes with a special `AsyncHeadersForSpringKafkaBuilder` to document the `__TypeId__` header of the `spring-kafka` dependency.
-
-## Examples
-
-- [AMQP Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/configuration/AsyncApiConfiguration.java)
-- [Cloud Stream Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-cloud-stream-example/src/main/java/io/github/stavshamir/springwolf/example/cloudstream/configuration/AsyncApiConfiguration.java)
-- [Kafka Example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/stavshamir/springwolf/example/kafka/configuration/AsyncApiConfiguration.java)
-
-[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.0.0#operationBindingsObject

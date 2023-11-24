@@ -31,7 +31,7 @@ There are 2 ways to configure Springwolf which can't be combined:
 
 It's recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it's not mandatory, and if they're scattered across multiple packages, just provide the highest in hierarchy package that contains all classes.
 
-The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@KafkaListener`, `@RabbitListener`, `@SqsListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
+The base package will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 
 ### `id`
 
@@ -47,9 +47,9 @@ The `Info` object provides metadata about the API (see [Info Object][info]).
 
 All provided fields will be present in the generated document, but not all will be displayed in the UI.
 
-### `Server`
+### `Servers`
 
-The `Server` object provides metadata the can help the reader understand the protocol, version, login details and more (see [Server Object][server]).
+The `Server` object provides metadata to help the reader understand the protocol, version, login details and more (see [AsyncAPI Server Object][server]).
 
 An AsyncAPI document can contain more than one server, but it's not common.
 
@@ -75,6 +75,7 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.paths.docs`                                  | `/springwolf/docs` | The path of the AsyncAPI document in JSON format. *Note that at the moment the UI will work only with the default value.*                          |
 | `springwolf.endpoint.actuator.enabled`                   | `false`            | Publish the AsyncAPI document as part of Spring Boot’s actuator feature.                                                                           |
 | `springwolf.use-fqn`                                     | `false`            | Use fully qualified names for the schema classes. It's recommended and **required for publishing**, but deactivated due to backwards compatibility |
+| `springwolf.payload.extractable-classes..`               | N/A                | Extract additional payload types. See [message payloads](documenting-messages.md) for more details.                                                |
 | `springwolf.scanner.consumer-data.enabled`               | `true`             | Enable scanner to find consumers defined in `AsyncApiDocket`.                                                                                      |
 | `springwolf.scanner.producer-data.enabled`               | `true`             | Enable scanner to find producers defined in `AsyncApiDocket`.                                                                                      |
 | `springwolf.scanner.async-listener.enabled`              | `true`             | Enable scanner to find methods annotated with `@AsyncListener`.                                                                                    |
@@ -82,6 +83,9 @@ The following table contains additional properties that can be specified in the 
 | **AMQP**                                                 |                    |                                                                                                                                                    |
 | `springwolf.plugin.amqp.publishing.enabled`              | `false`            | Allow (anyone) to produce AMQP messages from the UI. *Note that this has security implications*                                                    |
 | `springwolf.plugin.amqp.scanner.rabbit-listener.enabled` | `true`             | Enable scanner to find methods annotated with `@RabbitListener`.                                                                                   |
+| **JMS**                                                  |                    |                                                                                                                                                    |
+| `springwolf.plugin.jms.publishing.enabled`               | `false`            | Allow (anyone) to produce JMS messages from the UI. *Note that this has security implications*                                                     |
+| `springwolf.plugin.jms.scanner.jms-listener.enabled`     | `true`             | Enable scanner to find methods annotated with `@JmsListener`.                                                                                      |
 | **Kafka**                                                |                    |                                                                                                                                                    |
 | `springwolf.plugin.kafka.publishing.enabled`             | `false`            | Allow (anyone) to produce Kafka messages from the UI. *Note that this has security implications*                                                   |
 | `springwolf.plugin.kafka.publishing.producer`            | `null`             | Configure the Kafka producer used to publish messages from the UI. Uses identical parameters as `spring.kafka.producer`                            |
