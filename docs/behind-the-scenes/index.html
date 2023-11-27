@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.4.1">
 <title data-rh="true">Behind the scenes | Springwolf</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://www.springwolf.dev/docs/behind-the-scenes"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behind the scenes | Springwolf"><meta data-rh="true" name="description" content="The following paragraphs describe how Springwolf works internally."><meta data-rh="true" property="og:description" content="The following paragraphs describe how Springwolf works internally."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.springwolf.dev/docs/behind-the-scenes"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.0b7fe56e.css">
-<link rel="preload" href="/assets/js/runtime~main.891ab0e7.js" as="script">
-<link rel="preload" href="/assets/js/main.7b666fc2.js" as="script">
+<link rel="preload" href="/assets/js/runtime~main.b754c834.js" as="script">
+<link rel="preload" href="/assets/js/main.6c42ff73.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -13,7 +13,7 @@
 Based on the results, the channels/topics are extracted including payload type and merged together into an <a href="https://www.asyncapi.com/docs/reference/specification/v2.6.0" target="_blank" rel="noopener noreferrer">AsyncApi conform document</a>.</p><p>The AsyncApi document is accessible an endpoint.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).</p><p>When publishing is enabled, the user can publish a message through the UI to another endpoint.
 From there, Springwolf forwards the message to the protocol specific producer.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="plugins">Plugins<a href="#plugins" class="hash-link" aria-label="Direct link to Plugins" title="Direct link to Plugins">​</a></h2><p><code>springwolf-core</code> provides the base functionality to orchestrate the scanning and building of the AsyncAPI document.
-The different protocol (AMQP, Cloud-Stream, Kafka, SNS, SQS) are supported through plugins.
+The different protocol (AMQP, Cloud-Stream, JMS, Kafka, SNS, SQS) are supported through plugins.
 These plugins are found through the Spring dependency injection functionality.
 When building own scanner plugins, your plugin will need to implement the <code>ChannelsScanner</code> interface.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="scanners">Scanners<a href="#scanners" class="hash-link" aria-label="Direct link to Scanners" title="Direct link to Scanners">​</a></h2><p><code>springwolf-core</code> runs all scanners and merges the found results together into one AsyncAPI document.
 When the same channel/topic is found multiple times, it&#x27;s merged as well.</p><p>The result is a <a href="https://www.asyncapi.com/docs/reference/specification/v2.6.0#channelItemObject" target="_blank" rel="noopener noreferrer"><code>ChannelItem</code></a>.
@@ -27,7 +27,7 @@ The controller access this services to serve the document to the UI.</p></div><f
               <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51">
             </a>
             </span></div></div></div></footer></div>
-<script src="/assets/js/runtime~main.891ab0e7.js"></script>
-<script src="/assets/js/main.7b666fc2.js"></script>
+<script src="/assets/js/runtime~main.b754c834.js"></script>
+<script src="/assets/js/main.6c42ff73.js"></script>
 </body>
 </html>
