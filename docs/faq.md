@@ -10,6 +10,16 @@ sidebar_position: 80
 
 Yes, you can use Springwolf for private and commercial purposes as long as you comply to the [Apache License 2.0](https://github.com/springwolf/springwolf-core/blob/master/LICENSE).
 
+### Use `springwolf-ui` only (without plugins)
+
+You can use `springwolf-ui` without any other Springwolf dependency.
+`springwolf-ui` will fetch any documentation available at the `springwolf/docs` path.
+It must be in `json` format (`yaml` isn't supported).
+
+Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place your AsyncApi document into `resources/springwolf/docs` (without file extension).
+
+Note: `springwolf-ui` doesn't support the full AsyncApi spec.
+
 ## Troubleshooting
 
 ### Show `debug` output in the logs
