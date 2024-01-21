@@ -4,7 +4,7 @@ sidebar_position: 80
 
 # Customizing
 Adding and changing functionality of Springwolf is easy.
-The [configuration](../configuration/configuration.md) page mentions the existing ones.
+The [configuration](../configuration/configuration.mdx) page mentions the existing ones.
 
 When you feel that Springwolf is missing a feature, you are able to add it yourself.
 To learn more about how Springwolf works, look [behind the scenes](../behind-the-scenes.md).

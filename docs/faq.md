@@ -58,8 +58,8 @@ If not, whether
 Publishing messages from the UI is disabled by default due to security concerns.
 Springwolf doesn't offer authentication nor authorization, anyone can publish messages to (production) channels.
 
-Check the [configuration](configuration/configuration.md) to enable this feature.
-Be sure to enable fully qualified names ([`use-fqn`](configuration/configuration.md)) as well.
+Check the [configuration](configuration/configuration.mdx) to enable this feature.
+Be sure to enable fully qualified names ([`use-fqn`](configuration/configuration.mdx)) as well.
 
 Spring Security allows to limit access to authorized users.
 
@@ -70,7 +70,7 @@ This is expected, as there are use-cases where different payloads are sent via t
 
 Springwolf uses on scanners to find all consumer and producers in your application.
 Most likely two scanners found your consumer/producer each.
-See [configuration](configuration/configuration.md) to disable scanners.
+See [configuration](configuration/configuration.mdx) to disable scanners.
 
 ### Only one of multiple classes with the same name (different package) is detected
 

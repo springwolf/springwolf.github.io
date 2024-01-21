@@ -72,7 +72,7 @@ Optional. The headers describing the metadata of the payload.
 ### Servers
 
 Optional. Useful when an application is connect to multiple brokers and wants to indicate to which broker the channel belongs to.
-The server needs to exist in [configuration > Servers](configuration.md) as well.
+The server needs to exist in [configuration > Servers](configuration.mdx) as well.
 
 
 ## Option 2: `ConsumerData` (deprecated)
