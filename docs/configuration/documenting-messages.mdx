@@ -72,11 +72,11 @@ The default Jackson `ModelResolver` supports schema definitions via `@Schema` to
 
 ### Using `@Schema`
 
-The `@Schema` annotation allows to set many properties like `description`, `example`, `requiredMode` to document payloads.
+The `@Schema` annotation allows to set many properties like `description`, `example`, `requiredMode`, `minimum` to document payloads.
 
-All properties are part of the produced AsyncApi file. However, not all are displayed in `springwolf-ui`. The ones listed above are included.
+All properties are part of the produced AsyncApi file. However, not all are displayed in `springwolf-ui` (see [#378](https://github.com/springwolf/springwolf-core/issues/378))
 
-### Usage
+#### Usage
 
 Add the following dependency:
 
@@ -113,6 +113,26 @@ The `@AsyncMessage.description` field will always override the `@Schema` descrip
 :::
 
 For a full example, take a look at [ExamplePayloadDto.java in `springwolf-amqp-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/dtos/ExamplePayloadDto.java)
+
+#### Primitive, final and external classes
+
+When the `@Schema` annotation cannot be attached to the payload class (i.e. `java.lang.String`), the payload can be wrapped in an envelope class. The actual payload is a field within this class (`StringEnvelope`), marked using `@AsyncApiPayload` and documented using the `@Schema` annotation.
+
+```java
+@AsyncListener( operation = @AsyncOperation( channelName = TOPIC,
+     payloadType = StringEnvelope.class) // <- envelope class
+)
+public void receiveStringPayload(String stringPayload) { // <- The original class is used here
+    // ...
+}
+
+@Data
+static class StringEnvelope {
+    @AsyncApiPayload // <- The annotation marker
+    @Schema(description = "Payload description using @Schema annotation and @AsyncApiPayload within envelope class")
+    private final String payload;
+}
+```
 
 ### `json-schema`
 
