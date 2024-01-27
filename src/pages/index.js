@@ -11,21 +11,27 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <img src={"img/logo_s.png"} alt={"logo"} width={"200px"} height={"200px"} />
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <h1 className={styles.heroTitle}>
+            <img className={styles.heroLogo} src={"img/logo_s.png"} alt={"logo"} />
+            <span>
+                <b>Automated</b> documentation
+                for <b>event-driven</b> applications
+                built with <b>Spring Boot</b>
+            </span>
+        </h1>
+
         <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/introduction">
+            Get Started
+          </Link>
+          &nbsp;
           <Link
               className="button button--secondary button--lg"
               to="https://demo.springwolf.dev/"
               target={"_blank"}>
-              Live Demo
-          </Link>
-          &nbsp;
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/quickstart">
-            Springwolf Quickstart - 5min ⏱️
+              Try a Demo
           </Link>
         </div>
       </div>

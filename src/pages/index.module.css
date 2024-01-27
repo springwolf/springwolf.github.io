@@ -10,6 +10,21 @@
   overflow: hidden;
 }
 
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.heroTitle b {
+  color: var(--ifm-color-primary-contrast-foreground);
+}
+
+.heroLogo {
+  float: right;
+  height: auto;
+}
+
 @media screen and (max-width: 966px) {
   .heroBanner {
     padding: 2rem;
@@ -20,4 +35,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.buttons a {
+  margin: 0 0.5rem;
+  --ifm-button-size-multiplier: 1.5;
 }

@@ -14,7 +14,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Easy to set up',
+    title: 'Build for Spring',
     description: (
       <>
         Just provide minimal configuration in <code>application.properties</code> and
@@ -23,10 +23,34 @@ const FeatureList = [
     ),
   },
   {
-    title: 'AsyncAPI compliant',
+    title: 'Powered by AsyncAPI v3',
     description: (
       <>
         The generated documentation is compliant with the <Link to='https://www.asyncapi.com/'>AsyncAPI specification</Link>.
+      </>
+    ),
+  },
+  {
+    title: 'Optional web-ui',
+    description: (
+      <>
+        Single dependency ui for API testing.
+      </>
+    ),
+  },
+  {
+    title: 'Customizable',
+    description: (
+      <>
+        Extend documentation with <code>@AsyncListener</code> and <code>@AsyncPublisher</code>.
+      </>
+    ),
+  },
+  {
+    title: 'Integrate',
+    description: (
+      <>
+        Generate documentation in your CI/CD pipeline and publish to tools like <Link to="https://backstage.io">Backstage</Link>.
       </>
     ),
   },
