@@ -34,7 +34,7 @@ const FeatureList = [
     title: 'Optional web-ui',
     description: (
       <>
-        Single dependency ui for API testing.
+        Single dependency ui for API testing including event publishing.
       </>
     ),
   },
@@ -42,7 +42,7 @@ const FeatureList = [
     title: 'Customizable',
     description: (
       <>
-        Extend documentation with <code>@AsyncListener</code> and <code>@AsyncPublisher</code>.
+        Extend documentation using <code>@AsyncListener</code> and <code>@AsyncPublisher</code>.
       </>
     ),
   },
