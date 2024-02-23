@@ -4,6 +4,10 @@ sidebar_position: 10
 
 # Introduction
 
+:::info
+Integrate Springwolf in minutes using the [Quickstart](../quickstart.mdx).
+:::
+
 ## What's Springwolf
 API Documentation is an important part of every project and product, but can be painful to maintain manually.
 Spring Boot projects have great solutions for auto-generated documentation for REST APIs to overcome this pain (such as Springfox, or springdoc-openapi).

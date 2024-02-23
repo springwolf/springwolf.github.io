@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Springwolf',
-  tagline: 'Automated documentation (and more) for async APIs built with Spring Boot',
+  tagline: 'Automated documentation for event-driven applications built with Spring Boot',
   url: 'https://www.springwolf.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
