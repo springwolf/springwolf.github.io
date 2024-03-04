@@ -36,4 +36,4 @@ vale sync
 vale docs/
 ```
 
-Words not part of the dictionary yet are added in [accept.txt](.github/styles/Vocab/Springwolf/accept.txt).
+Words not part of the dictionary yet are added in [accept.txt](.github/styles/config/vocabularies/Springwolf/accept.txt).

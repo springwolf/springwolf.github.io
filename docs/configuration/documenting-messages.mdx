@@ -10,7 +10,7 @@ import CodeSchemaMaven from '!!raw-loader!./snippets/_schema_maven.xml';
 
 # Messages
 
-Springwolf provides different ways to document the messages. The `message` is part of the AsyncApi `operationObject`
+Springwolf provides different ways to document the messages. The `message` is part of the AsyncAPI `operationObject`
 
 > A definition of the message that will be published or received by this operation
 
@@ -20,17 +20,17 @@ For example:
 ```java
 @AsyncPublisher(operation = @AsyncOperation(
         channelName = "example-producer-topic",
-        description = "Optional. Customer uploaded an example payload",
-        payloadType = ExamplePayloadDto.class, // optional
-        message = @AsyncMessage(
+        description = "Customer uploaded an example payload", // Optional
+        payloadType = ExamplePayloadDto.class, // Optional
+        message = @AsyncMessage( // Optional
                 messageId = "my-unique-id",
                 name = "ExamplePayloadDto",
-                schemaFormat = "application/schema+json;version=draft-07",
+                schemaFormat = "application/vnd.aai.asyncapi+json;version=3.0.0",
                 description = "Example payload model for sending messages"
         )
 ))
 public void sendMessage(ExamplePayloadDto msg) {
-    // send
+    // process
 }
 ```
 
@@ -38,7 +38,7 @@ public void sendMessage(ExamplePayloadDto msg) {
 
 Springwolf tries to auto-detect the payload type based on the method signature.
 
-When the method has multiple arguments, the payload can be indicated via `@Payload`, i.e.
+When the method has multiple arguments, the payload can be indicated via `@Payload`, that's
 ```java
 public void sendMessage(@Payload ExamplePayloadDto msg, String traceId, Object loggingContext) {}
 ```
@@ -74,7 +74,7 @@ The default Jackson `ModelResolver` supports schema definitions via `@Schema` to
 
 The `@Schema` annotation allows to set many properties like `description`, `example`, `requiredMode`, `minimum` to document payloads.
 
-All properties are part of the produced AsyncApi file. However, not all are displayed in `springwolf-ui` (see [#378](https://github.com/springwolf/springwolf-core/issues/378))
+All properties are part of the produced AsyncAPI file. However, not all are displayed in `springwolf-ui` (see [#378](https://github.com/springwolf/springwolf-core/issues/378))
 
 #### Usage
 
@@ -112,11 +112,11 @@ public class ExamplePayloadDto {
 The `@AsyncMessage.description` field will always override the `@Schema` description if provided
 :::
 
-For a full example, take a look at [ExamplePayloadDto.java in `springwolf-amqp-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/stavshamir/springwolf/example/amqp/dtos/ExamplePayloadDto.java)
+For a full example, take a look at [ExamplePayloadDto.java in `springwolf-amqp-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-amqp-example/src/main/java/io/github/springwolf/examples/amqp/dtos/ExamplePayloadDto.java)
 
 #### Primitive, final and external classes
 
-When the `@Schema` annotation cannot be attached to the payload class (i.e. `java.lang.String`), the payload can be wrapped in an envelope class. The actual payload is a field within this class (`StringEnvelope`), marked using `@AsyncApiPayload` and documented using the `@Schema` annotation.
+When the `@Schema` annotation can't be attached to the payload class (that's `java.lang.String`), the payload can be wrapped in an envelope class. The actual payload is a field within this class (`StringEnvelope`), marked using `@AsyncApiPayload` and documented using the `@Schema` annotation.
 
 ```java
 @AsyncListener( operation = @AsyncOperation( channelName = TOPIC,
@@ -136,7 +136,7 @@ static class StringEnvelope {
 
 ### `json-schema`
 
-The [`springwolf-add-ons/springwolf-json-schema`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-json-schema) adds the [json-schema](https://json-schema.org) schema to the AsyncApi document. 
+The [`springwolf-add-ons/springwolf-json-schema`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-json-schema) adds the [json-schema](https://json-schema.org) schema to the AsyncAPI document.
 
 ## Custom ModelConverters
 

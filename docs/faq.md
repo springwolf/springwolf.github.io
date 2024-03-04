@@ -16,9 +16,9 @@ You can use `springwolf-ui` without any other Springwolf dependency.
 `springwolf-ui` will fetch any documentation available at the `springwolf/docs` path.
 It must be in `json` format (`yaml` isn't supported).
 
-Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place your AsyncApi document into `resources/springwolf/docs` (without file extension).
+Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place your AsyncAPI document into `resources/springwolf/docs` (without file extension).
 
-Note: `springwolf-ui` doesn't support the full AsyncApi spec.
+Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
 
 ## Troubleshooting
 
@@ -28,7 +28,7 @@ Springwolf uses the default logging setup of Spring Boot.
 To enable `DEBUG` output, add the following line to the `application.properties`:
 
 ```properties
-logging.level.io.github.stavshamir.springwolf=DEBUG
+logging.level.io.github.springwolf=DEBUG
 ```
 
 ### The Springwolf UI isn't showing
@@ -92,6 +92,10 @@ class ListWrapper extends ArrayList<String> {}
 
 public void sendMessage(ListWrapper<String> msg) {}
 ```
+
+### How to migrate from Springwolf 0.18.0 to 1.0.0
+
+See https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0.
 
 ### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
 

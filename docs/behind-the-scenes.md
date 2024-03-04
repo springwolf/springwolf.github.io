@@ -8,9 +8,9 @@ The following paragraphs describe how Springwolf works internally.
 
 ## Big Picture
 When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
-Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncApi conform document](https://www.asyncapi.com/docs/reference/specification/v2.6.0).
+Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncAPI conform document](https://www.asyncapi.com/docs/reference/specification/v2.6.0).
 
-The AsyncApi document is accessible an endpoint.
+The AsyncAPI document is accessible an endpoint.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).
 
 When publishing is enabled, the user can publish a message through the UI to another endpoint.
@@ -27,15 +27,15 @@ When building own scanner plugins, your plugin will need to implement the `Chann
 When the same channel/topic is found multiple times, it's merged as well.
 
 The result is a [`ChannelItem`](https://www.asyncapi.com/docs/reference/specification/v2.6.0#channelItemObject).
-The `ChannelItem` contains the `Message` for the subscribe and/or publish operation.
+The `ChannelObject` contains the `Message` for the receive and/or send operation.
 
 ## Building an example payload
 When the scanners scan and build the result, they also extract the payload type.
-The payload is registered in the `SchemasService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
+The payload is registered in the `ComponentsService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
 
-Using `swagger-core` any class can be converted into a OpenApi schema.
-The schema is used in the AsyncApi document.
-Additionally, Springwolf generates an example JSON based on the provided schema.
+Using `swagger-core` any class can be converted into an OpenApi schema.
+The schema is [mapped into an AsyncAPI schema](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) and included in the AsyncAPI document.
+Additionally, Springwolf generates an example based on the provided schema.
 
 By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the objectmapper.
 

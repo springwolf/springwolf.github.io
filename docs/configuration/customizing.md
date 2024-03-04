@@ -40,4 +40,4 @@ public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
 
 All `ChannelScanner` beans are called to scan for channels.
 This interface is helpful when a protocol currently unsupported by Springwolf is used.
-Remember to register all payloads in the `SchemasService`.
+Remember to register all payloads in the `ComponentsService`.

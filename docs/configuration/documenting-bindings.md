@@ -9,7 +9,7 @@ Add at least one binding so that readers know the protocol in use and functional
 
 To use the protocol specific bindings, ensure that you have added the corresponding [plugin](../introduction/supported-protocols.md).
 
-## Option 1: Annotations
+## Protocol specific annotations
 
 ### `@AmqpAsyncOperationBinding`
 
@@ -52,9 +52,12 @@ Associate this operation with SQS, see [operation-binding] for details.
 @SqsAsyncOperationBinding
 ```
 
-### `@AsyncGenericOperationBinding`
+## Generic annotation
 
 This binding is generic, so that any properties can be specified.
+
+### `@AsyncGenericOperationBinding`
+
 You can define anything and there is no validation.
 
 ```java
@@ -65,31 +68,6 @@ You can define anything and there is no validation.
         "nested.key=nestedValue"
     }
 )
-```
-
-## Option 2: AsyncApiDocket (deprecated)
-
-### `AmqpProducerData` / `AmqpConsumerData`
-
-```java
-    AmqpProducerData exampleProducer = AmqpProducerData.amqpProducerDataBuilder()
-        .queueName("example-producer-channel")
-        .description("example-producer-channel-description")
-        .exchangeName("example-topic-exchange")
-        .routingKey("example-topic-routing-key")
-        .payloadType(AnotherPayloadDto.class)
-        .build();
-```
-
-### `KafkaProducerData` / `KafkaConsumeData`
-
-```java
-    KafkaProducerData exampleProducerData = KafkaProducerData.kafkaProducerDataBuilder()
-        .topicName("example-producer-topic")
-        .description("Optional. Customer uploaded an example payload")
-        .payloadType(ExamplePayloadDto.class)
-        .headers(AsyncHeaders.NOT_USED)
-        .build();
 ```
 
 ## Binding properties
