@@ -82,8 +82,9 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: [
+          'groovy',
           'java',
-          'groovy'
+          'properties'
         ],
       },
     }),
