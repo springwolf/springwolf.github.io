@@ -40,15 +40,15 @@ If not, whether
 1. you customized the spring `context-path` setting
 2. static assets are being served at all. See the code below:
 
-```java
+    ```java
     @Configuration
     public class WebConfig implements WebMvcConfigurer {
-      @Override
-      public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-            .addResourceHandler("/**")
-            .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
-      }
+       @Override
+       public void addResourceHandlers(ResourceHandlerRegistry registry) {
+         registry
+             .addResourceHandler("/**")
+             .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
+       }
     }
     ```
 
@@ -100,11 +100,11 @@ public void sendMessage(ListWrapper<String> msg) {}
 
 ### How to migrate from Springwolf 0.18.0 to 1.0.0
 
-See <https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0>.
+See [Release 1.0.0](https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0).
 
 ### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
 
-See <https://github.com/springwolf/springwolf-core/issues/445>.
+See [Issue #445](https://github.com/springwolf/springwolf-core/issues/445).
 
 ### Is Spring Boot 2.X supported
 
