@@ -37,7 +37,7 @@ Using `swagger-core` any class can be converted into an OpenApi schema.
 The schema is [mapped into an AsyncAPI schema](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) and included in the AsyncAPI document.
 Additionally, Springwolf generates an example based on the provided schema.
 
-By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the objectmapper.
+By using `swagger-parser`, all the `@Schema` and other swagger annotations are supported as well as `@JsonProperty` through the use of the ObjectMapper.
 
 ### ModelConverters
 ModelConverters provide a way to improve documentation for classes, which can't be modified, for example because they're part of an external library.

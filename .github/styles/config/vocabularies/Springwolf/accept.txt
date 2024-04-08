@@ -1,0 +1,14 @@
+AMQP
+[Aa]uto-detect
+[Aa]uto-detected
+[Aa]uto-detection
+auto-generated
+Avro
+APIs
+Baeldung
+declaratively
+Gradle
+Protobuf
+Springfox
+Springwolf
+UI
