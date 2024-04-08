@@ -3,6 +3,7 @@ sidebar_position: 80
 ---
 
 # Customizing
+
 Adding and changing functionality of Springwolf is easy.
 The [configuration](../configuration/configuration.mdx) page mentions the existing ones.
 
@@ -26,6 +27,7 @@ By implementing the `AsyncApiCustomizer`, the AsyncAPI document can be modified 
 It's the final interception point before the document is available to the user.
 
 For example, the title can be adjusted - although this should be done through the configuration:
+
 ```java
 @Component
 public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
