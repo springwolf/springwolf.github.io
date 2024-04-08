@@ -153,4 +153,4 @@ The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMe
 - name: The name of the schema
 
 
-[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v2.6.0#operationBindingsObject
+[operation-binding]: https://www.asyncapi.com/docs/reference/specification/v3.0.0#operationBindingsObject

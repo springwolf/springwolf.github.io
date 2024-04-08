@@ -8,7 +8,7 @@ The following paragraphs describe how Springwolf works internally.
 
 ## Big Picture
 When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
-Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncAPI conform document](https://www.asyncapi.com/docs/reference/specification/v2.6.0).
+Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncAPI conform document](https://www.asyncapi.com/docs/reference/specification/v3.0.0).
 
 The AsyncAPI document is accessible an endpoint.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).
@@ -26,7 +26,7 @@ When building own scanner plugins, your plugin will need to implement the `Chann
 `springwolf-core` runs all scanners and merges the found results together into one AsyncAPI document.
 When the same channel/topic is found multiple times, it's merged as well.
 
-The result is a [`ChannelItem`](https://www.asyncapi.com/docs/reference/specification/v2.6.0#channelItemObject).
+The result is a [`ChannelItem`](https://www.asyncapi.com/docs/reference/specification/v3.0.0#channelObject).
 The `ChannelObject` contains the `Message` for the receive and/or send operation.
 
 ## Building an example payload
