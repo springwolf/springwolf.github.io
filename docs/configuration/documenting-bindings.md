@@ -130,7 +130,7 @@ The Channel Bindings Object is used to describe the Google Cloud Pub/Sub Topic d
                             lastRevisionId = "lastRevisionId",
                             name = "projects/{project}/schemas/{schema}"))
 ```
-`MessageRetentionDuration`: Indicates the minimum duration to retain a message after it is published to the topic 
+`MessageRetentionDuration`: Indicates the minimum duration to retain a message after it's published to the topic 
 
 `Message Storage Policy`: The Message Storage Policy Object is used to describe the Google Cloud Pub/Sub MessageStoragePolicy.
 - A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage 
@@ -141,7 +141,7 @@ The Channel Bindings Object is used to describe the Google Cloud Pub/Sub Topic d
 - lastRevisionId: The maximum (inclusive) revision allowed for validating messages
 - name: The name of the schema that messages published should be validated against (The format is `projects/{project}/schemas/{schema}`.)
 #### Message Binding Object
-The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMessage details, alongside with pertintent parts of the Google Cloud Pub/Sub Schema Object.
+The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMessage details, alongside with pertinent parts of the Google Cloud Pub/Sub Schema Object.
 ```java
 @GooglePubSubAsyncMessageBinding(
             orderingKey = "key",
@@ -149,7 +149,7 @@ The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMe
 ```
 `OrderingKey`: If non-empty, identifies related messages for which publish order should be respected
 
-`Schema Definition`: The Schema Definition Object is used to describe the Google Cloud Pub/Sub Schema Object with AsyncAPI. While some of this information could be, or is, described using native AsyncAPI, for consistency it makes sense to provide this information here at all times, especially for cases where AsyncAPI does not natively support describing payloads using a supported Google Cloud Pub/Sub schema format like Protobuf
+`Schema Definition`: The Schema Definition Object is used to describe the Google Cloud Pub/Sub Schema Object with AsyncAPI. While some of this information could be, or is, described using native AsyncAPI, for consistency it makes sense to provide this information here at all times, especially for cases where AsyncAPI doesn't natively support describing payloads using a supported Google Cloud Pub/Sub schema format like Protobuf
 - name: The name of the schema
 
 
