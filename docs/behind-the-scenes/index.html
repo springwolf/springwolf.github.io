@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">Behind the scenes | Springwolf</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://www.springwolf.dev/docs/behind-the-scenes"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behind the scenes | Springwolf"><meta data-rh="true" name="description" content="The following paragraphs describe how Springwolf works internally."><meta data-rh="true" property="og:description" content="The following paragraphs describe how Springwolf works internally."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.springwolf.dev/docs/behind-the-scenes"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.be5c9c9f.css">
-<script src="/assets/js/runtime~main.cf57db47.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9da98919.js" defer="defer"></script>
 <script src="/assets/js/main.11b3599f.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -33,7 +33,7 @@ The payload is registered in the <code>ComponentsService</code>, which allows to
 <p>Using <code>swagger-core</code> any class can be converted into an OpenApi schema.
 The schema is <a href="https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi" target="_blank" rel="noopener noreferrer">mapped into an AsyncAPI schema</a> and included in the AsyncAPI document.
 Additionally, Springwolf generates an example based on the provided schema.</p>
-<p>By using <code>swagger-parser</code>, all the <code>@Schema</code> and other swagger annotations are supported as well as <code>@JsonProperty</code> through the use of the objectmapper.</p>
+<p>By using <code>swagger-parser</code>, all the <code>@Schema</code> and other swagger annotations are supported as well as <code>@JsonProperty</code> through the use of the ObjectMapper.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="modelconverters">ModelConverters<a href="#modelconverters" class="hash-link" aria-label="Direct link to ModelConverters" title="Direct link to ModelConverters">​</a></h3>
 <p>ModelConverters provide a way to improve documentation for classes, which can&#x27;t be modified, for example because they&#x27;re part of an external library.
 They follow the same plugin model.</p>
