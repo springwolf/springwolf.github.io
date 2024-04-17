@@ -11,6 +11,7 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "lint:md": "markdownlint --ignore node_modules/ \"./docs/**/*.md\"",
+    "lint:md:fix": "markdownlint --fix --ignore node_modules/ \"./docs/**/*.md\"",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids"
   },
