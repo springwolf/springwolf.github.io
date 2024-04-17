@@ -25,6 +25,7 @@ Add the following dependencies:
 </Tabs>
 
 Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-core?color=green&label=springwolf&style=plastic)
+
 ## 2. Configure properties
 
 Add the following to your application.properties:
@@ -42,7 +43,9 @@ springwolf.docket.servers.kafka.url=${kafka.bootstrap.servers:localhost:29092}
 *Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that Springwolf will automatically pick them up.*
 
 ## 3. View the docs
+
 Start the application and open the URLs in your browser:
+
 - JSON: [`<host>:<port>/springwolf/docs`](http://localhost:8080/springwolf/docs)
 - YAML: [`<host>:<port>/springwolf/docs.yaml`](http://localhost:8080/springwolf/docs.yaml)
 - UI: [`<host>:<port>/springwolf/asyncapi-ui.html`](http://localhost:8080/springwolf/asyncapi-ui.html)

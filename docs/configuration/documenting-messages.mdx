@@ -17,6 +17,7 @@ Springwolf provides different ways to document the messages. The `message` is pa
 A message can be defined as part of the `@AsyncOperation` annotation, using `message = @AsyncMessage()` field.
 
 For example:
+
 ```java
 @AsyncPublisher(operation = @AsyncOperation(
         channelName = "example-producer-topic",
@@ -39,6 +40,7 @@ public void sendMessage(ExamplePayloadDto msg) {
 Springwolf tries to auto-detect the payload type based on the method signature.
 
 When the method has multiple arguments, the payload can be indicated via `@Payload`, that's
+
 ```java
 public void sendMessage(@Payload ExamplePayloadDto msg, String traceId, Object loggingContext) {}
 ```
@@ -61,7 +63,6 @@ The configuration property is split into three parts.
 First, the base property `springwolf.payload.extractable-classes`.
 Second, the canonical class name, `java.util.function.Function` in this case.
 And third, the generic parameter index (`1`).
-
 
 ## Schema
 
