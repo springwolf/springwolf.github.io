@@ -40,13 +40,13 @@ jobs:
       - name: Lint md files
         uses: DavidAnson/markdownlint-cli2-action@v16
         with:
-          config: '.markdownlint.json'
+          config: './conf/.markdownlint.json'
           globs: './docs/**/*.md'
 
       - name: Lint mdx files
         uses: DavidAnson/markdownlint-cli2-action@v16
         with:
-          config: '.markdownxlint.json'
+          config: './conf/.mdx.markdownlint.json'
           globs: './docs/**/*.mdx'
 
       - name: Deploy to GitHub Pages
