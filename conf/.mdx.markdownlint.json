@@ -1,0 +1,7 @@
+{
+  "extends": ".markdownlint.json",
+
+  "first-line-heading": false,
+  "no-bare-urls": false,
+  "no-inline-html": false
+}

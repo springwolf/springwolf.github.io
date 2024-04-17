@@ -80,8 +80,6 @@ The following table contains additional properties that can be specified in the 
 | `springwolf.plugin.sqs.publishing.enabled`               | `false`            | Allow (anyone) to produce SQS messages from the UI. *Note that this has security implications*                                                                                                                                                                                                                                                                                                                                                                                              |
 | `springwolf.plugin.sqs.scanner.sqs-listener.enabled`     | `true`             | Enable scanner to find methods annotated with `@SqsListener`.                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
-
-
 ## Actuator support
 
 Springwolf supports exposing the AsyncAPI document as part of Spring Boot’s actuator endpoint.
@@ -89,6 +87,7 @@ The AsyncAPI document will then be moved underneath actuators base path, that's 
 
 To enable it, add the `spring-boot-actuator` dependency first.
 Second, enable the actuator endpoint in the `application.properties` file:
+
 ```properties
 # Move Springwolf endpoint to actuator
 springwolf.endpoint.actuator.enabled=true

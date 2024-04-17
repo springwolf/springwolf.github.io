@@ -37,3 +37,10 @@ vale docs/
 ```
 
 Words not part of the dictionary yet are added in [accept.txt](.github/styles/config/vocabularies/Springwolf/accept.txt).
+
+## Run Markdown Linter
+
+To validate that the created Markdown follows the rules:
+```bash
+npm run lint:md
+```

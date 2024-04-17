@@ -10,6 +10,7 @@ Sometimes projects are configured in a way that makes Springwolf unable to autom
 For these use-cases, Springwolf provides additional ways to explicitly add them to the generated document.
 
 To document consumers, either:
+
 - add the `@AsyncListener` annotation or
 - rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
 
@@ -23,6 +24,7 @@ Additional fields can be documented.
 On the same method, the protocol binding is defined. More details can be found in the [bindings](documenting-bindings.md) section.
 
 Below is an example to demonstrate the annotation:
+
 ```java
 @KafkaListener
 @AsyncListener(operation = @AsyncOperation(
@@ -74,6 +76,7 @@ Optional. Useful when an application is connect to multiple brokers and wants to
 The server needs to exist in [configuration > Servers](configuration.mdx) as well.
 
 ## `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+
 The `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener` annotations are detected automatically.
 There is nothing more to do.
 Use the other option if the provided documentation is insufficient.

@@ -36,17 +36,19 @@ logging.level.io.github.springwolf=DEBUG
 When the `springwolf-ui` dependency is added, the UI should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
 
 If not, whether
-1. you customized the spring `context-path` setting 
+
+1. you customized the spring `context-path` setting
 2. static assets are being served at all. See the code below:
+
     ```java
     @Configuration
     public class WebConfig implements WebMvcConfigurer {
-      @Override
-      public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-            .addResourceHandler("/**")
-            .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
-      }
+       @Override
+       public void addResourceHandlers(ResourceHandlerRegistry registry) {
+         registry
+             .addResourceHandler("/**")
+             .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/");
+       }
     }
     ```
 
@@ -83,10 +85,13 @@ Due to java type erasure some generic type information is lost during runtime.
 Defining your own type can resolve this.
 
 Change
+
 ```java
 public void sendMessage(List<String> msg) {}
 ```
+
 to
+
 ```java
 class ListWrapper extends ArrayList<String> {}
 
@@ -95,11 +100,11 @@ public void sendMessage(ListWrapper<String> msg) {}
 
 ### How to migrate from Springwolf 0.18.0 to 1.0.0
 
-See https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0.
+See [Release 1.0.0](https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0).
 
 ### How to migrate from the deprecated `AsyncApiDocket` bean to Spring properties
 
-See https://github.com/springwolf/springwolf-core/issues/445.
+See [Issue #445](https://github.com/springwolf/springwolf-core/issues/445).
 
 ### Is Spring Boot 2.X supported
 
@@ -107,6 +112,7 @@ You can use an older version of Springwolf, which is build to support Spring Boo
 However, these versions don't get any updates.
 
 Last versions to support Spring Boot 2.X:
+
 - `springwolf-amqp:0.6.0`
 - `springwolf-cloud-stream:0.1.0`
 - `springwolf-core:0.6.0`
@@ -124,7 +130,7 @@ Use the `AsyncApiService` to access the generated documentation.
 #### With Gradle
 
 You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for Springwolf by pointing it to the Springwolf docs endpoint: 
+for Springwolf by pointing it to the Springwolf docs endpoint:
 
 ```groovy
 openApi {

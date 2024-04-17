@@ -4,8 +4,8 @@ sidebar_position: 64
 
 # Producers
 
-Unlike consumers which are defined declaratively with an annotation, 
-producers are defined imperatively (that's `KafkaTemplate`), 
+Unlike consumers which are defined declaratively with an annotation,
+producers are defined imperatively (that's `KafkaTemplate`),
 and there is no implementation uniform enough so that metadata can be picked up automatically.
 
 Because producers are also an important part of AsyncAPI,
@@ -19,6 +19,7 @@ Additional fields can be documented.
 On the same method, the protocol binding is defined. More details can be found in the [bindings](documenting-bindings.md) section.
 
 Below is an example to demonstrate the annotation:
+
 ```java
 @AsyncPublisher(operation = @AsyncOperation(
         channelName = "example-producer-topic",
