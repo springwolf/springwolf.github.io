@@ -31,22 +31,21 @@ Using [`@AsyncListener`](../configuration/documenting-consumers.md) and [`@Async
 
 The protocols with native support come along with a `@_ProtocolName_Binding` annotation to define protocol specific properties.
 
-### `springwolf-generic-binding` add-on
+### `springwolf-<protocol>-binding` bindings
 
-The `springwolf-generic-binding` add-on allows to document any binding.
-This includes bindings not supported by Springwolf, but also any custom fields not part of the AsyncAPI specification.
+Springwolf also provides some libraries to document bindings. Those libraries provide a light alternative (without 3rd party dependencies)
 
-```java
-@AsyncPublisher(...)
-@AsyncGenericOperationBinding(
-    type = "custom-protocol-binding",
-    fields = {
-            "internal-field=customValue", 
-            "nested.key=nestedValue"})
-public void sendMessage(AnotherPayloadDto msg) {
-    // publish message
-}
-```
+The supported binding annotations are:
+
+| Protocol      | Annotations                         | Latest Plugin Version                                                                                                                                                         |
+|---------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GooglePubSub  | `@GooglePubSubAsyncChannelBinding`  | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-googlepubsub-binding?color=green&label=springwolf-googlepubsub-binding&style=plastic) |
+| SNS           | `@SnsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns-binding?color=green&label=springwolf-sns-binding&style=plastic)                   |
+| SQS           | `@SqsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs-binding?color=green&label=springwolf-sqs-binding&style=plastic)                   |
+
+:::info
+See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
+:::
 
 [amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
 [cloud-stream]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example

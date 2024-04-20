@@ -8,6 +8,7 @@ APIs
 Baeldung
 declaratively
 Gradle
+Kotlinx
 Protobuf
 Springfox
 Springwolf
