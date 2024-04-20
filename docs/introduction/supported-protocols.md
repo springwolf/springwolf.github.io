@@ -31,6 +31,18 @@ Using [`@AsyncListener`](../configuration/documenting-consumers.md) and [`@Async
 
 The protocols with native support come along with a `@_ProtocolName_Binding` annotation to define protocol specific properties.
 
+### `springwolf-<protocol>-binding` bindings
+
+Springwolf also provides some libraries to document bindings. Those libraries provide a light alternative (without 3rd party dependencies)
+
+The supported binding annotations are:
+
+| Protocol      | Annotations                         | Latest Plugin Version                                                                                                                                                         |
+|---------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GooglePubSub  | `@GooglePubSubAsyncChannelBinding`  | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-googlepubsub-binding?color=green&label=springwolf-googlepubsub-binding&style=plastic) |
+| SNS           | `@SnsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns-binding?color=green&label=springwolf-sns-binding&style=plastic)                   |
+| SQS           | `@SqsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs-binding?color=green&label=springwolf-sqs-binding&style=plastic)                   |
+
 :::info
 See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
 :::
