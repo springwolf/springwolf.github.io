@@ -31,22 +31,9 @@ Using [`@AsyncListener`](../configuration/documenting-consumers.md) and [`@Async
 
 The protocols with native support come along with a `@_ProtocolName_Binding` annotation to define protocol specific properties.
 
-### `springwolf-generic-binding` add-on
-
-The `springwolf-generic-binding` add-on allows to document any binding.
-This includes bindings not supported by Springwolf, but also any custom fields not part of the AsyncAPI specification.
-
-```java
-@AsyncPublisher(...)
-@AsyncGenericOperationBinding(
-    type = "custom-protocol-binding",
-    fields = {
-            "internal-field=customValue", 
-            "nested.key=nestedValue"})
-public void sendMessage(AnotherPayloadDto msg) {
-    // publish message
-}
-```
+:::info
+See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
+:::
 
 [amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
 [cloud-stream]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
