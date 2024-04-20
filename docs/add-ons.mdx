@@ -1,0 +1,121 @@
+---
+sidebar_position: 50
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import CodeCommonModelGroovy from '!!raw-loader!./snippets/_springwolf_common_model_converters_groovy.gradle';
+import CodeCommonModelMaven from '!!raw-loader!./snippets/_springwolf_common_model_converters_maven.xml';
+import CodeJsonSchemaGroovy from '!!raw-loader!./snippets/_springwolf_json_schema_groovy.gradle';
+import CodeJsonSchemaMaven from '!!raw-loader!./snippets/_springwolf_json_schema_maven.xml';
+import CodeGenericBindingGroovy from '!!raw-loader!./snippets/_springwolf_generic_binding_groovy.gradle';
+import CodeGenericBindingMaven from '!!raw-loader!./snippets/_springwolf_generic_binding_maven.xml';
+import CodeKotlinxGroovy from '!!raw-loader!./snippets/_springwolf_kotlinx_serialization_model_converter_groovy.gradle';
+import CodeKotlinxMaven from '!!raw-loader!./snippets/_springwolf_kotlinx_serialization_model_converter_maven.xml';
+
+# Add-Ons
+
+## Common Model Converters
+
+The [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters) adds support for different Model Converters.
+
+These are needed when swagger is unable to extract a schema from a class.
+
+Add the following dependency:
+
+<Tabs>
+  <TabItem value="Groovy" label="Groovy" default>
+    <CodeBlock language="groovy">{CodeCommonModelGroovy}</CodeBlock>
+  </TabItem>
+  <TabItem value="Maven" label="Maven">
+    <CodeBlock language="xml">{CodeCommonModelMaven}</CodeBlock>
+  </TabItem>
+</Tabs>
+Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-common-model-converters?color=green&label=springwolf&style=plastic)
+
+### `javax.money.MonetaryAmount`
+
+Adding a model converter is demoed in [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters)
+
+## Generic Binding
+
+<Tabs>
+    <TabItem value="Groovy" label="Groovy" default>
+        <CodeBlock language="groovy">{CodeGenericBindingGroovy}</CodeBlock>
+    </TabItem>
+    <TabItem value="Maven" label="Maven">
+        <CodeBlock language="xml">{CodeGenericBindingMaven}</CodeBlock>
+    </TabItem>
+</Tabs>
+Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-json-schema?color=green&label=springwolf&style=plastic)
+
+Specific bindings are provided for the different [supported protocols](introduction/supported-protocols) but if you need
+to document a protocol that's not support yet, you can use this generic binding and specify any property you need.
+
+### `@AsyncGenericOperationBinding`
+
+The annotation parameter `type` is expected to contain the id of a valid [operation binding protocol](https://www.asyncapi.com/docs/reference/specification/v3.0.0#operationBindingsObject)
+but no validation is done.
+
+The annotation parameter `fields` is intended to contain the fields that describe the protocol fields.
+
+* **Key-Value**: A simple field can be described like `{"key-name=value"}`
+* **Array**: An array structure can be defined like `{"key=[valueA, valueB, valueC]"}`
+* **Map**: A map can be defined as `{"nested.keyA=value", "nested.keyB=value", "nested.keyC.subvalue=value"}`
+
+You can define anything and there is **no validation**.
+
+```java
+@AsyncGenericOperationBinding(
+    type = "custom-binding",
+    fields = {
+        "internal-field=customValue",
+        "nested.key=nestedValue",
+        "listKey=[a,b,c,d,e]"
+    }
+)
+```
+
+## Json-Schema
+
+The [`springwolf-add-ons/springwolf-json-schema`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-json-schema) adds the [json-schema](https://json-schema.org) schema to the AsyncAPI document.
+
+Add the following dependency:
+
+<Tabs>
+    <TabItem value="Groovy" label="Groovy" default>
+        <CodeBlock language="groovy">{CodeJsonSchemaGroovy}</CodeBlock>
+    </TabItem>
+    <TabItem value="Maven" label="Maven">
+        <CodeBlock language="xml">{CodeJsonSchemaMaven}</CodeBlock>
+    </TabItem>
+</Tabs>
+Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-json-schema?color=green&label=springwolf&style=plastic)
+
+## Kotlinx Serialization
+
+:::caution
+This add-on is still **Beta** so some features may not be yet implemented or some issues may be
+expected. Please, fill a [SpringWold Issue](https://github.com/springwolf/springwolf.github.io/issues/new) if you find
+any bug or a missing feature.
+:::
+
+To support [Kotlinx Serialization](https://github.com/Kotlin/kotlinx.serialization) classes, add the following dependency:
+
+<Tabs>
+    <TabItem value="Groovy" label="Groovy" default>
+        <CodeBlock language="groovy">{CodeKotlinxGroovy}</CodeBlock>
+    </TabItem>
+    <TabItem value="Maven" label="Maven">
+        <CodeBlock language="xml">{CodeKotlinxMaven}</CodeBlock>
+    </TabItem>
+</Tabs>
+Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kotlinx-serialization-model-converter?color=green&label=springwolf&style=plastic)
+
+Using this add-on, any Kotlin class annotated with the `@Serializable` annotation is _properly_ converted to AsyncAPI specification.
+
+The fields annotated with `@SerialName` are named as defined in the annotation.
+
+**Known issues:**
+
+* Polymorphism is still **not** supported. See [issue #707](https://github.com/springwolf/springwolf-core/issues/707)

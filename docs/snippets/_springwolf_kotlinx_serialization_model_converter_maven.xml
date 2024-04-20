@@ -1,0 +1,7 @@
+<dependencies>
+    <dependency>
+        <groupId>io.github.springwolf</groupId>
+        <artifactId>springwolf-kotlinx-serialization-model-converter</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+</dependencies>
