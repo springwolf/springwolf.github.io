@@ -35,7 +35,7 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       navbar: {
         title: 'Springwolf',
         logo: {
@@ -87,7 +87,12 @@ const config = {
           'properties'
         ],
       },
-    }),
+      algolia: {
+        appId: 'FJKSCGAWR9',
+        apiKey: '1a7202a649763a06d9897dfe12527d72',
+        indexName: 'springwolf',
+      },
+    },
 };
 
 module.exports = config;
