@@ -56,13 +56,14 @@ Some wrappers are automatically unwrapped, including `Message<String>`, which be
 The [configuration property](configuration.mdx) to modify the defaults is currently in _beta_.
 :::
 
-Assuming a method signature of `sendMessage(Function<Void, String> msg)`, where the actual payload is located in parameter index 1 (String).
-Adding the configuration property `springwolf.payload.extractable-classes.java.util.function.Function=1` tells Springwolf how to handle this payload type.
+Assuming a method signature of `sendMessage(ConsumerRecord<String, MyEvent> msg)`, where the actual payload is located in parameter index 1 (String).
+Adding the configuration property `springwolf.payload.extractable-classes.org.apache.kafka.clients.consumer.ConsumerRecord=1` tells Springwolf how to handle this payload type.
 
-The configuration property is split into three parts.
-First, the base property `springwolf.payload.extractable-classes`.
-Second, the canonical class name, `java.util.function.Function` in this case.
-And third, the generic parameter index (`1`).
+The configuration property is split into three parts:
+
+1. The base configuration property `springwolf.payload.extractable-classes`.
+2. The canonical class name, `org.apache.kafka.clients.consumer.ConsumerRecord` in this case.
+3. The parameter index (`1`) of the actual payload class (`MyEvent`).
 
 ## Schema
 
