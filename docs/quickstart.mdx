@@ -36,8 +36,8 @@ springwolf.docket.base-package=io.github.springwolf.example.consumers
 springwolf.docket.info.title=${spring.application.name}
 springwolf.docket.info.version=1.0.0
 
-springwolf.docket.servers.kafka.protocol=kafka
-springwolf.docket.servers.kafka.host=${kafka.bootstrap.servers:localhost:29092}
+springwolf.docket.servers.kafka-server.protocol=kafka
+springwolf.docket.servers.kafka-server.host=${kafka.bootstrap.servers:localhost:29092}
 ```
 
 *Make sure to change the value of `springwolf.docket.base-package` to the package containing your listeners, so that Springwolf will automatically pick them up.*
