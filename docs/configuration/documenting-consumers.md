@@ -30,7 +30,7 @@ Below is an example to demonstrate the annotation:
 @AsyncListener(operation = @AsyncOperation(
         channelName = "example-consumer-topic",
         description = "Customer uploaded an example payload", // Optional
-        servers = {"kafka"}, // Optional
+        servers = {"kafka-server"}, // Optional
         headers = @AsyncOperation.Headers( // Optional
                 schemaName = "SpringKafkaDefaultHeaders",
                 values = {
@@ -73,7 +73,7 @@ Optional. The headers describing the metadata of the payload.
 ### Servers
 
 Optional. Useful when an application is connect to multiple brokers and wants to indicate to which broker the channel belongs to.
-The server needs to exist in [configuration > Servers](configuration.mdx) as well.
+The server name needs to exist in [configuration > Servers](configuration.mdx) as well.
 
 ## `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
 
