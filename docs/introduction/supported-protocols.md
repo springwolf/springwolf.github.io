@@ -37,11 +37,14 @@ Springwolf also provides some libraries to document bindings. Those libraries pr
 
 The supported binding annotations are:
 
-| Protocol      | Annotations                         | Latest Plugin Version                                                                                                                                                         |
-|---------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| GooglePubSub  | `@GooglePubSubAsyncChannelBinding`  | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-googlepubsub-binding?color=green&label=springwolf-googlepubsub-binding&style=plastic) |
-| SNS           | `@SnsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns-binding?color=green&label=springwolf-sns-binding&style=plastic)                   |
-| SQS           | `@SqsAsyncOperationBinding`         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs-binding?color=green&label=springwolf-sqs-binding&style=plastic)                   |
+| Protocol     | Annotations                        | Latest Plugin Version                                                                                                                                                         |
+|--------------|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AMQP         | `@AmqpAsyncOperationBinding`       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp-binding?color=green&label=springwolf-amqp-binding&style=plastic)                 |
+| GooglePubSub | `@GooglePubSubAsyncChannelBinding` | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-googlepubsub-binding?color=green&label=springwolf-googlepubsub-binding&style=plastic) |
+| JMS          | `@JmsAsyncOperationBinding`        | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-jms-binding?color=green&label=springwolf-jms-binding&style=plastic)                   |
+| Kafka        | `@KafkaAsyncOperationBinding`      | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka-binding?color=green&label=springwolf-kafka-binding&style=plastic)               |
+| SNS          | `@SnsAsyncOperationBinding`        | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns-binding?color=green&label=springwolf-sns-binding&style=plastic)                   |
+| SQS          | `@SqsAsyncOperationBinding`        | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs-binding?color=green&label=springwolf-sqs-binding&style=plastic)                   |
 
 :::info
 See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
