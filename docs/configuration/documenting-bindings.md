@@ -167,7 +167,7 @@ The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMe
 
 `OrderingKey`: If non-empty, identifies related messages for which publish order should be respected
 
-`Schema Definition`: The Schema Definition Object is used to describe the Google Cloud Pub/Sub Schema Object with AsyncAPI. While some of this information could be, or is, described using native AsyncAPI, for consistency it makes sense to provide this information here at all times, especially for cases where AsyncAPI doesn't natively support describing payloads using a supported Google Cloud Pub/Sub schema format like Protobuf
+`Schema Definition`: The Schema Definition Object is used to describe the Google Cloud Pub/Sub Schema Object with AsyncAPI. While some of this information could be, or is, described using native AsyncAPI, for consistency it makes sense to always provide this information here, especially for cases where AsyncAPI doesn't natively support describing payloads using a supported Google Cloud Pub/Sub schema format like Protobuf
 
 - name: The name of the schema
 
