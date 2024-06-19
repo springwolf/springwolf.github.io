@@ -28,6 +28,7 @@ When building own scanner plugins, your plugin will need to implement the `Chann
 
 `springwolf-core` runs all scanners and merges the found results together into one AsyncAPI document.
 When the same channel/topic is found multiple times, it's merged as well.
+One example of such, is when a method uses the Springwolf `@AsyncListener` annotation together with the protocol annotation, like `@KafkaListener`.
 
 The result is a [`ChannelItem`](https://www.asyncapi.com/docs/reference/specification/v3.0.0#channelObject).
 The `ChannelObject` contains the `Message` for the receive and/or send operation.
