@@ -98,6 +98,13 @@ class ListWrapper extends ArrayList<String> {}
 public void sendMessage(ListWrapper<String> msg) {}
 ```
 
+## Release Notes / Migration Guide / Updating / Upgrading
+
+Releases are managed in [GitHub Releases](https://github.com/springwolf/springwolf-core/releases),
+which feature noteworthy changes, the full changelog and notes on how to migrate.
+
+Since each release has a git _tag_, the [Springwolf examples for each plugin](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples) showcase the use of Springwolf for any previous version.
+
 ### How to migrate from Springwolf 0.18.0 to 1.0.0
 
 See [Release 1.0.0](https://github.com/springwolf/springwolf-core/releases/tag/v1.0.0).
