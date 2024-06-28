@@ -24,23 +24,7 @@ Below is an example to demonstrate the annotation:
 @AsyncPublisher(operation = @AsyncOperation(
         channelName = "example-producer-topic",
         description = "Customer uploaded an example payload", // Optional
-        servers = {"kafka-server"}, // Optional
-        headers = @AsyncOperation.Headers( // Optional
-                schemaName = "SpringKafkaDefaultHeaders",
-                values = {
-                        @AsyncOperation.Headers.Header(
-                                name = DEFAULT_CLASSID_FIELD_NAME,
-                                description = "Spring Type Id Header",
-                                value = "io.github.springwolf.example.dtos.ExamplePayloadDto"
-                        ),
-                        // (demonstrating https://cloudevents.io) 
-                        @AsyncOperation.Headers.Header(
-                                name = AsyncHeadersCloudEventConstants.TYPE,
-                                description = AsyncHeadersCloudEventConstants.TYPE_DESC,
-                                value = "NestedPayloadDto.v1")
-                        // ...
-                }
-        )
+        servers = {"kafka-server"} // Optional
 ))
 @KafkaAsyncOperationBinding
 public void sendMessage(ExamplePayloadDto msg) {
@@ -59,10 +43,6 @@ The channel name (or topic name in case of Kafka) - this is the name that will b
 ### Description
 
 Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
-
-### Header
-
-Optional. The headers describing the metadata of the payload.
 
 ### Servers
 
