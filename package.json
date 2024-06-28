@@ -10,6 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "lint": "vale docs/ && npm run lint:md && npm run lint:mdx",
     "lint:md": "markdownlint --config conf/.markdownlint.json --ignore node_modules/ \"./docs/**/*.md\"",
     "lint:md:fix": "markdownlint --config conf/.markdownlint.json --fix --ignore node_modules/ \"./docs/**/*.md\"",
     "lint:mdx": "markdownlint --config conf/.mdx.markdownlint.json --ignore node_modules/ \"./docs/**/*.mdx\"",
