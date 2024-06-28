@@ -12,7 +12,7 @@ For these use-cases, Springwolf provides additional ways to explicitly add them 
 To document consumers, either:
 
 - add the `@AsyncListener` annotation or
-- rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+- rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@MessageMapping`, `@RabbitListener`, `@SqsListener`, `@SendTo`, `@SendToUser`
 
 You are free to use both options together. Channel and operation, documented via `@AsyncListener` have a higher precedence than auto-detected annotations.
 

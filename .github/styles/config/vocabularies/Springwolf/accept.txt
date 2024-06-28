@@ -12,4 +12,5 @@ Kotlinx
 Protobuf
 Springfox
 Springwolf
+STOMP
 UI
