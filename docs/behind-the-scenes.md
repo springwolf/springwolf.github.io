@@ -20,7 +20,7 @@ From there, Springwolf forwards the message to the protocol specific producer.
 ## Plugins
 
 `springwolf-core` provides the base functionality to orchestrate the scanning and building of the AsyncAPI document.
-The different protocol (AMQP, Cloud-Stream, JMS, Kafka, SNS, SQS) are supported through plugins.
+The different protocol (AMQP, Cloud-Stream, JMS, Kafka, SNS, SQS, STOMP/WebSocket) are supported through plugins.
 These plugins are found through the Spring dependency injection functionality.
 When building own scanner plugins, your plugin will need to implement the `ChannelsScanner` interface.
 

@@ -11,10 +11,17 @@ For these use-cases, Springwolf provides additional ways to explicitly add them 
 
 To document consumers, either:
 
-- add the `@AsyncListener` annotation or
-- rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
+- rely on the auto-detection of `@JmsListener`, `@KafkaListener`, `@MessageMapping`, `@RabbitListener`, `@SendTo`, `@SendToUser`, `@SqsListener`
+- and/or use the `@AsyncListener` annotation
 
 You are free to use both options together. Channel and operation, documented via `@AsyncListener` have a higher precedence than auto-detected annotations.
+
+## Auto-detection
+
+The `@JmsListener`, `@KafkaListener`, `@MessageMapping`, `@RabbitListener`, `@SendTo`, `@SendToUser`, `@SqsListener` annotations are detected automatically.
+There is nothing more to do.
+
+Use the other option if the provided documentation is insufficient.
 
 ## `@AsyncListener`
 
@@ -30,23 +37,7 @@ Below is an example to demonstrate the annotation:
 @AsyncListener(operation = @AsyncOperation(
         channelName = "example-consumer-topic",
         description = "Customer uploaded an example payload", // Optional
-        servers = {"kafka-server"}, // Optional
-        headers = @AsyncOperation.Headers( // Optional
-                schemaName = "SpringKafkaDefaultHeaders",
-                values = {
-                        @AsyncOperation.Headers.Header(
-                                name = DEFAULT_CLASSID_FIELD_NAME,
-                                description = "Spring Type Id Header",
-                                value = "io.github.springwolf.example.dtos.ExamplePayloadDto"
-                        ),
-                        // (demonstrating https://cloudevents.io) 
-                        @AsyncOperation.Headers.Header(
-                                name = AsyncHeadersCloudEventConstants.TYPE,
-                                description = AsyncHeadersCloudEventConstants.TYPE_DESC,
-                                value = "NestedPayloadDto.v1")
-                        // ...
-                }
-        )
+        servers = {"kafka-server"} // Optional
 ))
 @KafkaAsyncOperationBinding
 public void receiveMessage(ExamplePayloadDto msg) {
@@ -66,17 +57,7 @@ The channel name (or topic name in case of Kafka) - this is the name that will b
 
 Optional. The description allows for human-friendly text to verbosely explain the _message_, like specific domain, what the topic is used for and which data it contains.
 
-### Header
-
-Optional. The headers describing the metadata of the payload.
-
 ### Servers
 
 Optional. Useful when an application is connect to multiple brokers and wants to indicate to which broker the channel belongs to.
 The server name needs to exist in [configuration > Servers](configuration.mdx) as well.
-
-## `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener`
-
-The `@JmsListener`, `@KafkaListener`, `@RabbitListener`, `@SqsListener` annotations are detected automatically.
-There is nothing more to do.
-Use the other option if the provided documentation is insufficient.

@@ -53,6 +53,14 @@ Associate this operation with SQS, see [operation-binding] for details.
 @SqsAsyncOperationBinding
 ```
 
+### `@StompAsyncOperationBinding`
+
+Associate this operation with STOMP (WebSocket), see [operation-binding] for details.
+
+```java
+@StompAsyncOperationBinding
+```
+
 ## Generic annotation
 
 This binding is generic, so that any properties can be specified.
@@ -123,7 +131,7 @@ The group id that will be used during message consumption
 
 The client id to identify the consumer
 
-### Google PubSub binding annotations
+### Google PubSub
 
 #### Channel Binding Object
 
@@ -148,7 +156,7 @@ The Channel Bindings Object is used to describe the Google Cloud Pub/Sub Topic d
 
 - A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage
 
-`Schema Settings`:The Schema Settings Object is used to describe the Google Cloud Pub/Sub SchemaSettings.
+`Schema Settings`: The Schema Settings Object is used to describe the Google Cloud Pub/Sub SchemaSettings.
 
 - encoding: The encoding of the message
 - firstRevisionId: The minimum (inclusive) revision allowed for validating messages

@@ -38,6 +38,12 @@ public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
 }
 ```
 
+## ObjectMapper in `DefaultAsyncApiSerializerService`
+
+The `DefaultAsyncApiSerializerService` is responsible for serializing the AsyncAPI document into a `String` for the Controller.
+
+Use `DefaultAsyncApiSerializerService#getJsonObjectMapper()` and `DefaultAsyncApiSerializerService#getYamlObjectMapper()` to customize the `ObjectMapper`.
+
 ## `ChannelScanners` - Channel detection
 
 All `ChannelScanner` beans are called to scan for channels.
