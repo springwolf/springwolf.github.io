@@ -43,7 +43,7 @@ public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
 By implementing the `OperationCustomizer` interface, the Operation object can be modified after Springwolf has scanned an
 annotated method and extracted the data.
 
-It is possible to create multiple implementations of `OperationCustomizer`.
+It's possible to create multiple implementations of `OperationCustomizer`.
 The order of execution can be controlled by the `@Order` annotation of Spring.
 
 An example to conditionally add a custom AsyncAPI tag for Kafka batch listeners is shown bellow:
@@ -78,13 +78,13 @@ Remember to register all payloads in the `ComponentsService`.
 
 ## Customize internal behavior  
 
-Springwolf uses `@ConditionalOnMissingBean` annotations for almost all internal Spring beans.
+Springwolf uses `@ConditionalOnMissingBean` annotations for most internal Spring beans.
 If you have a special use-case that requires custom logic,
 you can replace almost every Springwolf bean by adding your custom implementation as a bean to the Spring context.
 
 :::note
-Replacing Springwolf beans with custom implementations is only for experts,
-and we do **not** offer support for using internal API.
+Replacing Springwolf beans with custom implementations is for experts only,
+and **no** support is offered for using internal API.
 
 Custom implementations may break during updates without notice.
 :::
