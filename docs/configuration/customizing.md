@@ -46,7 +46,7 @@ annotated method and extracted the data.
 It's possible to create multiple implementations of `OperationCustomizer`.
 The order of execution can be controlled by the `@Order` annotation of Spring.
 
-An example to conditionally add a custom AsyncAPI tag for Kafka batch listeners is shown bellow:
+An example to conditionally add a custom AsyncAPI `tag` for Kafka batch listeners is shown below:
 
 ```java
 @Component
@@ -55,9 +55,10 @@ public class TagCustomizer implements OperationCustomizer {
     @Override
     public void customize(Operation operation, Method method) {
         KafkaListener annotation = AnnotationScannerUtil.findAnnotation(KafkaListener.class, method);
-        if (annotation != null && annotation.batch().equals("true")) {
+        if (annotation != null && "true".equals(annotation.batch())) {
             Tag tag = new Tag();
             tag.setName("batch");
+
             operation.getTags().add(tag);
         }
     }
@@ -78,13 +79,13 @@ Remember to register all payloads in the `ComponentsService`.
 
 ## Customize internal behavior  
 
-Springwolf uses `@ConditionalOnMissingBean` annotations for most internal Spring beans.
-If you have a special use-case that requires custom logic,
-you can replace almost every Springwolf bean by adding your custom implementation as a bean to the Spring context.
-
 :::note
-Replacing Springwolf beans with custom implementations is for experts only,
-and **no** support is offered for using internal API.
+Replacing Springwolf beans with custom implementations is for experts only.
+**No** support is offered for using internal API.
 
 Custom implementations may break during updates without notice.
 :::
+
+Springwolf uses `@ConditionalOnMissingBean` annotations for most internal Spring beans.
+If you have a special use-case that requires custom logic,
+you can replace almost every Springwolf bean by adding your custom implementation as a bean to the Spring context.
