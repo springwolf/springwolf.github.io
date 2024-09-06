@@ -20,6 +20,40 @@ Either create a custom spring controller to serve the file or [serve static reso
 
 Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
 
+### Unit test verification
+
+With the AsyncApi artifact (i.e. at `src/test/resources/asyncapi.json) checked into the repository,
+a unit test can verify that the current code still matches the expected AsyncApi specification.
+Additionally, a diff reveals (un)expected changes.
+
+Example unit test:
+```java
+@SpringBootTest(
+     classes = {SpringwolfKafkaExampleApplication.class},
+     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class ApiIntegrationTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    void asyncApiResourceArtifactTest() throws IOException {
+        String url = "/springwolf/docs";
+        String actual = restTemplate.getForObject(url, String.class);
+       
+        // writing the actual file can be useful for debugging (remember: gitignore)
+        Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
+
+        InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
+        String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
+
+        assertEquals(expected, actual);
+    }
+}
+```
+
+For a full example, check the [springwolf-kafka-example ApiIntegrationTest](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/ApiIntegrationTest.java)
+
 ## Troubleshooting
 
 ### Show `debug` output in the logs
