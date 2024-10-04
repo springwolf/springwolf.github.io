@@ -8,7 +8,7 @@ const FeatureList = [
     title: 'Effortless API documentation',
     description: (
       <>
-        Springwolf uses metadata already provided in the code 
+        Springwolf uses metadata already provided in the code
         to automatically create documentation.
       </>
     ),
@@ -26,7 +26,8 @@ const FeatureList = [
     title: 'Powered by AsyncAPI v3',
     description: (
       <>
-        The generated documentation is compliant with the <Link to='https://www.asyncapi.com/'>AsyncAPI specification</Link>.
+        The generated documentation is compliant with the
+        <Link to='https://www.asyncapi.com/'>AsyncAPI specification</Link>.
       </>
     ),
   },
@@ -34,7 +35,16 @@ const FeatureList = [
     title: 'Optional web-ui',
     description: (
       <>
-        Single dependency ui for API testing including event publishing.
+        Single dependency for API testing including event publishing
+        (<Link to={'https://demo.springwolf.dev'}>demo</Link>).
+      </>
+    ),
+  },
+  {
+    title: 'Integrate',
+    description: (
+      <>
+        Generate documentation in your CI/CD pipeline and publish to tools like <Link to="https://backstage.io">Backstage</Link>.
       </>
     ),
   },
@@ -47,13 +57,22 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Integrate',
+    title: 'Participate',
     description: (
       <>
-        Generate documentation in your CI/CD pipeline and publish to tools like <Link to="https://backstage.io">Backstage</Link>.
+        Something missing? Features requests and contributions are welcome.
       </>
     ),
   },
+  { },
+  {
+    title: 'Verify',
+    description: (
+      <>
+        Use an unit test to check for (un)expected changes.
+      </>
+    ),
+  }
 ];
 
 function Feature({Svg, title, description}) {

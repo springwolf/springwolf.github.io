@@ -16,9 +16,44 @@ You can use `springwolf-ui` without any other Springwolf dependency.
 `springwolf-ui` will fetch any documentation available at the `springwolf/docs` path.
 It must be in `json` format (`yaml` isn't supported).
 
-Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place your AsyncAPI document into `resources/springwolf/docs` (without file extension).
+Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place AsyncAPI document file called `docs` (without file extension) into the folder `resources/springwolf`.
 
 Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
+
+### Unit test verification
+
+With the AsyncAPI artifact checked into the repository at `src/test/resources/asyncapi.json`,
+a unit test can verify that the current code still matches the expected AsyncAPI specification.
+Additionally, a diff reveals (un)expected changes.
+
+Example unit test:
+
+```java
+@SpringBootTest(
+     classes = {SpringwolfKafkaExampleApplication.class},
+     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class ApiIntegrationTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    @Test
+    void asyncApiResourceArtifactTest() throws IOException {
+        String url = "/springwolf/docs";
+        String actual = restTemplate.getForObject(url, String.class);
+       
+        // writing the actual file can be useful for debugging (remember: gitignore)
+        Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
+
+        InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
+        String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
+
+        assertEquals(expected, actual);
+    }
+}
+```
+
+For a full example, check the [springwolf-kafka-example ApiIntegrationTest](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/ApiIntegrationTest.java)
 
 ## Troubleshooting
 
