@@ -16,7 +16,7 @@ You can use `springwolf-ui` without any other Springwolf dependency.
 `springwolf-ui` will fetch any documentation available at the `springwolf/docs` path.
 It must be in `json` format (`yaml` isn't supported).
 
-Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place your AsyncAPI document into `resources/springwolf/docs` (without file extension).
+Either create a custom spring controller to serve the file or [serve static resources with spring](https://spring.io/guides/gs/serving-web-content/) and place AsyncAPI document file called `docs` (without file extension) into the folder `resources/springwolf`.
 
 Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
 
