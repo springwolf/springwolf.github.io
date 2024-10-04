@@ -22,11 +22,12 @@ Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
 
 ### Unit test verification
 
-With the AsyncApi artifact (i.e. at `src/test/resources/asyncapi.json) checked into the repository,
-a unit test can verify that the current code still matches the expected AsyncApi specification.
+With the AsyncAPI artifact checked into the repository at `src/test/resources/asyncapi.json`,
+a unit test can verify that the current code still matches the expected AsyncAPI specification.
 Additionally, a diff reveals (un)expected changes.
 
 Example unit test:
+
 ```java
 @SpringBootTest(
      classes = {SpringwolfKafkaExampleApplication.class},

@@ -51,5 +51,5 @@ They follow the same plugin model.
 
 ## Putting it all together
 
-The `AsyncApiService` collects all the channels, schemas and general info and builds the AsyncApi document.
+The `AsyncApiService` collects all the channels, schemas and general info and builds the AsyncAPI document.
 The controller access this services to serve the document to the UI.
