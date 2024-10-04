@@ -2,6 +2,6 @@
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-common-model-converters</artifactId>
-        <version>1.4.0</version>
+        <version>1.7.0</version>
     </dependency>
 </dependencies>

@@ -1,3 +1,3 @@
 dependencies {
-    implementation 'io.github.springwolf:springwolf-kotlinx-serialization-model-converter:1.4.0'
+    implementation 'io.github.springwolf:springwolf-kotlinx-serialization-model-converter:1.7.0'
 }
