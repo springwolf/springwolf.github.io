@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.3.2">
 <title data-rh="true">Behind the scenes | Springwolf</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://www.springwolf.dev/docs/behind-the-scenes"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Behind the scenes | Springwolf"><meta data-rh="true" name="description" content="The following paragraphs describe how Springwolf works internally."><meta data-rh="true" property="og:description" content="The following paragraphs describe how Springwolf works internally."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.springwolf.dev/docs/behind-the-scenes"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.springwolf.dev/docs/behind-the-scenes" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://FJKSCGAWR9-dsn.algolia.net" crossorigin="anonymous"><link rel="search" type="application/opensearchdescription+xml" title="Springwolf" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.471f7de2.css">
-<script src="/assets/js/runtime~main.2bf6127f.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.26a26af3.js" defer="defer"></script>
 <script src="/assets/js/main.91a80cb2.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -13,7 +13,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="big-picture">Big Picture<a href="#big-picture" class="hash-link" aria-label="Direct link to Big Picture" title="Direct link to Big Picture">​</a></h2>
 <p>When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
 Based on the results, the channels/topics are extracted including payload type and merged together into an <a href="https://www.asyncapi.com/docs/reference/specification/v3.0.0" target="_blank" rel="noopener noreferrer">AsyncAPI conform document</a>.</p>
-<p>The AsyncAPI document is accessible an endpoint.
+<p>The AsyncAPI document is accessible as an endpoint.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).</p>
 <p>When publishing is enabled, the user can publish a message through the UI to another endpoint.
 From there, Springwolf forwards the message to the protocol specific producer.</p>
