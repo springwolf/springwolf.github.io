@@ -11,7 +11,7 @@ The following paragraphs describe how Springwolf works internally.
 When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
 Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncAPI conform document](https://www.asyncapi.com/docs/reference/specification/v3.0.0).
 
-The AsyncAPI document is accessible an endpoint.
+The AsyncAPI document is accessible as an endpoint.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).
 
 When publishing is enabled, the user can publish a message through the UI to another endpoint.
