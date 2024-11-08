@@ -17,21 +17,11 @@ However, until now there were no solutions for asynchronous APIs (such as AMQP, 
 
 Springwolf is compliant to [AsyncAPI](https://www.asyncapi.com), which brings the [swagger/OpenAPI](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) specification you know already from REST APIs into the world of event-driven architectures.
 
-### Demo
+## Demo
 
 View the [live demo](https://demo.springwolf.dev) of Springwolf in action.
 
-Also, the demos of the
-[AMQP](https://amqp.demo.springwolf.dev),
-[Spring Cloud Stream](https://cloud-stream.demo.springwolf.dev),
-[JMS](https://jms.demo.springwolf.dev),
-[Kafka](https://kafka.demo.springwolf.dev),
-[SNS](https://sns.demo.springwolf.dev),
-[SQS](https://sqs.demo.springwolf.dev),
-[STOMP (WebSocket)](https://stomp.demo.springwolf.dev)
-example projects are available.
-
-![Springwolf publishing demo](/img/demo.gif)
+[![Springwolf publishing demo](/img/demo.gif)](https://demo.springwolf.dev)
 
 ## What does it do
 
