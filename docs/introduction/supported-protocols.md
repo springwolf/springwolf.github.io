@@ -10,16 +10,15 @@ any protocol can be defined using Springwolf custom annotations `@AsyncListener`
 ## Native Support
 
 The following protocols are supported natively:
-
-| Protocol          | Auto-detected annotations                   | Example Project                           | Latest Plugin Version                                                                                                                                         |
+| Protocol + Demo   | Auto-detected annotations                   | Example Project                           | Latest Version                                                                                                                                         |
 |-------------------|---------------------------------------------|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AMQP (RabbitMQ)   | `@RabbitListener`                           | [`springwolf-amqp-example`][amqp]         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)                 |
-| Cloud Functions   | `@Bean` (functional interface)              | [`springwolf-cloud-stream`][cloud-stream] | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic) |
-| JMS               | `@JmsListener`                              | [`springwolf-jms-example`][jms]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-jms?color=green&label=springwolf-jms&style=plastic)                   |
-| Kafka             | `@KafkaListener`, `@KafkaHandler`           | [`springwolf-kafka-example`][kafka]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)               |
-| SNS               |                                             | [`springwolf-sns-example`][sns]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns?color=green&label=springwolf-sns&style=plastic)                   |
-| SQS               | `@SqsListener`                              | [`springwolf-sqs-example`][sqs]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs?color=green&label=springwolf-sqs&style=plastic)                   |
-| STOMP (WebSocket) | `@MessageMapping`, `@SendTo`, `@SendToUser` | [`springwolf-stomp-example`][stomp]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-stomp?color=green&label=springwolf-stomp&style=plastic)               |
+| [AMQP (RabbitMQ)](https://amqp.demo.springwolf.dev)   | `@RabbitListener`                           | [`springwolf-amqp-example`][amqp]         | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-amqp?color=green&label=springwolf-amqp&style=plastic)                 |
+| [Cloud Functions](https://cloud-stream.demo.springwolf.dev)   | `@Bean` (functional interface)              | [`springwolf-cloud-stream`][cloud-stream] | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-cloud-stream?color=green&label=springwolf-cloud-stream&style=plastic) |
+| [JMS](https://jms.demo.springwolf.dev)               | `@JmsListener`                              | [`springwolf-jms-example`][jms]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-jms?color=green&label=springwolf-jms&style=plastic)                   |
+| [Kafka](https://kafka.demo.springwolf.dev)             | `@KafkaListener`, `@KafkaHandler`           | [`springwolf-kafka-example`][kafka]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-kafka?color=green&label=springwolf-kafka&style=plastic)               |
+| [SNS](https://sns.demo.springwolf.dev)               |                                             | [`springwolf-sns-example`][sns]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sns?color=green&label=springwolf-sns&style=plastic)                   |
+| [SQS](https://sqs.demo.springwolf.dev)               | `@SqsListener`                              | [`springwolf-sqs-example`][sqs]           | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-sqs?color=green&label=springwolf-sqs&style=plastic)                   |
+| [STOMP (WebSocket)](https://stomp.demo.springwolf.dev) | `@MessageMapping`, `@SendTo`, `@SendToUser` | [`springwolf-stomp-example`][stomp]       | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-stomp?color=green&label=springwolf-stomp&style=plastic)               |
 
 Check out the example projects, which include a full `docker-compose` setup.
 The examples are simple, easy to start with, good for testing and reproducing bugs.
@@ -51,6 +50,21 @@ The supported binding annotations are:
 :::info
 See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
 :::
+
+## Wire format (Data serialization)
+
+Besides the classical JSON events, Springwolf has best-effort support for some other wire formats.
+
+### Avro
+
+[Avro](https://avro.apache.org) is supported out-of-the box and demoed in [kafka example](#native-support).
+
+### Protobuf
+
+[Protobuf](https://protobuf.dev) is demoed in [kafka example](#native-support).
+
+To remove the fields generated by the Protobuf class generated, add a `ModelResolver` bean, which uses the `ProtobufModule` to your project.
+See [ObjectMapperConfiguration](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/springwolf/examples/kafka/configuration/ObjectMapperConfiguration.java) for details.
 
 [amqp]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-amqp-example
 [cloud-stream]:https://github.com/springwolf/springwolf-core/tree/master/springwolf-examples/springwolf-cloud-stream-example
