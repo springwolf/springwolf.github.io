@@ -27,7 +27,7 @@ const FeatureList = [
     description: (
       <>
         The generated documentation is compliant with the
-        <Link to='https://www.asyncapi.com/'>AsyncAPI specification</Link>.
+        <Link to='https://www.asyncapi.com/'> AsyncAPI specification</Link>.
       </>
     ),
   },
