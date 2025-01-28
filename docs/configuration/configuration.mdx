@@ -15,6 +15,8 @@ Add the following to the spring `application.properties` file:
 
 It's recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it's not mandatory, and if they're scattered across multiple packages, just provide the highest in hierarchy package that contains all classes.
 
+You can add multiple base packages separated by commas.
+
 The `base-package` will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@JmsListener`, `@KafkaListener`, `MessageMapping`, `@RabbitListener`, `@SqsListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
 `@Configuration` classes are scanned for `@Bean` containing the previously mentioned annotations as well.
 
