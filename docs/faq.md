@@ -100,18 +100,23 @@ Be sure to enable fully qualified names ([`use-fqn`](configuration/configuration
 
 Spring Security allows to limit access to authorized users.
 
-### Consumers are detected multiple times (with different payloads)
+### Classes have fully qualified names (`io.springwolf.package.ClassName`)
 
-When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
-This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
-
-Springwolf uses on scanners to find all consumer and producers in your application.
-Most likely two scanners found your consumer/producer each.
-See [configuration](configuration/configuration.mdx) to disable scanners.
+Disable the [fully qualified class name (FQN) option (`springwolf.use-fqn=false`)](configuration/configuration.mdx).
 
 ### Only one of multiple classes with the same name (different package) is detected
 
-Enable the fully qualified class name (FQN) option (`springwolf.use-fqn=true`) so that Springwolf uses the FQN internally.
+Enable the [fully qualified class name (FQN) option (`springwolf.use-fqn=true`)](configuration/configuration.mdx).
+
+### Springwolf interferes with OpenAPI documentation
+
+Springwolf uses `swagger-core` to analyze classes, which is used by some OpenAPI libraries like `springdoc-openapi`.
+`swagger-core` configuration is partly global and can't be isolated.
+
+Options:
+
+1. Use the same settings in Springwolf and the other library (including the [fully qualified class name (FQN) option (`springwolf.use-fqn=false`)](configuration/configuration.mdx)).
+2. Don't run Springwolf and the other library at the same time, for example by generating the documentation at build time.
 
 ### Generic types (List) don't contain item properties
 
@@ -132,6 +137,49 @@ class ListWrapper extends ArrayList<String> {}
 
 public void sendMessage(ListWrapper<String> msg) {}
 ```
+
+### Consumers are detected multiple times (with different payloads)
+
+When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
+This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
+
+Springwolf uses on scanners to find all consumer and producers in your application.
+Most likely two scanners found your consumer/producer each.
+See [configuration](configuration/configuration.mdx) to disable scanners.
+
+## Usage Patterns
+
+### How to access the generated documentation within java
+
+Use the `AsyncApiService` to access the generated documentation.
+
+### How to customize the generated documentation
+
+See the [customization page](configuration/customizing.md)
+
+### How to generate the documentation at build time
+
+#### With Gradle
+
+You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
+for Springwolf by pointing it to the Springwolf docs endpoint:
+
+```groovy
+openApi {
+    apiDocsUrl = "http://localhost:8080/springwolf/docs"
+    outputDir = file("$buildDir/docs")
+    outputFileName = "async-api.json"
+}
+```
+
+The [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
+contains a working example.
+
+The plugin will startup the spring boot application by using the `bootRun` task and then try to download the documentation
+from the given `apiDocsUrl` and store it in the `outputDir` and with the given `outputFileName`.
+
+If your application is unable to start up with the `bootRun` task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
+properties can help you.
 
 ## Release Notes / Migration Guide / Updating / Upgrading
 
@@ -160,33 +208,3 @@ Last versions to support Spring Boot 2.X:
 - `springwolf-core:0.6.0`
 - `springwolf-kafka:0.10.0`
 - `springwolf-ui:0.6.0`
-
-## Usage Patterns
-
-### How to access the generated documentation within java
-
-Use the `AsyncApiService` to access the generated documentation.
-
-### How to generate the documentation at build time
-
-#### With Gradle
-
-You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for Springwolf by pointing it to the Springwolf docs endpoint:
-
-```groovy
-openApi {
-    apiDocsUrl = "http://localhost:8080/springwolf/docs"
-    outputDir = file("$buildDir/docs")
-    outputFileName = "async-api.json"
-}
-```
-
-The [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
-contains a working example.
-
-The plugin will startup the spring boot application by using the `bootRun` task and then try to download the documentation
-from the given `apiDocsUrl` and store it in the `outputDir` and with the given `outputFileName`.
-
-If your application is unable to start up with the `bootRun` task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
-properties can help you.
