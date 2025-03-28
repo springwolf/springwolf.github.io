@@ -80,7 +80,7 @@ You can define anything and there is no validation.
 ```
 
 :::info
-See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding) for more information
+See [Add-Ons / Generic Annotation Binding](../introduction/add-ons.mdx#generic-binding) for more information
 :::
 
 ## Binding properties

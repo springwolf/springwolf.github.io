@@ -48,7 +48,7 @@ The supported binding annotations are:
 | STOMP (WebSocket) | `@StompAsyncOperationBinding`      | ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-stomp-binding?color=green&label=springwolf-stomp-binding&style=plastic)               |
 
 :::info
-See [Add-Ons / Generic Annotation Binding](../add-ons#generic-binding)
+See [Add-Ons / Generic Annotation Binding](add-ons.mdx#generic-binding)
 :::
 
 ## Wire format (Data serialization)
