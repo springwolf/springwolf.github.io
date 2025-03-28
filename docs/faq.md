@@ -20,40 +20,9 @@ Either create a custom spring controller to serve the file or [serve static reso
 
 Note: `springwolf-ui` doesn't support the full AsyncAPI spec.
 
-### Unit test verification
+### Springwolf in unit / integration test
 
-With the AsyncAPI artifact checked into the repository at `src/test/resources/asyncapi.json`,
-a unit test can verify that the current code still matches the expected AsyncAPI specification.
-Additionally, a diff reveals (un)expected changes.
-
-Example unit test:
-
-```java
-@SpringBootTest(
-     classes = {SpringwolfKafkaExampleApplication.class},
-     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ApiIntegrationTest {
-
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Test
-    void asyncApiResourceArtifactTest() throws IOException {
-        String url = "/springwolf/docs";
-        String actual = restTemplate.getForObject(url, String.class);
-       
-        // writing the actual file can be useful for debugging (remember: gitignore)
-        Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
-
-        InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
-        String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
-
-        assertEquals(expected, actual);
-    }
-}
-```
-
-For a full example, check the [springwolf-kafka-example ApiIntegrationTest](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/ApiIntegrationTest.java)
+See [Static Generation](static-generation.md).
 
 ## Troubleshooting
 
@@ -115,8 +84,8 @@ Springwolf uses `swagger-core` to analyze classes, which is used by some OpenAPI
 
 Options:
 
-1. Use the same settings in Springwolf and the other library (including the [fully qualified class name (FQN) option (`springwolf.use-fqn=false`)](configuration/configuration.mdx)).
-2. Don't run Springwolf and the other library at the same time, for example by generating the documentation at build time.
+1. Use the same settings in Springwolf and the other library (including the [fully qualified class name (FQN) option](configuration/configuration.mdx)).
+2. Don't run Springwolf and the other library at the same time, for example by [generating the documentation at build time](static-generation.md).
 
 ### Generic types (List) don't contain item properties
 
@@ -156,30 +125,6 @@ Use the `AsyncApiService` to access the generated documentation.
 ### How to customize the generated documentation
 
 See the [customization page](configuration/customizing.md)
-
-### How to generate the documentation at build time
-
-#### With Gradle
-
-You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for Springwolf by pointing it to the Springwolf docs endpoint:
-
-```groovy
-openApi {
-    apiDocsUrl = "http://localhost:8080/springwolf/docs"
-    outputDir = file("$buildDir/docs")
-    outputFileName = "async-api.json"
-}
-```
-
-The [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
-contains a working example.
-
-The plugin will startup the spring boot application by using the `bootRun` task and then try to download the documentation
-from the given `apiDocsUrl` and store it in the `outputDir` and with the given `outputFileName`.
-
-If your application is unable to start up with the `bootRun` task, see if [customBootRun](https://github.com/springdoc/springdoc-openapi-gradle-plugin#customization)
-properties can help you.
 
 ## Release Notes / Migration Guide / Updating / Upgrading
 

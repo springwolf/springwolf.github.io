@@ -32,7 +32,7 @@ class ApiIntegrationTest {
         String actual = restTemplate.getForObject(url, String.class);
        
         // then
-        // writing the actual file can be useful for debugging (remember: gitignore)
+        // writing the actual file can be useful for debugging (remember: .gitignore)
         Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
 
         // then
@@ -56,10 +56,11 @@ class StandaloneTest {
     @Test
     public void asyncApiStandaloneArtifactTest() throws IOException {
         // given
-        StandaloneFactory standaloneFactory = new DefaultStandaloneFactory();
+        StandaloneApplication standaloneApplication =
+                DefaultStandaloneApplication.builder().buildAndStart();
 
         // when
-        AsyncAPI asyncApi = standaloneFactory.getAsyncApiService().getAsyncAPI();
+        AsyncAPI asyncApi = standaloneApplication.getAsyncApiService().getAsyncAPI();
         String actual = new DefaultAsyncApiSerializerService().toJsonString(asyncApi);
 
         // then
@@ -74,15 +75,15 @@ class StandaloneTest {
 }
 ```
 
-By default, only the `io.github.springwolf` package is scanned and `@StandaloneConfiguration` in other packages _not_ picked up.
-Use the `DefaultStandaloneFactory` constructor to customize the Spring environment, loaded custom beans and configurations.
+By default, only the `io.github.springwolf` package is scanned and `@StandaloneConfiguration` in other packages are _not_ picked up.
+Use the `DefaultStandaloneApplication.builder()` to customize the Spring environment, load custom beans and configurations.
 
-The [`application.properties` configuration](configuration/configuration.mdx) are picked up.
+The [`application.properties` configuration](configuration/configuration.mdx) is picked up.
 
 ## Gradle Plugin (full spring context)
 
 You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for Springwolf by pointing it to the Springwolf docs endpoint:
+for Springwolf (taken from [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)):
 
 ```groovy
 openApi {
@@ -91,9 +92,6 @@ openApi {
     outputFileName = "asyncapi.json"
 }
 ```
-
-The [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)
-contains a working example.
 
 The plugin will start up the spring boot application by using the `bootRun` task and then try to download the documentation
 from the given `apiDocsUrl` and store it in the `outputDir` and with the given `outputFileName`.
