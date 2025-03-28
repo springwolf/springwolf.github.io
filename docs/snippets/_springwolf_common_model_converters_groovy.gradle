@@ -1,3 +1,0 @@
-dependencies {
-    implementation 'io.github.springwolf:springwolf-common-model-converters:1.11.0'
-}

@@ -1,0 +1,3 @@
+dependencies {
+    implementation 'io.github.springwolf:springwolf-json-schema:1.12.0'
+}
