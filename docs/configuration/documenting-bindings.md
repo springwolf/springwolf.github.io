@@ -9,63 +9,23 @@ Add at least one binding so that readers know the protocol in use and functional
 
 To use the protocol specific bindings, ensure that you have added the corresponding [plugin](../introduction/supported-protocols.md).
 
-## Protocol specific annotations
+## Operation binding
 
-### `@AmqpAsyncOperationBinding`
+Operation bindings describe protocol-specific information for the specific action (publish or subscribe).
+See [operation-binding] for details.
 
-Associate this operation with AMQP, see [operation-binding] for details.
+Supported protocol specific bindings:
 
-```java
-@AmqpAsyncOperationBinding(cc = "example-topic-routing-key")
-```
+- `@AmqpAsyncOperationBinding`
+- `@KafkaAsyncOperationBinding`
+- `@JmsAsyncOperationBinding`
+- `@SnsAsyncOperationBinding`
+- `@SqsAsyncOperationBinding`
+- `@StompAsyncOperationBinding`
 
-### `@KafkaAsyncOperationBinding`
+### Generic annotation
 
-Associate this operation with Kafka, see [operation-binding] for details.
-
-```java
-@KafkaAsyncOperationBinding(
-        bindingVersion = "1"
-)
-```
-
-### `@JmsAsyncOperationBinding`
-
-Associate this operation with JMS, see [operation-binding] for details.
-
-```java
-@JmsAsyncOperationBinding
-```
-
-### `@SnsAsyncOperationBinding`
-
-Associate this operation with SNS, see [operation-binding] for details.
-
-```java
-@SnsAsyncOperationBinding
-```
-
-### `@SqsAsyncOperationBinding`
-
-Associate this operation with SQS, see [operation-binding] for details.
-
-```java
-@SqsAsyncOperationBinding
-```
-
-### `@StompAsyncOperationBinding`
-
-Associate this operation with STOMP (WebSocket), see [operation-binding] for details.
-
-```java
-@StompAsyncOperationBinding
-```
-
-## Generic annotation
-
-This binding is generic, so that any properties can be specified.
-
-### `@AsyncGenericOperationBinding`
+For custom protocols or properties, use the generic binding.
 
 You can define anything and there is no validation.
 
@@ -82,6 +42,16 @@ You can define anything and there is no validation.
 :::info
 See [Add-Ons / Generic Annotation Binding](../introduction/add-ons.mdx#generic-binding) for more information
 :::
+
+## Channel binding
+
+Channel bindings describe protocol-specific information for the channel (topic, queue, etc).
+See [channel-binding] for details.
+
+Supported protocol specific bindings:
+
+- `@KafkaAsyncChannelBinding`
+- `@GooglePubSubAsyncChannelBinding`
 
 ## Binding properties
 
@@ -123,6 +93,21 @@ The routing key used when publishing a message.
 
 ### Kafka
 
+Channel Binding Object:
+
+```java
+@KafkaAsyncChannelBinding(
+        partitions = 3,
+        replicas = 1,
+        topicConfiguration =
+                @KafkaAsyncChannelBinding.KafkaChannelTopicConfiguration(
+                        cleanup = {CleanupPolicy.COMPACT, CleanupPolicy.DELETE},
+                        retentionMs = 86400000L,
+                        retentionBytes = -1L,
+                        deleteRetentionMs = 86400000L,
+                        maxMessageBytes = 1048588))
+```
+
 #### Group Id
 
 The group id that will be used during message consumption
@@ -132,8 +117,6 @@ The group id that will be used during message consumption
 The client id to identify the consumer
 
 ### Google PubSub
-
-#### Channel Binding Object
 
 The Channel Bindings Object is used to describe the Google Cloud Pub/Sub Topic details.
 
@@ -180,3 +163,4 @@ The Message Binding Object is used to describe the Google Cloud Pub/Sub PubsubMe
 - name: The name of the schema
 
 [operation-binding]: https://www.asyncapi.com/docs/reference/specification/v3.0.0#operationBindingsObject
+[channel-binding]: https://www.asyncapi.com/docs/reference/specification/v3.0.0#channelBindingsObject
