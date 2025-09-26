@@ -18,7 +18,8 @@ Additional fields can be documented.
 
 On the same method, the protocol binding is defined. More details can be found in the [bindings](documenting-bindings.md) section.
 
-Below is an example to demonstrate the annotation:
+### Single parameter
+Below is an example to demonstrate the annotation with a single parameter method:
 
 ```java
 @AsyncPublisher(operation = @AsyncOperation(
@@ -28,6 +29,23 @@ Below is an example to demonstrate the annotation:
 ))
 @KafkaAsyncOperationBinding
 public void sendMessage(ExamplePayloadDto msg) {
+    // process
+}
+```
+### Multiple parameters
+The `@Payload` annotation is necessary for methods with multiple parameters, indicating which parameter is the payload. If this annotation is missing when multiple parameters are present, the Publisher will not be documented. 
+
+The annotation is available by importing the `spring-messaging` library.
+
+Here's an example:
+```java
+@AsyncPublisher(operation = @AsyncOperation(
+        channelName = "example-producer-topic",
+        description = "Customer uploaded an example payload", // Optional
+        servers = {"kafka-server"} // Optional
+))
+@KafkaAsyncOperationBinding
+public void sendMessage(@Payload ExamplePayloadDto msg, String otherParam) {
     // process
 }
 ```
