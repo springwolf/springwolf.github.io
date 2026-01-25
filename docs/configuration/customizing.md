@@ -69,7 +69,7 @@ public class TagCustomizer implements OperationCustomizer {
 
 The `DefaultAsyncApiSerializerService` is responsible for serializing the AsyncAPI document into a `String` for the Controller.
 
-Use `DefaultAsyncApiSerializerService#getJsonObjectMapper()` and `DefaultAsyncApiSerializerService#getYamlObjectMapper()` to customize the `ObjectMapper`.
+Use `DefaultAsyncApiSerializerService#getJsonMapper()` and `DefaultAsyncApiSerializerService#getYamlMapper()` to customize the `ObjectMapper` (will change with migration to Jackson 3).
 
 ## `ChannelScanners` - Channel detection
 

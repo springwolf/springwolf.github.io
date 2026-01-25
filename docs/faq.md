@@ -29,10 +29,49 @@ See [Static Generation](static-generation.md).
 ### Show `debug` output in the logs
 
 Springwolf uses the default logging setup of Spring Boot.
-To enable `DEBUG` output, add the following line to the `application.properties`:
+To enable `DEBUG` output (`TRACE` for even more debugging), add the following line to the `application.properties`:
 
 ```properties
 logging.level.io.github.springwolf=DEBUG
+```
+
+Log output:
+```log
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.2)
+
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.examples.kafka.ApiIntegrationTest  : Starting ApiIntegrationTest using Java 17.0.7 with PID 1792 (started by user in /springwolf-core/springwolf-examples/springwolf-kafka-example)
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.examples.kafka.ApiIntegrationTest  : Running with Spring Boot v4.0.2, Spring v7.0.3
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.examples.kafka.ApiIntegrationTest  : No active profile set, falling back to 1 default profile: "default"
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 522 ms
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.c.SpringwolfUiResourceConfigurer : Serving Springwolf with base-path: /springwolf
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.c.PublishingBaseController       : Message publishing via SpringwolfKafkaController is active.
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+ INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.examples.kafka.ApiIntegrationTest  : Started ApiIntegrationTest in 1.461 seconds (process running for 2.123)
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] .g.s.c.SpringwolfInitApplicationListener : Triggering asyncapi creation
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.asyncapi.DefaultAsyncApiService  : Building AsyncAPI document
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.a.s.c.a.AnnotationScannerUtil    : Detected method io.github.springwolf.examples.kafka.consumers.ExampleClassLevelKafkaListener#receiveMonetaryAmount
+...
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.a.s.c.a.AnnotationScannerUtil    : Detected method io.github.springwolf.examples.kafka.consumers.AvroConsumer#receiveExampleAvroPayload
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.asyncapi.DefaultAsyncApiService  : Starting customizer io.github.springwolf.addons.json_schema.JsonSchemaCustomizer
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.a.grouping.AsyncApiGroupService  : Loaded AsyncApiGroup from configuration: AsyncApiGroup(groupName=Only Vehicles, groupInfo=Info(title=null, version=1.0.0, description=This group only contains endpoints that are related to vehicles., termsOfService=null, contact=null, license=null, tags=null, externalDocs=null), operationActionsToKeep=[], channelNamesToKeep=[], messageNamesToKeep=[.*Vehicle.*])
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.asyncapi.DefaultAsyncApiService  : AsyncAPI document was built
+ INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+ INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+ INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] i.g.s.c.controller.AsyncApiController    : Returning AsyncApi document for group Only Vehicles
+DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-2] i.g.s.c.controller.AsyncApiController    : Returning AsyncApi document for group default
+DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-3] i.g.s.c.a.grouping.AsyncApiGroupService  : Loaded AsyncApiGroup from configuration: AsyncApiGroup(groupName=Only Vehicles, groupInfo=Info(title=null, version=1.0.0, description=This group only contains endpoints that are related to vehicles., termsOfService=null, contact=null, license=null, tags=null, externalDocs=null), operationActionsToKeep=[], channelNamesToKeep=[], messageNamesToKeep=[.*Vehicle.*])
 ```
 
 ### The Springwolf UI isn't showing
@@ -62,7 +101,7 @@ If not, whether
 ### Unable to publish message from the UI
 
 Publishing messages from the UI is disabled by default due to security concerns.
-Springwolf doesn't offer authentication nor authorization, anyone can publish messages to (production) channels.
+Springwolf doesn't offer authentication nor authorization, anyone can publish messages to channels (in production).
 
 Check the [configuration](configuration/configuration.mdx) to enable this feature.
 Be sure to enable fully qualified names ([`use-fqn`](configuration/configuration.mdx)) as well.
@@ -112,7 +151,7 @@ public void sendMessage(ListWrapper<String> msg) {}
 When Springwolf finds multiple consumers/producers for the same channel/topic, these are merged together.
 This is expected, as there are use-cases where different payloads are sent via the same channel/topic.
 
-Springwolf uses on scanners to find all consumer and producers in your application.
+Springwolf uses scanners to find all consumer and producers in your application.
 Most likely two scanners found your consumer/producer each.
 See [configuration](configuration/configuration.mdx) to disable scanners.
 
@@ -131,7 +170,14 @@ See the [customization page](configuration/customizing.md)
 Releases are managed in [GitHub Releases](https://github.com/springwolf/springwolf-core/releases),
 which feature noteworthy changes, the full changelog and notes on how to migrate.
 
-Since each release has a git _tag_, the [Springwolf examples for each plugin](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples) showcase the use of Springwolf for any previous version.
+Since each release has a git [_tag_](https://github.com/springwolf/springwolf-core/tags),
+the [Springwolf examples](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples) showcase the use of Springwolf for any version.
+
+### Is Spring Boot 3.X supported
+You can use an older version of Springwolf, which is build to support Spring Boot 3.X.
+However, these versions don't get any updates.
+
+Last version to support Spring Boot 3.X is `1.20.0` as Spring Boot 4 started the Springwolf 2.X release line.
 
 ### How to migrate from Springwolf 0.18.0 to 1.0.0
 

@@ -6,27 +6,31 @@ import CodeConfigurationProperties from '!!raw-loader!./snippets/_configuration_
 
 # Configuration
 
-Add the following to the spring `application.properties` file:
+Starting in version 2.0.0, all properties are optional and have sensible defaults.
+
+Selected configuration properties on short glance for the `application.properties` file:
 <CodeBlock language="properties">{CodeConfigurationProperties}</CodeBlock>
 
-## Properties
+## Main Properties
 
-### `base-backage` (required)
+### `base-backage`
+
+The `base-package` is scanned for listeners and publishers.
+
+In detail, Springwolf searches for `@Component` annotated classes (that includes `@Service` annotated classes) with methods annotated with `@AsyncListener`, `@AsyncPublisher`, `@JmsListener`, `@KafkaListener`, `@MessageMapping`, `@RabbitListener`, `@SqsListener`, etc.
+Also, `@Configuration` classes are scanned for `@Bean` classes containing the previously mentioned annotations.
 
 It's recommended to structure the project such that all consumers and producers (classes containing listener/producer methods) are in the same package - it's not mandatory, and if they're scattered across multiple packages, just provide the highest in hierarchy package that contains all classes.
 
 You can add multiple base packages separated by commas.
 
-The `base-package` will be scanned for classes containing `@Component` annotated classes (that includes `@Service` annotated classes) for methods annotated with `@JmsListener`, `@KafkaListener`, `MessageMapping`, `@RabbitListener`, `@SqsListener`, `@AsyncListener`, `@AsyncPublisher`, etc.
-`@Configuration` classes are scanned for `@Bean` containing the previously mentioned annotations as well.
-
-### `Info` (required)
+### `Info`
 
 The `Info` object provides metadata about the API (see [Info Object](https://www.asyncapi.com/docs/reference/specification/v3.0.0#infoObject)).
 
 All provided fields will be present in the generated document, but not all will be displayed in the UI.
 
-### `Servers` (required)
+### `Servers`
 
 The `Server` object provides metadata to help the reader understand the protocol, version, login details and more (see [AsyncAPI Server Object](https://www.asyncapi.com/docs/reference/specification/v3.0.0#serversObject)).
 Any name (`kafka-server` in the example) can be chosen.
@@ -35,7 +39,7 @@ An AsyncAPI document can contain more than one server, but it's not common.
 
 As with the `Info` object, all provided fields will be present in the generated document, but not all will be displayed in the UI.
 
-## Additional `application.properties`
+## Additional Properties
 
 The following table contains additional properties that can be specified in the `application.properties` file:
 
@@ -81,7 +85,7 @@ The following table contains additional properties that can be specified in the 
 The AsyncAPI specification allows the definition of additional data fields to extend the
 specification at certain points (see [Specification Extensions](https://www.asyncapi.com/docs/reference/specification/v3.0.0#specificationExtensions) ).
 
-Extension Fields may be added to `Info`, `Contact`, `License` and `Server` objects both via `application.properties`.
+Extension Fields may be added to `Info`, `Contact`, `License` and `Server` objects in `application.properties`.
 Every custom extension field must begin with `x-`, for example `x-internal-id` (see sample configurations above).
 
 ## Grouping

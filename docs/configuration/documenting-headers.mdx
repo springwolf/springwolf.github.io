@@ -16,7 +16,7 @@ public void receiveExamplePayload(
         @Payload ExamplePayloadDto payload, // @Payload is required for multiple parameters
         @Header(KafkaHeaders.RECEIVED_KEY) String key,
         @Header(KafkaHeaders.OFFSET) Integer offset) {
-    // process
+    // do work
 }
 ```
 
@@ -45,6 +45,6 @@ Again, the annotation property `headers` of `@AsyncOperation` allows to overwrit
         )
 ))
 public void sendMessage(ExamplePayloadDto msg) {
-    // process
+    // do work
 }
 ```
