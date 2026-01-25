@@ -11,7 +11,6 @@ const config = {
   url: 'https://www.springwolf.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'springwolf', 
   projectName: 'springwolf.github.io',

@@ -38,7 +38,7 @@ class ApiIntegrationTest {
         // then
         InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
         String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
-        assertEquals(expected, actual);
+        assertThat(actual).isEqualTo(expected);
     }
 }
 ```
@@ -54,7 +54,7 @@ Demo code (taken from [`springwolf-kafka-example`](https://github.com/springwolf
 class StandaloneTest {
 
     @Test
-    public void asyncApiStandaloneArtifactTest() throws IOException {
+    void asyncApiStandaloneArtifactTest() throws Exception {
         // given
         StandaloneApplication standaloneApplication =
                 DefaultStandaloneApplication.builder().buildAndStart();
@@ -64,21 +64,37 @@ class StandaloneTest {
         String actual = new DefaultAsyncApiSerializerService().toJsonString(asyncApi);
 
         // then
-        // writing the actual file can be useful for debugging (remember: gitignore)
+        // writing the actual file can be useful for debugging (remember: .gitignore)
         Files.writeString(Path.of("src", "test", "resources", "asyncapi.standalone.json"), actual);
 
         // then
         InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
         String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
-        assertEquals(expected, actualPatched);
+        assertThat(actual).isEqualTo(expected);
     }
+}
+```
+
+The [`application.properties` configuration](configuration/configuration.mdx) is picked up.
+
+Still, the [`base-package`](configuration/configuration.mdx) must be set explicitly, either in the `application.properties` or as part of the `StandaloneApplication` builder:
+
+```java
+public void applicationWithCustomBasePackage() {
+    ConfigurableEnvironment environment = StandaloneEnvironmentLoader.load();
+    environment
+            .getPropertySources()
+            .addFirst(new MapPropertySource(
+                    "env", Map.of("springwolf.docket.base-package", "my.spring.app.package")));
+
+    DefaultStandaloneApplication standaloneApplication = DefaultStandaloneApplication.builder()
+            .setEnvironment(environment)
+            .buildAndStart();
 }
 ```
 
 By default, only the `io.github.springwolf` package is scanned and `@StandaloneConfiguration` in other packages are _not_ picked up.
 Use the `DefaultStandaloneApplication.builder()` to customize the Spring environment, load custom beans and configurations.
-
-The [`application.properties` configuration](configuration/configuration.mdx) is picked up.
 
 ## Gradle Plugin (full spring context)
 

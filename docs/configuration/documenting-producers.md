@@ -28,7 +28,7 @@ Below is an example to demonstrate the annotation:
 ))
 @KafkaAsyncOperationBinding
 public void sendMessage(ExamplePayloadDto msg) {
-    // process
+    // do work
 }
 ```
 
