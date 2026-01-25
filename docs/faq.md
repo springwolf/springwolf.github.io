@@ -36,6 +36,7 @@ logging.level.io.github.springwolf=DEBUG
 ```
 
 Log output:
+
 ```log
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -174,6 +175,7 @@ Since each release has a git [_tag_](https://github.com/springwolf/springwolf-co
 the [Springwolf examples](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples) showcase the use of Springwolf for any version.
 
 ### Is Spring Boot 3.X supported
+
 You can use an older version of Springwolf, which is build to support Spring Boot 3.X.
 However, these versions don't get any updates.
 

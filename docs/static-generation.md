@@ -78,6 +78,7 @@ class StandaloneTest {
 The [`application.properties` configuration](configuration/configuration.mdx) is picked up.
 
 Still, the [`base-package`](configuration/configuration.mdx) must be set explicitly, either in the `application.properties` or as part of the `StandaloneApplication` builder:
+
 ```java
 public void applicationWithCustomBasePackage() {
     ConfigurableEnvironment environment = StandaloneEnvironmentLoader.load();
