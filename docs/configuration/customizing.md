@@ -33,6 +33,7 @@ For example, the title can be adjusted - although this should be done through th
 public class AsyncApiTitleCustomizer implements AsyncApiCustomizer {
     @Override
     public void customize(AsyncAPI asyncAPI) {
+         asyncAPI.setVersion("3.0.0");
          asyncAPI.getInfo().setTitle("Title set through customizer");
     }
 }
