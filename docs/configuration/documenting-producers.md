@@ -34,6 +34,8 @@ public void sendMessage(ExamplePayloadDto msg) {
 
 :::note
 Springwolf only finds methods that are within the `base-package`.
+
+For methods with multiple parameters, annotate the payload parameter with `@Payload` (see [payload type](documenting-messages.mdx#payload-type)).
 :::
 
 ### Channel Name

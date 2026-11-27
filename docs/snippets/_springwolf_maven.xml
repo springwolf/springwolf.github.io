@@ -3,12 +3,18 @@
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-kafka</artifactId>
-        <version>2.9.0</version>
+        <version>3.0.0</version>
     </dependency>
-    <!-- Provides the UI - optional (recommended) -->
+    <!-- Provides the AsyncAPI document endpoint - optional (recommended) -->
+    <dependency>
+        <groupId>io.github.springwolf</groupId>
+        <artifactId>springwolf-web</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+    <!-- Provides the UI - optional (recommended), requires springwolf-web -->
     <dependency>
         <groupId>io.github.springwolf</groupId>
         <artifactId>springwolf-ui</artifactId>
-        <version>2.9.0</version>
+        <version>3.0.0</version>
     </dependency>
 </dependencies>

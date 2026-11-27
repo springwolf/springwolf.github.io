@@ -1,7 +1,7 @@
 <dependencies>
     <dependency>
         <groupId>io.github.springwolf</groupId>
-        <artifactId>springwolf-generic-binding</artifactId>
-        <version>2.9.0</version>
+        <artifactId>springwolf-bindings</artifactId>
+        <version>3.0.0</version>
     </dependency>
 </dependencies>

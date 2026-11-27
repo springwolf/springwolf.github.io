@@ -11,7 +11,7 @@ The following paragraphs describe how Springwolf works internally.
 When the Spring Boot application is started, Springwolf uses its scanners to find defined consumers and producers within the application.
 Based on the results, the channels/topics are extracted including payload type and merged together into an [AsyncAPI conform document](https://www.asyncapi.com/docs/reference/specification/v3.0.0).
 
-The AsyncAPI document is accessible as an endpoint.
+The AsyncAPI document is accessible as an endpoint, provided by `springwolf-web`.
 When the Springwolf UI is opened, the browser fetches the document and renders it (see demo).
 
 When publishing is enabled, the user can publish a message through the UI to another endpoint.
@@ -36,7 +36,7 @@ The `ChannelObject` contains the `Message` for the receive and/or send operation
 ## Building an example payload
 
 When the scanners scan and build the result, they also extract the payload type.
-The payload is registered in the `ComponentsService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
+The payload is registered in the `SchemasService` and the message in the `MessagesService`, which allows to split the `Message` from the schema definition - within the AsyncAPI doc a `$ref` references is used.
 
 Using `swagger-core` any class can be converted into an OpenApi schema.
 The schema is [mapped into an AsyncAPI schema](https://www.asyncapi.com/docs/tutorials/getting-started/coming-from-openapi) and included in the AsyncAPI document.
@@ -52,4 +52,4 @@ They follow the same plugin model.
 ## Putting it all together
 
 The `AsyncApiService` collects all the channels, schemas and general info and builds the AsyncAPI document.
-The controller access this services to serve the document to the UI.
+The controllers of `springwolf-web` access this service to serve the document to the UI.

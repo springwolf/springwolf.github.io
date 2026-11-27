@@ -8,7 +8,7 @@ sidebar_position: 80
 
 ### Is Springwolf free & What's the license
 
-Yes, you can use Springwolf for private and commercial purposes as long as you comply to the [Apache License 2.0](https://github.com/springwolf/springwolf-core/blob/master/LICENSE).
+Yes, you can use Springwolf for private and commercial purposes as long as you comply to the [Apache License 2.0](https://github.com/springwolf/springwolf-core/blob/main/LICENSE).
 
 ### Use `springwolf-ui` only (without plugins)
 
@@ -54,8 +54,8 @@ DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.exam
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 522 ms
-DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.c.SpringwolfUiResourceConfigurer : Serving Springwolf with base-path: /springwolf
-DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.c.PublishingBaseController       : Message publishing via SpringwolfKafkaController is active.
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.w.c.SpringwolfUiResourceConfigurer : Serving Springwolf with base-path: /springwolf
+DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.w.c.p.PublishingBaseController     : Message publishing via SpringwolfKafkaController is active.
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
  INFO 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.examples.kafka.ApiIntegrationTest  : Started ApiIntegrationTest in 1.461 seconds (process running for 2.123)
@@ -70,14 +70,14 @@ DEBUG 1792 --- [Springwolf example project - Kafka] [    Test worker] i.g.s.c.as
  INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
  INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
  INFO 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] i.g.s.c.controller.AsyncApiController    : Returning AsyncApi document for group Only Vehicles
-DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-2] i.g.s.c.controller.AsyncApiController    : Returning AsyncApi document for group default
+DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-1] i.g.s.w.controller.AsyncApiController    : Returning AsyncApi document for group Only Vehicles
+DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-2] i.g.s.w.controller.AsyncApiController    : Returning AsyncApi document for group default
 DEBUG 1792 --- [Springwolf example project - Kafka] [o-auto-1-exec-3] i.g.s.c.a.grouping.AsyncApiGroupService  : Loaded AsyncApiGroup from configuration: AsyncApiGroup(groupName=Only Vehicles, groupInfo=Info(title=null, version=1.0.0, description=This group only contains endpoints that are related to vehicles., termsOfService=null, contact=null, license=null, tags=null, externalDocs=null), operationActionsToKeep=[], channelNamesToKeep=[], messageNamesToKeep=[.*Vehicle.*])
 ```
 
 ### The Springwolf UI isn't showing
 
-When the `springwolf-ui` dependency is added, the UI should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
+When the `springwolf-web` and `springwolf-ui` dependencies are added, the UI should be visible at [http://localhost:8080/springwolf/asyncapi-ui.html](http://localhost:8080/springwolf/asyncapi-ui.html).
 
 If not, whether
 
@@ -172,7 +172,7 @@ Releases are managed in [GitHub Releases](https://github.com/springwolf/springwo
 which feature noteworthy changes, the full changelog and notes on how to migrate.
 
 Since each release has a git [_tag_](https://github.com/springwolf/springwolf-core/tags),
-the [Springwolf examples](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples) showcase the use of Springwolf for any version.
+the [Springwolf examples](https://github.com/springwolf/springwolf-core/blob/main/springwolf-examples) showcase the use of Springwolf for any version.
 
 ### Is Spring Boot 3.X supported
 
@@ -180,6 +180,10 @@ You can use an older version of Springwolf, which is build to support Spring Boo
 However, these versions don't get any updates.
 
 Last version to support Spring Boot 3.X is `1.20.0` as Spring Boot 4 started the Springwolf 2.X release line.
+
+### How to migrate from Springwolf 2.X to 3.0.0
+
+See [Release 3.0.0](https://github.com/springwolf/springwolf-core/releases/tag/v3.0.0).
 
 ### How to migrate from Springwolf 0.18.0 to 1.0.0
 

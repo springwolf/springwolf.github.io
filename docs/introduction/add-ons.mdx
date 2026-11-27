@@ -8,8 +8,8 @@ import CodeCommonModelGroovy from '!!raw-loader!./snippets/_springwolf_common_mo
 import CodeCommonModelMaven from '!!raw-loader!./snippets/_springwolf_common_model_converters_maven.xml';
 import CodeJsonSchemaGroovy from '!!raw-loader!./snippets/_springwolf_json_schema_groovy.gradle';
 import CodeJsonSchemaMaven from '!!raw-loader!./snippets/_springwolf_json_schema_maven.xml';
-import CodeGenericBindingGroovy from '!!raw-loader!./snippets/_springwolf_generic_binding_groovy.gradle';
-import CodeGenericBindingMaven from '!!raw-loader!./snippets/_springwolf_generic_binding_maven.xml';
+import CodeBindingsGroovy from '!!raw-loader!./snippets/_springwolf_bindings_groovy.gradle';
+import CodeBindingsMaven from '!!raw-loader!./snippets/_springwolf_bindings_maven.xml';
 import CodeKotlinxGroovy from '!!raw-loader!./snippets/_springwolf_kotlinx_serialization_model_converter_groovy.gradle';
 import CodeKotlinxMaven from '!!raw-loader!./snippets/_springwolf_kotlinx_serialization_model_converter_maven.xml';
 
@@ -17,7 +17,7 @@ import CodeKotlinxMaven from '!!raw-loader!./snippets/_springwolf_kotlinx_serial
 
 ## Common Model Converters
 
-The [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters) adds support for different Model Converters.
+The [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/main/springwolf-add-ons/springwolf-common-model-converters) adds support for different Model Converters.
 
 These are needed when swagger is unable to extract a schema from a class.
 
@@ -35,22 +35,24 @@ Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.githu
 
 ### `javax.money.MonetaryAmount`
 
-Adding a model converter is demoed in [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-common-model-converters)
+Adding a model converter is demoed in [`springwolf-add-ons/springwolf-common-model-converters`](https://github.com/springwolf/springwolf-core/tree/main/springwolf-add-ons/springwolf-common-model-converters)
 
 ## Generic Binding
 
-<Tabs>
-    <TabItem value="Groovy" label="Groovy" default>
-        <CodeBlock language="groovy">{CodeGenericBindingGroovy}</CodeBlock>
-    </TabItem>
-    <TabItem value="Maven" label="Maven">
-        <CodeBlock language="xml">{CodeGenericBindingMaven}</CodeBlock>
-    </TabItem>
-</Tabs>
-Latest version: ![Maven Central](https://img.shields.io/maven-central/v/io.github.springwolf/springwolf-json-schema?color=green&label=springwolf&style=plastic)
-
 Specific bindings are provided for the different [supported protocols](supported-protocols) but if you need
 to document a protocol that's not support yet, you can use this generic binding and specify any property you need.
+
+The generic binding is part of `springwolf-bindings`, which the plugins already include.
+When using `springwolf-core` without a plugin, add the following dependency:
+
+<Tabs>
+    <TabItem value="Groovy" label="Groovy" default>
+        <CodeBlock language="groovy">{CodeBindingsGroovy}</CodeBlock>
+    </TabItem>
+    <TabItem value="Maven" label="Maven">
+        <CodeBlock language="xml">{CodeBindingsMaven}</CodeBlock>
+    </TabItem>
+</Tabs>
 
 ### `@AsyncGenericOperationBinding`
 
@@ -78,7 +80,7 @@ You can define anything and there is **no validation**.
 
 ## Json-Schema
 
-The [`springwolf-add-ons/springwolf-json-schema`](https://github.com/springwolf/springwolf-core/tree/master/springwolf-add-ons/springwolf-json-schema) adds the [json-schema](https://json-schema.org) schema to the AsyncAPI document.
+The [`springwolf-add-ons/springwolf-json-schema`](https://github.com/springwolf/springwolf-core/tree/main/springwolf-add-ons/springwolf-json-schema) adds the [json-schema](https://json-schema.org) schema to the AsyncAPI document.
 
 Add the following dependency:
 
