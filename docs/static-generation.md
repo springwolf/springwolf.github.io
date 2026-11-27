@@ -12,7 +12,7 @@ For this, the expected `asyncapi.json` file is stored in the VCS repository.
 
 ## Spring Boot Test (full spring context)
 
-The most simple way is a Spring Boot test (taken from [springwolf-kafka-example](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/ApiIntegrationTest.java)):
+The most simple way is a Spring Boot test, which requires `springwolf-web` (taken from [springwolf-kafka-example](https://github.com/springwolf/springwolf-core/blob/main/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/ApiIntegrationTest.java)):
 
 ```java
 @SpringBootTest(
@@ -48,7 +48,7 @@ class ApiIntegrationTest {
 Especially for large application, starting the full Spring Boot context can be slow.
 Springwolf _standalone_ uses a minimal Spring application context, by only including beans and configurations marked with `@StandaloneConfiguration`.
 
-Demo code (taken from [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/StandaloneTest.java)):
+Demo code (taken from [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/main/springwolf-examples/springwolf-kafka-example/src/test/java/io/github/springwolf/examples/kafka/StandaloneTest.java)):
 
 ```java
 class StandaloneTest {
@@ -56,24 +56,26 @@ class StandaloneTest {
     @Test
     void asyncApiStandaloneArtifactTest() throws Exception {
         // given
-        StandaloneApplication standaloneApplication =
-                DefaultStandaloneApplication.builder().buildAndStart();
+        try (StandaloneApplication standaloneApplication =
+                DefaultStandaloneApplication.builder().buildAndStart()) {
+            // when
+            AsyncAPI asyncApi = standaloneApplication.getAsyncApiService().getAsyncAPI();
+            String actual = new DefaultAsyncApiSerializerService().toJsonString(asyncApi);
 
-        // when
-        AsyncAPI asyncApi = standaloneApplication.getAsyncApiService().getAsyncAPI();
-        String actual = new DefaultAsyncApiSerializerService().toJsonString(asyncApi);
+            // then
+            // writing the actual file can be useful for debugging (remember: .gitignore)
+            Files.writeString(Path.of("src", "test", "resources", "asyncapi.standalone.json"), actual);
 
-        // then
-        // writing the actual file can be useful for debugging (remember: .gitignore)
-        Files.writeString(Path.of("src", "test", "resources", "asyncapi.standalone.json"), actual);
-
-        // then
-        InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
-        String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
-        assertThat(actual).isEqualTo(expected);
+            // then
+            InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
+            String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
+            assertThat(actual).isEqualTo(expected);
+        }
     }
 }
 ```
+
+The standalone mode doesn't need `springwolf-web`.
 
 The [`application.properties` configuration](configuration/configuration.mdx) is picked up.
 
@@ -99,7 +101,7 @@ Use the `DefaultStandaloneApplication.builder()` to customize the Spring environ
 ## Gradle Plugin (full spring context)
 
 You can use the [`springdoc-openapi-gradle-plugin`](https://github.com/springdoc/springdoc-openapi-gradle-plugin) and configure the plugin
-for Springwolf (taken from [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/master/springwolf-examples/springwolf-kafka-example/build.gradle)):
+for Springwolf (taken from [`springwolf-kafka-example`](https://github.com/springwolf/springwolf-core/blob/main/springwolf-examples/springwolf-kafka-example/build.gradle)):
 
 ```groovy
 openApi {

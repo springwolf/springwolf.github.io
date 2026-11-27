@@ -13,7 +13,7 @@ To learn more about how Springwolf works, look [behind the scenes](../behind-the
 :::note
 <!-- vale Microsoft.We = NO -->
 Please let us know on GitHub or Discord, so that other people can benefit from it as well.
-[Contributions are welcome, here are some basic tips](https://github.com/springwolf/springwolf-core/blob/master/CONTRIBUTING.md).
+[Contributions are welcome, here are some basic tips](https://github.com/springwolf/springwolf-core/blob/main/CONTRIBUTING.md).
 <!-- vale Microsoft.We = YES -->
 :::
 
@@ -70,13 +70,26 @@ public class TagCustomizer implements OperationCustomizer {
 
 The `DefaultAsyncApiSerializerService` is responsible for serializing the AsyncAPI document into a `String` for the Controller.
 
-Use `DefaultAsyncApiSerializerService#getJsonMapper()` and `DefaultAsyncApiSerializerService#getYamlMapper()` to customize the `ObjectMapper` (will change with migration to Jackson 3).
+Springwolf uses Jackson 3, where an `ObjectMapper` can't be modified after creation.
+To customize the serialization, provide your own `AsyncApiSerializerService` bean.
 
-## `ChannelScanners` - Channel detection
+## Jackson modules - Schema generation
 
-All `ChannelScanner` beans are called to scan for channels.
+Springwolf registers all `JacksonModule` beans in the `ObjectMapper` used to generate the schemas.
+For example, the [kafka example](https://github.com/springwolf/springwolf-core/blob/main/springwolf-examples/springwolf-kafka-example/src/main/java/io/github/springwolf/examples/kafka/configuration/ProtobufConfiguration.java) registers the `ProtobufModule`:
+
+```java
+@Bean
+public JacksonModule protobufJacksonModule() {
+    return new ProtobufModule();
+}
+```
+
+## `ChannelsScanner` - Channel detection
+
+All `ChannelsScanner` beans are called to scan for channels.
 This interface is helpful when a protocol currently unsupported by Springwolf is used.
-Remember to register all payloads in the `ComponentsService`.
+Remember to register all payloads in the `SchemasService` and messages in the `MessagesService`.
 
 ## Customize internal behavior  
 

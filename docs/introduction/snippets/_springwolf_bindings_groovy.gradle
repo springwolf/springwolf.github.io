@@ -1,0 +1,3 @@
+dependencies {
+    implementation 'io.github.springwolf:springwolf-bindings:3.0.0'
+}

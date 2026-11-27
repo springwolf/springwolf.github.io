@@ -1,3 +1,3 @@
 dependencies {
-    implementation 'io.swagger.core.v3:swagger-core-jakarta:2.2.40'
+    implementation 'io.swagger.core.v3:swagger-annotations:3.0.0'
 }
